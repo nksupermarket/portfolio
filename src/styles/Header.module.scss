@@ -7,8 +7,52 @@
 }
 
 .circle {
-  height: 500px;
-  width: 500px;
+  position: relative;
+  height: 600px;
+  width: 600px;
   border-radius: 50%;
   background: var(--circle);
+}
+
+$offsetY: 80px;
+.text_block {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+
+  .ctn {
+    position: relative;
+
+    h2 {
+      position: relative;
+      z-index: 9;
+    }
+  }
+
+  .underline {
+    position: absolute;
+    width: 500px;
+    height: 13px;
+    background: var(--accent);
+  }
+
+  &.top {
+    top: $offsetY;
+
+    .underline {
+      top: 73px;
+      right: 80px;
+    }
+  }
+
+  &.bottom {
+    bottom: $offsetY;
+    left: 48%;
+
+    .underline {
+      top: 73px;
+      left: 190px;
+    }
+  }
 }

@@ -5,13 +5,17 @@ export default function Header() {
   return (
     <div className={styles.main}>
       <div className={styles.circle}>
-        <div className={styles.text_block}>
-          <p>Alex Liang</p>
-          <div className="underline"></div>
+        <div className={`${styles.text_block} ${styles.top}`}>
+          <div className={styles.ctn}>
+            <h2>Alex Liang</h2>
+            <div className={styles.underline}></div>
+          </div>
         </div>
-        <div className={styles.text_block}>
-          <p>web developer</p>
-          <div className="underline"></div>
+        <div className={`${styles.text_block} ${styles.bottom}`}>
+          <div className={styles.ctn}>
+            <h2>web developer</h2>
+            <div className={styles.underline}></div>
+          </div>
         </div>
       </div>
     </div>
