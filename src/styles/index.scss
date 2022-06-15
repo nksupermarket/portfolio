@@ -1,0 +1,16 @@
+@use './mixins';
+@use './variables';
+
+:root[color-mode='light'] {
+  @include mixins.getThemeColors(variables.$colors-light);
+}
+
+html,
+body,
+#root,
+.App {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}

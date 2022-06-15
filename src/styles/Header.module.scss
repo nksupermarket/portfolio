@@ -1,0 +1,14 @@
+@use './mixins';
+
+.main {
+  height: 100%;
+  width: 100%;
+  @include mixins.flex(row, true);
+}
+
+.circle {
+  height: 500px;
+  width: 500px;
+  border-radius: 50%;
+  background: var(--circle);
+}
