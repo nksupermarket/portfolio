@@ -1,0 +1,16 @@
+@use './mixins';
+
+.main {
+  margin-bottom: 100px;
+}
+
+.text_block {
+  border: 5px solid var(--circle);
+  border-top: none;
+  @include mixins.flex(row, true);
+
+  p {
+    margin: 50px 0;
+    width: 80%;
+  }
+}

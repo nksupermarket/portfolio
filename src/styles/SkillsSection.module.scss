@@ -1,11 +1,15 @@
 @use './mixins';
 
+.main {
+  padding: 50px 0;
+}
+
 .list {
   margin: 80px 0;
   li {
     position: relative;
-    width: 25%;
-    padding-bottom: 25%;
+    width: 20%;
+    padding-bottom: 20%;
     height: 0;
     border-radius: 10px;
     overflow: hidden;
@@ -28,7 +32,7 @@
 .top_row,
 .bottom_row {
   @include mixins.flex(row, true);
-  column-gap: 40px;
+  column-gap: 60px;
 }
 
 .top_row {
@@ -47,7 +51,13 @@
 @media screen and (max-width: 576px) {
   .list {
     margin: 50px 0;
+
+    li {
+      width: 25%;
+      padding-bottom: 25%;
+    }
   }
+
   .top_row,
   .bottom_row {
     column-gap: 20px;

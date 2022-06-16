@@ -1,4 +1,7 @@
 export interface SectionProps {
-  title: string;
+  title: {
+    firstRow: string;
+    secondRow: string;
+  };
   sectionNumber: number;
 }
