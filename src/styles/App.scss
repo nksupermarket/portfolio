@@ -1,1 +1,19 @@
+@use './mixins';
 
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (min-width: 993px) {
+  section {
+    min-height: 80%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  section {
+    min-height: 60%;
+  }
+}

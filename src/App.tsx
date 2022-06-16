@@ -1,5 +1,6 @@
 import React from 'react';
 import AboutSection from './components/AboutSection';
+import ContactSection from './components/ContactSection';
 import Header from './components/Header';
 import ProjectSection from './components/ProjectSection';
 import SkillsSection from './components/SkillsSection';
@@ -21,6 +22,10 @@ function App() {
       <AboutSection
         title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
         sectionNumber={3}
+      />
+      <ContactSection
+        title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
+        sectionNumber={4}
       />
     </div>
   );

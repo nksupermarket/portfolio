@@ -4,7 +4,7 @@ import styles from '../styles/Header.module.scss';
 export default function Header() {
   return (
     <div className={styles.main}>
-      <div className={styles.circle}>
+      <div className={styles.square}>
         <div className={`${styles.text_block} ${styles.top}`}>
           <div className={styles.ctn}>
             <h2>Alex Liang</h2>
