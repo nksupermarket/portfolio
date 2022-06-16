@@ -27,7 +27,8 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -85,9 +86,13 @@ a:active {
   color: var(--main-text);
 }
 
+ul {
+  list-style: none;
+}
+
 @media screen and (max-width: 992px) {
   .App {
-    padding: 0 12%;
+    padding: 0 15%;
   }
 
   h2 {

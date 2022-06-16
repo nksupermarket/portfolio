@@ -1,0 +1,55 @@
+@use './mixins';
+
+.list {
+  margin: 80px 0;
+  li {
+    position: relative;
+    width: 25%;
+    padding-bottom: 25%;
+    height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.img_wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include mixins.flex(column, true);
+}
+
+.top_row,
+.bottom_row {
+  @include mixins.flex(row, true);
+  column-gap: 40px;
+}
+
+.top_row {
+  margin-bottom: 50px;
+}
+
+.react {
+  background: #222;
+
+  img {
+    width: 70%;
+    height: 70%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .list {
+    margin: 50px 0;
+  }
+  .top_row,
+  .bottom_row {
+    column-gap: 20px;
+  }
+}

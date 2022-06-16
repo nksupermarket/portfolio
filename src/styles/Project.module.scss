@@ -30,6 +30,20 @@
     align-self: center;
     display: flex;
     align-items: center;
+
+    a {
+      display: block;
+      margin: 10px;
+      transition: 0.1s all ease-in;
+
+      &.live {
+        color: var(--accent);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 }
 
@@ -45,15 +59,15 @@
   height: 0;
   width: 100%;
   padding-bottom: 100%;
-}
 
-img {
-  border-radius: 10px;
-  position: absolute;
-  object-fit: cover;
-  object-position: 71% 50%;
-  width: 100%;
-  height: 100%;
+  img {
+    border-radius: 10px;
+    position: absolute;
+    object-fit: cover;
+    object-position: 71% 50%;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .stack {
@@ -64,20 +78,6 @@ img {
 
   .tech {
     color: rgba(var(--RGB_main-text), 0.5);
-  }
-}
-
-a {
-  display: block;
-  margin: 10px;
-  transition: 0.1s all ease-in;
-
-  &.live {
-    color: var(--accent);
-  }
-
-  &:hover {
-    transform: scale(1.1);
   }
 }
 
@@ -92,6 +92,10 @@ a {
 
   .right_col {
     width: 50%;
+
+    h5 {
+      font-size: 14px;
+    }
   }
 }
 

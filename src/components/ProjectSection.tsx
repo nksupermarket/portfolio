@@ -2,18 +2,14 @@ import React from 'react';
 import Project from './Project';
 import SectionHeader from './SectionHeader';
 
+import { SectionProps } from '../types/interfaces';
 import styles from '../styles/ProjectSection.module.scss';
 import crochessScreen from '../assets/images/crochess-screen.png';
-
-interface ProjectSectionProps {
-  title: string;
-  sectionNumber: number;
-}
 
 export default function ProjectSection({
   title,
   sectionNumber
-}: ProjectSectionProps) {
+}: SectionProps) {
   return (
     <section className={styles.main}>
       <SectionHeader title={title} number={sectionNumber} />
