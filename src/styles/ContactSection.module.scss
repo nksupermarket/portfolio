@@ -1,0 +1,43 @@
+@use './mixins';
+
+.main {
+  textarea {
+    resize: none;
+  }
+
+  form {
+    margin: 80px 0;
+    row-gap: 40px;
+    @include mixins.flex(column, true);
+  }
+
+  button {
+    background-color: var(--accent);
+    height: 42px;
+    width: 120px;
+    color: white;
+    border-radius: 5px;
+  }
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  grid-template-rows: auto auto 200px;
+  grid-auto-flow: dense;
+  row-gap: 20px;
+
+  label {
+    grid-column: 1;
+  }
+
+  input,
+  textarea {
+    grid-column: 2;
+  }
+
+  textarea {
+    height: 100%;
+  }
+}

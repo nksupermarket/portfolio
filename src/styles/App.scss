@@ -6,6 +6,10 @@ section {
   justify-content: center;
 }
 
+section:last-child {
+  margin-bottom: 150px;
+}
+
 @media screen and (min-width: 993px) {
   section {
     min-height: 80%;

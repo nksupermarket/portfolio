@@ -20,27 +20,23 @@ export default function ContactSection({
   return (
     <section className={styles.main}>
       <SectionHeader title={title} number={sectionNumber} />
-      <form>
-        <div className={styles.form_field}>
+      <form className={styles.form}>
+        <div className={styles.grid}>
           <label htmlFor="name">Name</label>
+          <label htmlFor="email">Email</label>
+          <label htmlFor="message">Your message</label>
           <input
             type="text"
             id="name"
             value={inputValues.name}
             onChange={handleInputChange}
           />
-        </div>
-        <div className={styles.form_field}>
-          <label htmlFor="email">Email</label>
           <input
             type="text"
             id="email"
             value={inputValues.email}
             onChange={handleInputChange}
           />
-        </div>
-        <div className={styles.form_field}>
-          <label htmlFor="message">Your message</label>
           <textarea
             id="message"
             value={inputValues.message}

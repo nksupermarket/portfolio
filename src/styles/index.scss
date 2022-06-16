@@ -92,6 +92,30 @@ ul {
   list-style: none;
 }
 
+button {
+  cursor: pointer;
+}
+
+input,
+textarea,
+button,
+input[type='submit'],
+input[type='reset'] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+}
+
+input[type='text'],
+textarea {
+  border: 1px solid rgba(var(--RGB_main-text), 0.3);
+  border-radius: 4px;
+  padding: 7px 10px;
+}
+
 @media screen and (max-width: 992px) {
   .App {
     padding: 0 15%;
