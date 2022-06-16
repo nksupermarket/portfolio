@@ -5,26 +5,53 @@
   @include mixins.getThemeColors(variables.$colors-light);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
 #root,
 .App {
-  margin: 0;
-  padding: 0;
   height: 100%;
   width: 100%;
 }
 
+html,
+body,
+#root,
+.App,
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+div {
   font-family: 'Rubik';
-  font-weight: 700;
 }
 
 h5,
 h6 {
   font-family: 'Montserrat';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
 }
 
@@ -34,4 +61,60 @@ h2 {
 
 h3 {
   font-size: 75px;
+}
+
+h4 {
+  font-size: 40px;
+}
+
+p {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 992px) {
+  .App {
+    padding: 0 12%;
+  }
+
+  h2 {
+    font-size: 55px;
+  }
+
+  h3 {
+    font-size: 45px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  h2 {
+    font-size: 35px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    padding: 0 8%;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .App {
+    padding: 0 28%;
+  }
 }

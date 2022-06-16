@@ -6,53 +6,78 @@
   @include mixins.flex(row, true);
 }
 
-.circle {
-  position: relative;
-  height: 600px;
-  width: 600px;
-  border-radius: 50%;
-  background: var(--circle);
-}
-
-$offsetY: 80px;
-.text_block {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-
-  .ctn {
+@mixin style(
+  $circleSize,
+  $offsetY,
+  $topOffset,
+  $lineWidth,
+  $lineHeight,
+  $rightOffset,
+  $leftOffset
+) {
+  .circle {
     position: relative;
+    height: $circleSize;
+    width: $circleSize;
+    border-radius: 50%;
+    background: var(--circle);
+  }
 
-    h2 {
+  .text_block {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+
+    .ctn {
       position: relative;
-      z-index: 9;
+
+      h2 {
+        position: relative;
+        z-index: 9;
+      }
     }
   }
 
   .underline {
     position: absolute;
-    width: 500px;
-    height: 13px;
+    width: $lineWidth;
+    height: $lineHeight;
     background: var(--accent);
   }
 
-  &.top {
+  .top {
     top: $offsetY;
 
     .underline {
-      top: 73px;
-      right: 80px;
+      top: $topOffset;
+      right: $rightOffset;
     }
   }
 
-  &.bottom {
+  .bottom {
     bottom: $offsetY;
     left: 48%;
 
     .underline {
-      top: 73px;
-      left: 190px;
+      top: $topOffset;
+      left: $leftOffset;
     }
   }
+}
+
+@media screen and (min-width: 993px) {
+  @include style(600px, 135px, 73px, 500px, 13px, 80px, 190px);
+}
+
+@media screen and (max-width: 992px) {
+  .main {
+    height: 70%;
+  }
+
+  @include style(400px, 97px, 46px, 350px, 9px, 51px, 122px);
+}
+
+@media screen and (max-width: 576px) {
+  @include style(250px, 60px, 30px, 200px, 5px, 33px, 76px);
 }

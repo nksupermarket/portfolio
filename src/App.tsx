@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import Section from './components/Section';
+import ProjectSection from './components/ProjectSection';
 import './styles/App.scss';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header"></header>
       <Header />
-      <Section title={'Latest Projects'} number={1} />
+      <ProjectSection title={'Latest Projects'} sectionNumber={1} />
     </div>
   );
 }

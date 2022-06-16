@@ -1,17 +1,20 @@
 import React from 'react';
-import styles from '../styles/Section.module.scss';
+import styles from '../styles/SectionHeader.module.scss';
 
-interface SectionProps {
+interface SectionHeaderProps {
   title: string;
   number: number;
 }
 
-export default function Section({ title, number }: SectionProps) {
+export default function SectionHeader({
+  title,
+  number
+}: SectionHeaderProps) {
   return (
     <header className={styles.main}>
       <div className={styles.title}>
         {title.split(' ').map((word, i) => {
-          if (i === 0) return <h5 key={i}>{word}</h5>;
+          if (i === 0) return <h4 key={i}>{word}</h4>;
 
           return <h3 key={i}>{word.toUpperCase()}</h3>;
         })}
