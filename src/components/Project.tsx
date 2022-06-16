@@ -7,6 +7,7 @@ interface ProjectProps {
   image: {
     src: string;
     alt: string;
+    objectPosition: string;
   };
   stack?: string[];
   links: {
@@ -38,7 +39,7 @@ export default function Project({
           |<a href={links.repo}>Repo</a>
         </div>
       </div>
-      <div className={styles.right_col}>
+      <div className={styles.img_col}>
         <div className={styles.stack}>
           {stack?.map((s, i) => {
             return (
@@ -49,7 +50,13 @@ export default function Project({
           })}
         </div>
         <div className={styles.img_wrapper}>
-          <img src={image.src} alt={image.alt} />
+          <img
+            src={image.src}
+            alt={image.alt}
+            style={{
+              objectPosition: image.objectPosition
+            }}
+          />
         </div>
       </div>
     </div>

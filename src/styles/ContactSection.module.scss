@@ -24,7 +24,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: auto auto 200px;
+  grid-template-rows: auto 200px;
   grid-auto-flow: dense;
   row-gap: 20px;
 

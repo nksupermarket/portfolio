@@ -21,6 +21,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'no-console': 1,
-    'prettier/prettier': 2
+    'prettier/prettier': 2,
+    'no-unused-vars': 1
   }
 };
