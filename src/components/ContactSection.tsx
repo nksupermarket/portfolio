@@ -19,7 +19,6 @@ export default function ContactSection({
 
   function validate(inputId: string, inputVal: string) {
     let regX;
-    const error = '';
 
     switch (inputId) {
       case 'email':
@@ -30,13 +29,34 @@ export default function ContactSection({
         break;
     }
 
-    return regX?.test(inputVal);
+    const valid = regX?.test(inputVal);
+
+    if (!valid) {
+      const errorMsg =
+        inputId === 'email'
+          ? 'Please enter a valid email address'
+          : 'The message should be at least 10 characters';
+      setInputErrors((prev) => {
+        return { ...prev, [inputId]: errorMsg };
+      });
+    } else {
+      console.log('removing errors');
+      setInputErrors((prev) => ({ ...prev, [inputId]: '' }));
+    }
   }
 
   function handleInputChange(e: SyntheticEvent) {
-    const target = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     setInputValues((prev) => ({ ...prev, [target.id]: target.value }));
+    validate(target.id, target.value);
   }
+
+  function handleInputBlur(e: SyntheticEvent) {
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+
+    validate(target.id, target.value);
+  }
+
   return (
     <section className={styles.main}>
       <SectionHeader title={title} number={sectionNumber} />
@@ -47,40 +67,36 @@ export default function ContactSection({
 
           let key: keyof typeof inputValues;
           for (key in inputValues) {
-            if (!validate(key, inputValues[key])) {
-              setInputErrors((prev) => {
-                switch (key) {
-                  case 'email':
-                    return {
-                      ...prev,
-                      email: 'Please enter a valid email address'
-                    };
-                  case 'message':
-                    return {
-                      ...prev,
-                      message:
-                        'The message should be at least 10 characters'
-                    };
-                }
-              });
-            }
+            validate(key, inputValues[key]);
+          }
+
+          if (Object.values(inputErrors).some((val) => !!val)) {
+            //
           }
         }}
       >
         <div className={styles.grid}>
           <label htmlFor="email">Email</label>
           <label htmlFor="message">Your message</label>
-          <input
-            type="text"
-            id="email"
-            value={inputValues.email}
-            onChange={handleInputChange}
-          />
-          <textarea
-            id="message"
-            value={inputValues.message}
-            onChange={handleInputChange}
-          />
+          <div className={styles.input_wrapper}>
+            <input
+              type="text"
+              id="email"
+              value={inputValues.email}
+              onChange={handleInputChange}
+              onBlur={handleInputBlur}
+            />
+            <p className={styles.error_msg}>{inputErrors.email}</p>
+          </div>
+          <div className={styles.input_wrapper}>
+            <textarea
+              id="message"
+              value={inputValues.message}
+              onChange={handleInputChange}
+              onBlur={handleInputBlur}
+            />
+            <p className={styles.error_msg}>{inputErrors.message}</p>
+          </div>
         </div>
         <button>Send email</button>
       </form>

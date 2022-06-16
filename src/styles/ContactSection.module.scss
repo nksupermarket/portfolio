@@ -32,12 +32,24 @@
     grid-column: 1;
   }
 
-  input,
-  textarea {
+  .input_wrapper {
     grid-column: 2;
   }
 
   textarea {
     height: 100%;
   }
+}
+
+.input_wrapper {
+  input,
+  textarea {
+    width: 100%;
+  }
+}
+
+.error_msg {
+  color: tomato;
+  margin-top: 5px;
+  font-size: 14px;
 }
