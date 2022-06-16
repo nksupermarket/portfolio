@@ -67,8 +67,22 @@ h4 {
   font-size: 40px;
 }
 
+h5 {
+  font-size: 16px;
+}
+
 p {
   font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: var(--main-text);
 }
 
 @media screen and (max-width: 992px) {
@@ -102,7 +116,9 @@ p {
     font-size: 20px;
   }
 
-  p {
+  h5,
+  p,
+  a {
     font-size: 14px;
   }
 }

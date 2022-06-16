@@ -2,6 +2,14 @@
   display: flex;
   justify-content: space-between;
   margin: 100px 0;
+
+  &.reverse {
+    flex-direction: row-reverse;
+
+    .text_block {
+      align-items: flex-start;
+    }
+  }
 }
 
 .text_block {
@@ -15,6 +23,13 @@
   p {
     text-align: justify;
     text-justify: inter-word;
+  }
+
+  .btn_ctn {
+    margin-top: 20px;
+    align-self: center;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -33,6 +48,31 @@ img {
   object-position: 71% 50%;
   width: 100%;
   height: 100%;
+}
+
+.stack {
+  display: flex;
+  column-gap: 20px;
+  margin-bottom: 20px;
+  justify-content: end;
+
+  .tech {
+    color: rgba(var(--RGB_main-text), 0.5);
+  }
+}
+
+a {
+  display: block;
+  margin: 10px;
+  transition: 0.1s all ease-in;
+
+  &.live {
+    color: var(--accent);
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 @media screen and (max-width: 992px) {

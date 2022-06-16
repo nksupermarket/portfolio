@@ -24,6 +24,11 @@ export default function ProjectSection({
           src: crochessScreen,
           alt: 'screenshot of chess game in action'
         }}
+        stack={['Typescript', 'Express', 'Next.js']}
+        links={{
+          live: '',
+          repo: ''
+        }}
       />
       <Project
         title="croChess"
@@ -33,6 +38,10 @@ export default function ProjectSection({
           alt: 'screenshot of chess game in action'
         }}
         reverse={true}
+        links={{
+          live: '',
+          repo: ''
+        }}
       />
     </section>
   );
