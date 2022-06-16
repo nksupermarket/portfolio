@@ -38,17 +38,19 @@ export default function Project({
           |<a href={links.repo}>Repo</a>
         </div>
       </div>
-      <div className={styles.img_wrapper}>
+      <div className={styles.right_col}>
         <div className={styles.stack}>
           {stack?.map((s, i) => {
             return (
               <h5 key={i} className={styles.tech}>
-                {s}
+                {s.toUpperCase()}
               </h5>
             );
           })}
         </div>
-        <img src={image.src} alt={image.alt} />
+        <div className={styles.img_wrapper}>
+          <img src={image.src} alt={image.alt} />
+        </div>
       </div>
     </div>
   );

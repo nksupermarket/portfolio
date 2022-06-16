@@ -24,7 +24,7 @@ export default function ProjectSection({
           src: crochessScreen,
           alt: 'screenshot of chess game in action'
         }}
-        stack={['Typescript', 'Express', 'Next.js']}
+        stack={['Typescript', 'Express', 'Next.js', 'Sass']}
         links={{
           live: '',
           repo: ''
