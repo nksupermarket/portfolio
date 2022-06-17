@@ -1,7 +1,13 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { SyntheticEvent, useState, useRef } from 'react';
 import styles from '../styles/ContactSection.module.scss';
 import { SectionProps } from '../types/interfaces';
 import SectionHeader from './SectionHeader';
+import emailjs from '@emailjs/browser';
+
+interface Inputs {
+  email: string;
+  message: string;
+}
 
 export default function ContactSection({
   title,
@@ -17,22 +23,25 @@ export default function ContactSection({
     message: ''
   });
 
+  const form = useRef<HTMLFormElement>(null);
+
   function validate(inputId: string, inputVal: string) {
-    let regX;
+    let valid;
 
     switch (inputId) {
-      case 'email':
-        regX = /\S+@\S+\.\S+/;
+      case 'email': {
+        const regX = /\S+@\S+\.\S+/;
+        valid = regX.test(inputVal);
         break;
+      }
       case 'message':
-        regX = /([a-zA-Z0-9]){10,}/;
+        valid = inputVal.trim().length >= 10;
         break;
     }
 
-    const valid = regX?.test(inputVal);
-
+    let errorMsg = '';
     if (!valid) {
-      const errorMsg =
+      errorMsg =
         inputId === 'email'
           ? 'Please enter a valid email address'
           : 'The message should be at least 10 characters';
@@ -40,15 +49,17 @@ export default function ContactSection({
         return { ...prev, [inputId]: errorMsg };
       });
     } else {
-      console.log('removing errors');
       setInputErrors((prev) => ({ ...prev, [inputId]: '' }));
     }
+
+    return errorMsg;
   }
 
   function handleInputChange(e: SyntheticEvent) {
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
-    setInputValues((prev) => ({ ...prev, [target.id]: target.value }));
-    validate(target.id, target.value);
+    const targetId = target.id as keyof typeof inputValues;
+    setInputValues((prev) => ({ ...prev, [targetId]: target.value }));
+    if (inputErrors[targetId]) validate(target.id, target.value);
   }
 
   function handleInputBlur(e: SyntheticEvent) {
@@ -61,17 +72,38 @@ export default function ContactSection({
     <section className={styles.main}>
       <SectionHeader title={title} number={sectionNumber} />
       <form
+        ref={form}
         className={styles.form}
-        onSubmit={(e: SyntheticEvent) => {
+        onSubmit={async (e: SyntheticEvent) => {
           e.preventDefault();
 
           let key: keyof typeof inputValues;
+          const inputErrors: { [key in keyof Inputs]: string } = {
+            email: '',
+            message: ''
+          };
+
           for (key in inputValues) {
-            validate(key, inputValues[key]);
+            const errorMsg = validate(key, inputValues[key]);
+            inputErrors[key] = errorMsg;
           }
 
-          if (Object.values(inputErrors).some((val) => !!val)) {
-            //
+          if (Object.values(inputErrors).some((val) => !!val)) return;
+
+          try {
+            console.log(
+              process.env.EMAILJS_SERVICEID,
+              process.env.EMAILJS_PUBLICKEY
+            );
+            await emailjs.sendForm(
+              process.env.EMAILJS_SERVICEID as string,
+              'template_ccjsl6k',
+              form.current as HTMLFormElement,
+              process.env.EMAILJS_PUBLICKEY as string
+            );
+            console.log('success');
+          } catch (err) {
+            console.log(err);
           }
         }}
       >
@@ -82,6 +114,7 @@ export default function ContactSection({
             <input
               type="text"
               id="email"
+              name="user_email"
               value={inputValues.email}
               onChange={handleInputChange}
               onBlur={handleInputBlur}
@@ -91,6 +124,7 @@ export default function ContactSection({
           <div className={styles.input_wrapper}>
             <textarea
               id="message"
+              name="message"
               value={inputValues.message}
               onChange={handleInputChange}
               onBlur={handleInputBlur}

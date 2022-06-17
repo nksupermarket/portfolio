@@ -12,11 +12,23 @@
   }
 
   button {
-    background-color: var(--accent);
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+      to right,
+      white 50%,
+      var(--accent) 50%
+    );
     height: 42px;
     width: 120px;
-    color: white;
+    color: var(--accent);
+    border: 2px solid var(--accent);
     border-radius: 5px;
+    transition: all linear 0.3s;
+
+    &:hover {
+      background-position: -100% 0;
+      color: white;
+    }
   }
 }
 
