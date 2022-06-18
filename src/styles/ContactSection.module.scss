@@ -59,13 +59,13 @@
     grid-column: 1;
   }
 
-  .input_wrapper {
-    grid-column: 2;
-  }
-
   textarea {
     height: 100%;
   }
+}
+
+.input_wrapper {
+  grid-column: 2;
 }
 
 .input_wrapper {
@@ -93,5 +93,27 @@
   &.error img {
     filter: invert(55%) sepia(61%) saturate(3583%) hue-rotate(332deg)
       brightness(101%) contrast(101%);
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 200px;
+    grid-auto-flow: column dense;
+    row-gap: 10px;
+  }
+
+  .input_wrapper {
+    grid-column: 1;
+  }
+
+  $elements: 4;
+  @for $i from 1 to $elements {
+    label:nth-child(#{$i + 1}) {
+      grid-row: $i +
+        1 +
+        $i; //second $i represents how many labels behind current label, need this here so you know many label+inputs to skip over
+    }
   }
 }

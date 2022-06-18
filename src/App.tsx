@@ -2,6 +2,7 @@ import React from 'react';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Header from './components/Header';
+import Nav from './components/Nav';
 import ProjectSection from './components/ProjectSection';
 import SkillsSection from './components/SkillsSection';
 import './styles/App.scss';
@@ -10,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
+      <Nav />
       <Header />
       <ProjectSection
         title={{ firstRow: 'Latest', secondRow: 'Projects' }}

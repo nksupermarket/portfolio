@@ -30,8 +30,8 @@ export default function AboutSection({
         </p>
         <p>
           Being able to put everything together — the ability to create
-          beautiful displays while also creating the functionality that
-          powers the application — that feeling is priceless.
+          beautiful displays while also powering the functionality behind
+          the application — that feeling is priceless.
         </p>
       </div>
     </section>
