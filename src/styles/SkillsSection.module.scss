@@ -11,8 +11,9 @@
     width: 20%;
     padding-bottom: 20%;
     height: 0;
-    border-radius: 10px;
+    border-radius: 20px;
     overflow: hidden;
+    box-shadow: 0px 20px 20px 10px rgba(150, 150, 150, 0.1);
   }
 
   img {
@@ -27,6 +28,11 @@
   left: 0;
   right: 0;
   @include mixins.flex(column, true);
+
+  img {
+    width: 70%;
+    height: 70%;
+  }
 }
 
 .top_row,
@@ -39,13 +45,16 @@
   margin-bottom: 50px;
 }
 
+.javascript {
+  background: #f7df1e;
+}
+
+.typescript {
+  background: #007acc;
+}
+
 .react {
   background: #222;
-
-  img {
-    width: 70%;
-    height: 70%;
-  }
 }
 
 @media screen and (max-width: 576px) {
@@ -55,6 +64,7 @@
     li {
       width: 25%;
       padding-bottom: 25%;
+      box-shadow: 0px 10px 20px 5px rgba(150, 150, 150, 0.1);
     }
   }
 
