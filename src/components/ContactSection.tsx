@@ -4,24 +4,35 @@ import { SectionProps } from '../types/interfaces';
 import SectionHeader from './SectionHeader';
 import emailjs from '@emailjs/browser';
 
+import checkSvg from '../assets/icons/check-line.svg';
+import closeSvg from '../assets/icons/close-line.svg';
+
 interface Inputs {
   email: string;
   message: string;
 }
 
+const defaultInputVals = {
+  email: '',
+  message: ''
+};
+
 export default function ContactSection({
   title,
   sectionNumber
 }: SectionProps) {
-  const [inputValues, setInputValues] = useState({
-    email: '',
-    message: ''
-  });
+  const [inputValues, setInputValues] = useState(defaultInputVals);
 
   const [inputErrors, setInputErrors] = useState({
     email: '',
     message: ''
   });
+
+  const [sendStatus, setSendStatus] = useState<'error' | 'success' | ''>(
+    ''
+  );
+
+  const [loading, setLoading] = useState(false);
 
   const form = useRef<HTMLFormElement>(null);
 
@@ -77,6 +88,10 @@ export default function ContactSection({
         onSubmit={async (e: SyntheticEvent) => {
           e.preventDefault();
 
+          if (loading) return;
+
+          setLoading(true);
+
           let key: keyof typeof inputValues;
           const inputErrors: { [key in keyof Inputs]: string } = {
             email: '',
@@ -91,20 +106,21 @@ export default function ContactSection({
           if (Object.values(inputErrors).some((val) => !!val)) return;
 
           try {
-            console.log(
-              process.env.EMAILJS_SERVICEID,
-              process.env.EMAILJS_PUBLICKEY
-            );
             await emailjs.sendForm(
-              process.env.EMAILJS_SERVICEID as string,
+              process.env.REACT_APP_EMAILJS_SERVICEID as string,
               'template_ccjsl6k',
               form.current as HTMLFormElement,
-              process.env.EMAILJS_PUBLICKEY as string
+              process.env.REACT_APP_EMAILJS_PUBLICKEY as string
             );
-            console.log('success');
+            setLoading(false);
+            setInputValues(defaultInputVals);
+            setSendStatus('success');
           } catch (err) {
-            console.log(err);
+            setLoading(false);
+            setSendStatus('error');
           }
+
+          setTimeout(() => setSendStatus(''), 2000);
         }}
       >
         <div className={styles.grid}>
@@ -132,8 +148,29 @@ export default function ContactSection({
             <p className={styles.error_msg}>{inputErrors.message}</p>
           </div>
         </div>
-        <button>Send email</button>
+        <button className={loading ? 'loading' : ''}>
+          {loading ? (
+            <div className="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          ) : (
+            'Send email'
+          )}
+        </button>
       </form>
+      {sendStatus && (
+        <div className={`${styles[sendStatus]} ${styles.send_status}`}>
+          <img src={sendStatus === 'success' ? checkSvg : closeSvg} />
+          <p>
+            {sendStatus === 'success'
+              ? "Success. We'll be in touch."
+              : 'Something went wrong. Try again.'}
+          </p>
+        </div>
+      )}
     </section>
   );
 }

@@ -23,11 +23,26 @@
     color: var(--accent);
     border: 2px solid var(--accent);
     border-radius: 5px;
+    overflow: hidden;
     transition: all linear 0.3s;
 
     &:hover {
       background-position: -100% 0;
       color: white;
+
+      :global(.lds-ellipsis) div {
+        background-color: white;
+      }
+    }
+
+    &:global(.loading) {
+      user-select: none;
+      cursor: default;
+    }
+
+    :global(.lds-ellipsis) {
+      bottom: 21px;
+      transform: scale(0.7);
     }
   }
 }
@@ -61,7 +76,22 @@
 }
 
 .error_msg {
-  color: tomato;
+  color: #ff6347;
   margin-top: 5px;
   font-size: 14px;
+}
+
+.send_status {
+  @include mixins.flex(row, true);
+  column-gap: 10px;
+
+  &.success img {
+    filter: invert(54%) sepia(55%) saturate(601%) hue-rotate(68deg)
+      brightness(101%) contrast(78%);
+  }
+
+  &.error img {
+    filter: invert(55%) sepia(61%) saturate(3583%) hue-rotate(332deg)
+      brightness(101%) contrast(101%);
+  }
 }
