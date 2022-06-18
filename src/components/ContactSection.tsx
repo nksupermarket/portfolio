@@ -90,8 +90,6 @@ export default function ContactSection({
 
           if (loading) return;
 
-          setLoading(true);
-
           let key: keyof typeof inputValues;
           const inputErrors: { [key in keyof Inputs]: string } = {
             email: '',
@@ -104,6 +102,8 @@ export default function ContactSection({
           }
 
           if (Object.values(inputErrors).some((val) => !!val)) return;
+
+          setLoading(true);
 
           try {
             await emailjs.sendForm(
@@ -120,7 +120,7 @@ export default function ContactSection({
             setSendStatus('error');
           }
 
-          setTimeout(() => setSendStatus(''), 2000);
+          setTimeout(() => setSendStatus(''), 3000);
         }}
       >
         <div className={styles.grid}>
