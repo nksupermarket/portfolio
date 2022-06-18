@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.333d6f0a.css",
+    "main.js": "/portfolio/static/js/main.bbd21302.js",
+    "static/media/wheres_waldo_screen.png": "/portfolio/static/media/wheres_waldo_screen.a3995e3324d26b974a72.png",
+    "static/media/discord-screen.png": "/portfolio/static/media/discord-screen.61fb6dbdce24bbd8584b.png",
+    "static/media/memory_card_game_screen.png": "/portfolio/static/media/memory_card_game_screen.32529bd383a3716463b2.png",
+    "static/media/crochess-screen.png": "/portfolio/static/media/crochess-screen.162c61206061adc78361.png",
+    "static/media/battleship_screen_3.png": "/portfolio/static/media/battleship_screen_3.14c411f4f4ceb9be516c.png",
+    "static/media/mongodb.svg": "/portfolio/static/media/mongodb.153b7b440efa05666029a47da0d0baa0.svg",
+    "static/media/express.svg": "/portfolio/static/media/express.7e85c5130978e3593e65a44112bc7390.svg",
+    "static/media/react.svg": "/portfolio/static/media/react.e27571eaed899c642345e71163624ef9.svg",
+    "static/media/typescript-icon.svg": "/portfolio/static/media/typescript-icon.17d5e87eac2c9d1dc722ce1e0b60d5df.svg",
+    "static/media/javascript.svg": "/portfolio/static/media/javascript.fd46ca41839433d73577989d86eb2fe2.svg",
+    "index.html": "/portfolio/index.html",
+    "static/media/iconmonstr-github-1.svg": "/portfolio/static/media/iconmonstr-github-1.04be58c17b3d5e9744424d414240dd85.svg",
+    "static/media/close-line.svg": "/portfolio/static/media/close-line.058af5b2654112a53b1b0a6d60692ace.svg",
+    "static/media/check-line.svg": "/portfolio/static/media/check-line.3f29db899e39cb68dca831bea022f649.svg",
+    "main.333d6f0a.css.map": "/portfolio/static/css/main.333d6f0a.css.map",
+    "main.bbd21302.js.map": "/portfolio/static/js/main.bbd21302.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.333d6f0a.css",
+    "static/js/main.bbd21302.js"
+  ]
+}
