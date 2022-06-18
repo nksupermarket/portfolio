@@ -12,20 +12,26 @@ export default function AboutSection({
       <SectionHeader title={title} number={sectionNumber} />
       <div className={styles.text_block}>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-          eleifend cursus dolor, sed accumsan turpis feugiat lobortis.
-          Maecenas vulputate fermentum lorem. Cras blandit suscipit
-          lacinia. Aliquam erat volutpat. Curabitur finibus magna nec nisl
-          scelerisque venenatis. Maecenas at nisl et velit pellentesque
-          ornare in nec metus. Pellentesque eu mi id ipsum vehicula
-          fermentum non non eros. Aenean non commodo urna. Morbi sit amet
-          egestas lacus. Vivamus ligula dui, pretium et risus in, pharetra
-          ultricies ex. Sed nec nulla lobortis, feugiat tellus id, laoreet
-          massa. Fusce nibh sapien, gravida a augue vitae, fringilla semper
-          metus. Etiam id sem nec odio fringilla sollicitudin eget nec
-          orci. Vivamus aliquet ipsum libero, et maximus erat convallis
-          nec. Donec aliquam, urna vel ornare vehicula, ipsum enim
-          porttitor neque, id ultricies lectus erat et lorem.
+          Coding was never part of the plan. It was never something I
+          thought I would enjoy.
+        </p>
+        <p>
+          It started basic - with some basic HTML/CSS so I could design my
+          Wordpress blog. Then I got a little more into it so I could
+          improve the UI/UX of the ecommerce store I was doing marketing
+          for. And I thought that was fun; with how the block model works,
+          it was kind of like playing with Legos.
+        </p>
+        <p>
+          But picking up Javascript was the game changer — the little
+          puzzle games you have to solve to write elegant code, the many
+          different creative solutions that exist for any given problem. It
+          is all so thrilling.
+        </p>
+        <p>
+          Being able to put everything together — the ability to create
+          beautiful displays while also creating the functionality that
+          powers the application — that feeling is priceless.
         </p>
       </div>
     </section>

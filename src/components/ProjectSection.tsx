@@ -20,7 +20,7 @@ export default function ProjectSection({
       <SectionHeader title={title} number={sectionNumber} />
       <Project
         title="croChess"
-        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat."
+        desc="Play live online chess with your friends. Choose from standard time controls or create your own. All timers run on the backend so cheating is not possible."
         image={{
           src: crochessScreen,
           alt: 'screenshot of chess game in action',
@@ -34,7 +34,7 @@ export default function ProjectSection({
       />
       <Project
         title="bread"
-        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat."
+        desc="A community-based chat application where you can hang out with friends or find communities where people share your interests. Create a channel and start your own community or just sit back and enjoy the conversations."
         image={{
           src: breadScreen,
           alt: 'screenshot of chat channel in bread',
@@ -49,7 +49,7 @@ export default function ProjectSection({
       />
       <Project
         title="Where's Waldo"
-        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat."
+        desc="Compete with players around the world for the best time in a game of Where's Waldo. 7 different levels means 7 chances to get that #1 spot."
         image={{
           src: wheresWaldoScreen,
           alt: "screenshot of where's waldo home page",
@@ -63,7 +63,7 @@ export default function ProjectSection({
       />
       <Project
         title="memory card game"
-        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat."
+        desc="Is your memory as good (or bad) as you think it is? Test your memory out in this game, and try to set some new personal bests."
         image={{
           src: memoryCardScreen,
           alt: 'screenshot of chat channel in bread',
@@ -78,7 +78,7 @@ export default function ProjectSection({
       />
       <Project
         title="Battleship"
-        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat."
+        desc="Play a game of battleship where the computer will stop at nothing to defeat you. It's your fleet admiral. Defend your position!"
         image={{
           src: battleshipScreen3,
           alt: 'screenshot of battleship home page',
