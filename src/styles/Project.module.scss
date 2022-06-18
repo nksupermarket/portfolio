@@ -9,6 +9,10 @@
     .text_block {
       align-items: flex-start;
     }
+
+    .stack {
+      flex-direction: row-reverse;
+    }
   }
 }
 
