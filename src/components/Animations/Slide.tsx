@@ -7,7 +7,7 @@ interface SlideProps extends AnimeComponentProps {
 }
 
 export default function Slide({
-  ref,
+  animationRef,
   children,
   dir,
   className
@@ -32,7 +32,7 @@ export default function Slide({
       transform
     },
     to: { transform: 'translate(0%)' },
-    ref
+    ref: animationRef
   });
 
   return (

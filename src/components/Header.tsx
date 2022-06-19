@@ -15,27 +15,30 @@ export default function Header() {
 
   return (
     <div className={styles.main}>
-      <Scale className={styles.circle} ref={circleAnimeRef}></Scale>
-      <Slide ref={textAnimeRef} dir="left">
+      <Scale
+        className={styles.circle}
+        animationRef={circleAnimeRef}
+      ></Scale>
+      <Slide animationRef={textAnimeRef} dir="left">
         <div className={`${styles.text_block} ${styles.top}`}>
           <div className={styles.ctn}>
             <h2>Alex Liang</h2>
             <Slide
               dir="left"
-              ref={underlineAnimeRef}
+              animationRef={underlineAnimeRef}
               className={styles.underline}
             ></Slide>
           </div>
         </div>
       </Slide>
 
-      <Slide ref={textAnimeRef} dir="right">
+      <Slide animationRef={textAnimeRef} dir="right">
         <div className={`${styles.text_block} ${styles.bottom}`}>
           <div className={styles.ctn}>
             <h2>web developer</h2>
             <Slide
               dir="right"
-              ref={underlineAnimeRef}
+              animationRef={underlineAnimeRef}
               className={styles.underline}
             ></Slide>
           </div>

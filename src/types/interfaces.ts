@@ -10,7 +10,7 @@ export interface SectionProps {
 }
 
 export interface AnimeComponentProps {
-  ref?: SpringRef;
+  animationRef?: SpringRef;
   children?: React.ReactNode;
   className?: string;
 }

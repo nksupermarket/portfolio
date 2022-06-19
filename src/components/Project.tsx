@@ -38,41 +38,30 @@ export default function Project({
   const rootClasses = [styles.main];
   if (reverse) rootClasses.push(styles.reverse);
 
-  const scaleTransitionRef = useSpringRef();
-  const scaleAnime = useSpring({
-    from: { transform: 'scale(0%)' },
-    to: { transform: 'scale(100%)' },
-    ref: scaleTransitionRef
-  });
+  const secondaryAnimeRef = useSpringRef();
 
-  const textTransitionRef = useSpringRef();
-  const textAnime = useSpring({
-    from: {
-      transform: reverse ? 'translateX(100%)' : 'translateX(-100%)'
-    },
-    to: { transform: 'translateX(0%)' },
-    ref: textTransitionRef
-  });
+  const slideAnimeRef = useSpringRef();
 
   const stackTrail = useTrail(stack.length, {
     from: {
-      transform: reverse ? 'translateX(-100%)' : 'translateX(100%)'
+      transform: reverse ? 'translateX(-100vw)' : 'translateX(100vw)'
     },
-    to: { transform: 'translateX(0%)' }
+    to: { transform: 'translateX(0)' }
   });
 
-  useChain([textTransitionRef, scaleTransitionRef]);
+  useChain([slideAnimeRef, secondaryAnimeRef], [0, 0.2]);
 
   return (
     <div className={rootClasses.join(' ')}>
       <Slide
         dir={reverse ? 'left' : 'right'}
         className={styles.text_block}
+        animationRef={slideAnimeRef}
       >
         <h4 className={styles.title}>{title}</h4>
         <p className={styles.desc}>{desc}</p>
 
-        <Scale className={styles.btn_ctn}>
+        <Scale className={styles.btn_ctn} animationRef={secondaryAnimeRef}>
           <a className={styles.live} href={links.live}>
             Live
           </a>
@@ -94,7 +83,10 @@ export default function Project({
             );
           })}
         </div>
-        <Scale className={styles.img_wrapper}>
+        <Scale
+          className={styles.img_wrapper}
+          animationRef={secondaryAnimeRef}
+        >
           <img
             src={image.src}
             alt={image.alt}
