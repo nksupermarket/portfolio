@@ -22,7 +22,7 @@ export default function SkillsSection({
   title,
   sectionNumber
 }: SectionProps) {
-  const headerAnimeRef = useSpringRef();
+  // const headerAnimeRef = useSpringRef();
 
   const trailRef = useSpringRef();
   const trail = useTrail(logos.length, {
@@ -31,14 +31,14 @@ export default function SkillsSection({
     ref: trailRef
   });
 
-  useChain([headerAnimeRef, trailRef], [0, 0.5]);
+  // useChain([headerAnimeRef, trailRef], [0, 0.5]);
 
   return (
     <section className={styles.main}>
       <SectionHeader
         title={title}
         number={sectionNumber}
-        animationRef={headerAnimeRef}
+        // animationRef={headerAnimeRef}
       />
       <ul className={styles.list}>
         <div className={styles.top_row}>

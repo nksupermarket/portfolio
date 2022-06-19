@@ -5,6 +5,18 @@ import { useChain, useSpringRef } from 'react-spring';
 import Slide from './Animations/Slide';
 import Scale from './Animations/Scale';
 
+const slideConfig = {
+  mass: 30,
+  tension: 300,
+  friction: 63,
+  clamp: false,
+  precision: 0.01,
+  velocity: 0,
+  damping: 0.5,
+  frequency: 0.7,
+  bounce: 0.45
+};
+
 export default function Header() {
   const circleAnimeRef = useSpringRef();
 
@@ -19,7 +31,7 @@ export default function Header() {
         className={styles.circle}
         animationRef={circleAnimeRef}
       ></Scale>
-      <Slide animationRef={textAnimeRef} dir="left">
+      <Slide animationRef={textAnimeRef} dir="left" config={slideConfig}>
         <div className={`${styles.text_block} ${styles.top}`}>
           <div className={styles.ctn}>
             <h2>Alex Liang</h2>
@@ -27,12 +39,13 @@ export default function Header() {
               dir="left"
               animationRef={underlineAnimeRef}
               className={styles.underline}
+              config={slideConfig}
             ></Slide>
           </div>
         </div>
       </Slide>
 
-      <Slide animationRef={textAnimeRef} dir="right">
+      <Slide animationRef={textAnimeRef} dir="right" config={slideConfig}>
         <div className={`${styles.text_block} ${styles.bottom}`}>
           <div className={styles.ctn}>
             <h2>web developer</h2>
@@ -40,6 +53,7 @@ export default function Header() {
               dir="right"
               animationRef={underlineAnimeRef}
               className={styles.underline}
+              config={slideConfig}
             ></Slide>
           </div>
         </div>

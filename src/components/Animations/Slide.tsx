@@ -11,42 +11,42 @@ export default function Slide({
   children,
   dir,
   className,
-  condition
+  condition,
+  config = {}
 }: SlideProps) {
-  let transform = '';
+  let start = '';
   switch (dir) {
     case 'left':
-      transform = 'translateX(100vw)';
+      start = 'translateX(100vw)';
       break;
     case 'right':
-      transform = 'translateX(-100vw)';
+      start = 'translateX(-100vw)';
       break;
     case 'up':
-      transform = 'translateY(100vh)';
+      start = 'translateY(100vh)';
       break;
     case 'down':
-      transform = 'translateY(-100vh)';
+      start = 'translateY(-100vh)';
       break;
   }
 
-  let to;
+  let end;
   if (condition !== undefined) {
-    to = { transform: condition ? 'translate(0%)' : transform };
+    end = { transform: condition ? 'translate(0)' : start };
   } else {
-    to = { transform: 'translate(0%)' };
+    end = { transform: 'translate(0)' };
   }
 
-  const anime = useSpring({
+  const animeConfig = {
+    config,
     from: {
-      transform
+      transform: start
     },
-    to,
+    to: end,
     ref: animationRef
-  });
+  };
 
-  if (condition) {
-    console.log({ to, anime });
-  }
+  const anime = useSpring(animeConfig);
 
   return (
     <animated.div style={anime} className={className || ''}>
@@ -54,3 +54,7 @@ export default function Slide({
     </animated.div>
   );
 }
+
+Slide.defaultProps = {
+  config: {}
+};

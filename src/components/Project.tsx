@@ -1,13 +1,7 @@
 import React from 'react';
 import styles from '../styles/Project.module.scss';
 
-import {
-  useChain,
-  useSpring,
-  useTrail,
-  animated,
-  useSpringRef
-} from 'react-spring';
+import { useChain, useTrail, animated, useSpringRef } from 'react-spring';
 import Scale from './Animations/Scale';
 import Slide from './Animations/Slide';
 
@@ -46,7 +40,9 @@ export default function Project({
     from: {
       transform: reverse ? 'translateX(-100vw)' : 'translateX(100vw)'
     },
-    to: { transform: 'translateX(0)' }
+    to: {
+      transform: 'translateX(0)'
+    }
   });
 
   useChain([slideAnimeRef, secondaryAnimeRef], [0, 0.3]);

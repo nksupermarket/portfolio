@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useChain, useSpringRef } from 'react-spring';
 import Project from './Project';
 import SectionHeader from './SectionHeader';
+
+import useIntersectionObserver from '../utils/useIntersectionObserver';
 
 import { SectionProps } from '../types/interfaces';
 import styles from '../styles/ProjectSection.module.scss';
@@ -14,9 +17,29 @@ export default function ProjectSection({
   title,
   sectionNumber
 }: SectionProps) {
+  const triggerRef = useRef<HTMLSpanElement>(null);
+
+  const ioData = useIntersectionObserver(triggerRef, {
+    freezeOnceVisible: true
+  });
+
+  const visible = ioData?.isIntersecting || false;
+
+  // const projectAnimeRef = useSpringRef();
+  // useEffect(() => {
+  //   if (ioData?.isIntersecting)
+  //     useChain([headerAnimeRef, projectAnimeRef]);
+  // }, [ioData?.isIntersecting]);
+
   return (
     <section className={styles.main}>
-      <SectionHeader title={title} number={sectionNumber} />
+      <SectionHeader
+        title={title}
+        number={sectionNumber}
+        visible={visible}
+      />
+      <span ref={triggerRef}></span>
+
       <Project
         title="croChess"
         desc="Play live online chess with your friends. Choose from standard time controls or create your own. All timers run on the backend so cheating is not possible."

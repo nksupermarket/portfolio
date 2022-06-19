@@ -1,4 +1,5 @@
 .main {
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin: 100px 0;
@@ -13,6 +14,10 @@
     .stack {
       flex-direction: row-reverse;
     }
+  }
+
+  span {
+    position: absolute;
   }
 }
 
