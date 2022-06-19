@@ -3,6 +3,8 @@ import styles from '../styles/AboutSection.module.scss';
 import { SectionProps } from '../types/interfaces';
 import SectionHeader from './SectionHeader';
 
+import Slide from './Animations/Slide';
+
 export default function AboutSection({
   title,
   sectionNumber
@@ -10,17 +12,14 @@ export default function AboutSection({
   return (
     <section className={styles.main}>
       <SectionHeader title={title} number={sectionNumber} />
-      <div className={styles.text_block}>
-        <p>
-          Coding was never part of the plan. It was never something I
-          thought I would enjoy.
-        </p>
+      <Slide dir="down" className={styles.text_block}>
+        <p>Coding was never part of the plan.</p>
         <p>
           It started basic - with some basic HTML/CSS so I could design my
           Wordpress blog. Then I got a little more into it so I could
-          improve the UI/UX of the ecommerce store I was doing marketing
-          for. And I thought that was fun; with how the block model works,
-          it was kind of like playing with Legos.
+          improve the UI/UX of the ecommerce store I was doing digital
+          marketing for. And I thought that was fun; with how the block
+          model works, it was kind of like playing with Legos.
         </p>
         <p>
           But picking up Javascript was the game changer — the little
@@ -33,7 +32,7 @@ export default function AboutSection({
           beautiful displays while also powering the functionality behind
           the application — that feeling is priceless.
         </p>
-      </div>
+      </Slide>
     </section>
   );
 }

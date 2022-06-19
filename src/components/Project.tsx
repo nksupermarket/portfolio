@@ -1,7 +1,15 @@
 import React from 'react';
 import styles from '../styles/Project.module.scss';
 
-import { useTrail, useTransition, animated } from 'react-spring';
+import {
+  useChain,
+  useSpring,
+  useTrail,
+  animated,
+  useSpringRef
+} from 'react-spring';
+import Scale from './Animations/Scale';
+import Slide from './Animations/Slide';
 
 interface ProjectProps {
   title: string;
@@ -30,16 +38,20 @@ export default function Project({
   const rootClasses = [styles.main];
   if (reverse) rootClasses.push(styles.reverse);
 
-  const imageTransition = useTransition(true, {
+  const scaleTransitionRef = useSpringRef();
+  const scaleAnime = useSpring({
     from: { transform: 'scale(0%)' },
-    enter: { transform: 'scale(100%)' }
+    to: { transform: 'scale(100%)' },
+    ref: scaleTransitionRef
   });
 
-  const textTransition = useTransition(true, {
+  const textTransitionRef = useSpringRef();
+  const textAnime = useSpring({
     from: {
       transform: reverse ? 'translateX(100%)' : 'translateX(-100%)'
     },
-    enter: { transform: 'translateX(0%)' }
+    to: { transform: 'translateX(0%)' },
+    ref: textTransitionRef
   });
 
   const stackTrail = useTrail(stack.length, {
@@ -49,20 +61,25 @@ export default function Project({
     to: { transform: 'translateX(0%)' }
   });
 
+  useChain([textTransitionRef, scaleTransitionRef]);
+
   return (
     <div className={rootClasses.join(' ')}>
-      {textTransition((transition) => (
-        <animated.div className={styles.text_block} style={transition}>
-          <h4 className={styles.title}>{title}</h4>
-          <p className={styles.desc}>{desc}</p>
-          <div className={styles.btn_ctn}>
-            <a className={styles.live} href={links.live}>
-              Live
-            </a>
-            |<a href={links.repo}>Repo</a>
-          </div>
-        </animated.div>
-      ))}
+      <Slide
+        dir={reverse ? 'left' : 'right'}
+        className={styles.text_block}
+      >
+        <h4 className={styles.title}>{title}</h4>
+        <p className={styles.desc}>{desc}</p>
+
+        <Scale className={styles.btn_ctn}>
+          <a className={styles.live} href={links.live}>
+            Live
+          </a>
+          |<a href={links.repo}>Repo</a>
+        </Scale>
+      </Slide>
+
       <div className={styles.img_col}>
         <div className={styles.stack}>
           {stack?.map((s, i) => {
@@ -77,17 +94,15 @@ export default function Project({
             );
           })}
         </div>
-        {imageTransition((transition) => (
-          <animated.div className={styles.img_wrapper} style={transition}>
-            <img
-              src={image.src}
-              alt={image.alt}
-              style={{
-                objectPosition: image.objectPosition
-              }}
-            />
-          </animated.div>
-        ))}
+        <Scale className={styles.img_wrapper}>
+          <img
+            src={image.src}
+            alt={image.alt}
+            style={{
+              objectPosition: image.objectPosition
+            }}
+          />
+        </Scale>
       </div>
     </div>
   );

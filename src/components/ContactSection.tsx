@@ -6,6 +6,7 @@ import emailjs from '@emailjs/browser';
 
 import checkSvg from '../assets/icons/check-line.svg';
 import closeSvg from '../assets/icons/close-line.svg';
+import Slide from './Animations/Slide';
 
 interface Inputs {
   email: string;
@@ -82,95 +83,99 @@ export default function ContactSection({
   return (
     <section className={styles.main}>
       <SectionHeader title={title} number={sectionNumber} />
-      <form
-        ref={form}
-        className={styles.form}
-        onSubmit={async (e: SyntheticEvent) => {
-          e.preventDefault();
+      <Slide dir="up">
+        <>
+          <form
+            ref={form}
+            className={styles.form}
+            onSubmit={async (e: SyntheticEvent) => {
+              e.preventDefault();
 
-          if (loading) return;
+              if (loading) return;
 
-          let key: keyof typeof inputValues;
-          const inputErrors: { [key in keyof Inputs]: string } = {
-            email: '',
-            message: ''
-          };
+              let key: keyof typeof inputValues;
+              const inputErrors: { [key in keyof Inputs]: string } = {
+                email: '',
+                message: ''
+              };
 
-          for (key in inputValues) {
-            const errorMsg = validate(key, inputValues[key]);
-            inputErrors[key] = errorMsg;
-          }
+              for (key in inputValues) {
+                const errorMsg = validate(key, inputValues[key]);
+                inputErrors[key] = errorMsg;
+              }
 
-          if (Object.values(inputErrors).some((val) => !!val)) return;
+              if (Object.values(inputErrors).some((val) => !!val)) return;
 
-          setLoading(true);
+              setLoading(true);
 
-          try {
-            await emailjs.sendForm(
-              process.env.REACT_APP_EMAILJS_SERVICEID as string,
-              'template_ccjsl6k',
-              form.current as HTMLFormElement,
-              process.env.REACT_APP_EMAILJS_PUBLICKEY as string
-            );
-            setLoading(false);
-            setInputValues(defaultInputVals);
-            setSendStatus('success');
-          } catch (err) {
-            setLoading(false);
-            setSendStatus('error');
-          }
+              try {
+                await emailjs.sendForm(
+                  process.env.REACT_APP_EMAILJS_SERVICEID as string,
+                  'template_ccjsl6k',
+                  form.current as HTMLFormElement,
+                  process.env.REACT_APP_EMAILJS_PUBLICKEY as string
+                );
+                setLoading(false);
+                setInputValues(defaultInputVals);
+                setSendStatus('success');
+              } catch (err) {
+                setLoading(false);
+                setSendStatus('error');
+              }
 
-          setTimeout(() => setSendStatus(''), 3000);
-        }}
-      >
-        <div className={styles.grid}>
-          <label htmlFor="email">Email</label>
-          <label htmlFor="message">Your message</label>
-          <div className={styles.input_wrapper}>
-            <input
-              type="text"
-              id="email"
-              name="user_email"
-              value={inputValues.email}
-              onChange={handleInputChange}
-              onBlur={handleInputBlur}
-            />
-            <p className={styles.error_msg}>{inputErrors.email}</p>
-          </div>
-          <div className={styles.input_wrapper}>
-            <textarea
-              id="message"
-              name="message"
-              value={inputValues.message}
-              onChange={handleInputChange}
-              onBlur={handleInputBlur}
-            />
-            <p className={styles.error_msg}>{inputErrors.message}</p>
-          </div>
-        </div>
-        <button className={loading ? 'loading' : ''}>
-          {loading ? (
-            <div className="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+              setTimeout(() => setSendStatus(''), 3000);
+            }}
+          >
+            <div className={styles.grid}>
+              <label htmlFor="email">Email</label>
+              <label htmlFor="message">Your message</label>
+              <div className={styles.input_wrapper}>
+                <input
+                  type="text"
+                  id="email"
+                  name="user_email"
+                  value={inputValues.email}
+                  onChange={handleInputChange}
+                  onBlur={handleInputBlur}
+                />
+                <p className={styles.error_msg}>{inputErrors.email}</p>
+              </div>
+              <div className={styles.input_wrapper}>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={inputValues.message}
+                  onChange={handleInputChange}
+                  onBlur={handleInputBlur}
+                />
+                <p className={styles.error_msg}>{inputErrors.message}</p>
+              </div>
             </div>
-          ) : (
-            'Send email'
+            <button className={loading ? 'loading' : ''}>
+              {loading ? (
+                <div className="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              ) : (
+                'Send email'
+              )}
+            </button>
+          </form>
+          {sendStatus && (
+            <div className={`${styles[sendStatus]} ${styles.send_status}`}>
+              <img src={sendStatus === 'success' ? checkSvg : closeSvg} />
+              <p>
+                {sendStatus === 'success'
+                  ? "Success. We'll be in touch."
+                  : 'Something went wrong. Try again.'}
+              </p>
+            </div>
           )}
-        </button>
-      </form>
-      {sendStatus && (
-        <div className={`${styles[sendStatus]} ${styles.send_status}`}>
-          <img src={sendStatus === 'success' ? checkSvg : closeSvg} />
-          <p>
-            {sendStatus === 'success'
-              ? "Success. We'll be in touch."
-              : 'Something went wrong. Try again.'}
-          </p>
-        </div>
-      )}
+        </>
+      </Slide>
     </section>
   );
 }
