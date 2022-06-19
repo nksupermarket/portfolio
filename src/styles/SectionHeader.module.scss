@@ -3,6 +3,7 @@
 .main {
   @include mixins.flex(row, false);
   justify-content: space-between;
+  position: relative;
 
   h2,
   h3,
@@ -16,6 +17,11 @@
     color: var(--accent);
     font-size: 130px;
     margin-top: -10px;
+  }
+
+  span {
+    position: absolute;
+    bottom: 0;
   }
 }
 

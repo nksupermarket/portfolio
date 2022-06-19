@@ -11,7 +11,7 @@ export default function Header() {
   const textAnimeRef = useSpringRef();
   const underlineAnimeRef = useSpringRef();
 
-  useChain([circleAnimeRef, textAnimeRef, underlineAnimeRef]);
+  useChain([circleAnimeRef, textAnimeRef, underlineAnimeRef], [0, 0.2]);
 
   return (
     <div className={styles.main}>

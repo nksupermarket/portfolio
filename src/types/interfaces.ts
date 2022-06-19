@@ -13,4 +13,5 @@ export interface AnimeComponentProps {
   animationRef?: SpringRef;
   children?: React.ReactNode;
   className?: string;
+  condition?: boolean;
 }

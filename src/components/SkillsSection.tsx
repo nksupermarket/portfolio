@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/SkillsSection.module.scss';
 import { SectionProps } from '../types/interfaces';
 import SectionHeader from './SectionHeader';
-import { useTrail, animated } from 'react-spring';
+import { useTrail, animated, useSpringRef, useChain } from 'react-spring';
 
 import reactLogo from '../assets/skills_icons/react.svg';
 import expressLogo from '../assets/skills_icons/express.svg';
@@ -22,14 +22,24 @@ export default function SkillsSection({
   title,
   sectionNumber
 }: SectionProps) {
+  const headerAnimeRef = useSpringRef();
+
+  const trailRef = useSpringRef();
   const trail = useTrail(logos.length, {
     from: { transform: 'scale(0%)' },
-    to: { transform: 'scale(100%)' }
+    to: { transform: 'scale(100%)' },
+    ref: trailRef
   });
+
+  useChain([headerAnimeRef, trailRef], [0, 0.5]);
 
   return (
     <section className={styles.main}>
-      <SectionHeader title={title} number={sectionNumber} />
+      <SectionHeader
+        title={title}
+        number={sectionNumber}
+        animationRef={headerAnimeRef}
+      />
       <ul className={styles.list}>
         <div className={styles.top_row}>
           {logos.slice(0, 3).map((logo, i) => {

@@ -10,7 +10,8 @@ export default function Slide({
   animationRef,
   children,
   dir,
-  className
+  className,
+  condition
 }: SlideProps) {
   let transform = '';
   switch (dir) {
@@ -27,13 +28,25 @@ export default function Slide({
       transform = 'translateY(-100vh)';
       break;
   }
+
+  let to;
+  if (condition !== undefined) {
+    to = { transform: condition ? 'translate(0%)' : transform };
+  } else {
+    to = { transform: 'translate(0%)' };
+  }
+
   const anime = useSpring({
     from: {
       transform
     },
-    to: { transform: 'translate(0%)' },
+    to,
     ref: animationRef
   });
+
+  if (condition) {
+    console.log({ to, anime });
+  }
 
   return (
     <animated.div style={anime} className={className || ''}>

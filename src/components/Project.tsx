@@ -49,7 +49,7 @@ export default function Project({
     to: { transform: 'translateX(0)' }
   });
 
-  useChain([slideAnimeRef, secondaryAnimeRef], [0, 0.2]);
+  useChain([slideAnimeRef, secondaryAnimeRef], [0, 0.3]);
 
   return (
     <div className={rootClasses.join(' ')}>
