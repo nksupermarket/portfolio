@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.07396386.css",
-    "main.js": "/portfolio/static/js/main.77a9f048.js",
+    "main.css": "/portfolio/static/css/main.002e0360.css",
+    "main.js": "/portfolio/static/js/main.44b26417.js",
     "static/media/wheres_waldo_screen.png": "/portfolio/static/media/wheres_waldo_screen.a3995e3324d26b974a72.png",
     "static/media/discord-screen.png": "/portfolio/static/media/discord-screen.61fb6dbdce24bbd8584b.png",
     "static/media/memory_card_game_screen.png": "/portfolio/static/media/memory_card_game_screen.32529bd383a3716463b2.png",
@@ -16,11 +16,11 @@
     "static/media/iconmonstr-github-1.svg": "/portfolio/static/media/iconmonstr-github-1.04be58c17b3d5e9744424d414240dd85.svg",
     "static/media/close-line.svg": "/portfolio/static/media/close-line.058af5b2654112a53b1b0a6d60692ace.svg",
     "static/media/check-line.svg": "/portfolio/static/media/check-line.3f29db899e39cb68dca831bea022f649.svg",
-    "main.07396386.css.map": "/portfolio/static/css/main.07396386.css.map",
-    "main.77a9f048.js.map": "/portfolio/static/js/main.77a9f048.js.map"
+    "main.002e0360.css.map": "/portfolio/static/css/main.002e0360.css.map",
+    "main.44b26417.js.map": "/portfolio/static/js/main.44b26417.js.map"
   },
   "entrypoints": [
-    "static/css/main.07396386.css",
-    "static/js/main.77a9f048.js"
+    "static/css/main.002e0360.css",
+    "static/js/main.44b26417.js"
   ]
 }
