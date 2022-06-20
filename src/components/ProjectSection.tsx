@@ -16,7 +16,7 @@ export default function ProjectSection({
   title,
   sectionNumber
 }: SectionProps) {
-  const triggerRef = useRef<HTMLSpanElement>(null);
+  const triggerRef = useRef<HTMLElement>(null);
 
   const ioData = useIntersectionObserver(triggerRef, {
     freezeOnceVisible: true,
@@ -25,14 +25,11 @@ export default function ProjectSection({
 
   const visible = ioData?.isIntersecting || false;
 
-  const [headerAnimeFinished, setHeaderAnimeFinished] = useState([
-    false,
-    false
-  ]);
+  const [startProjectAnime, setStartProjectAnime] = useState(false);
 
   useEffect(() => {
     if (ioData?.isIntersecting)
-      setTimeout(() => setHeaderAnimeFinished([true, true]), 200);
+      setTimeout(() => setStartProjectAnime(true), 200);
   }, [ioData?.isIntersecting]);
 
   return (
@@ -56,7 +53,7 @@ export default function ProjectSection({
           live: 'https://crochess-frontend.herokuapp.com/',
           repo: 'https://github.com/lookingcoolonavespa/crochess'
         }}
-        fireAnime={headerAnimeFinished.every((bool) => bool)}
+        fireAnime={startProjectAnime}
       />
       <Project
         title="bread"
@@ -72,7 +69,7 @@ export default function ProjectSection({
           live: 'https://lookingcoolonavespa.github.io/discord-clone',
           repo: 'https://github.com/lookingcoolonavespa/discord-clone/tree/master'
         }}
-        fireAnime={headerAnimeFinished.every((bool) => bool)}
+        fireAnime={startProjectAnime}
       />
       <Project
         title="Where's Waldo"
@@ -87,7 +84,7 @@ export default function ProjectSection({
           live: 'https://lookingcoolonavespa.github.io/wheres-waldo/',
           repo: 'https://github.com/lookingcoolonavespa/wheres-waldo'
         }}
-        fireAnime={headerAnimeFinished.every((bool) => bool)}
+        fireAnime={startProjectAnime}
       />
       <Project
         title="memory card game"
@@ -103,7 +100,7 @@ export default function ProjectSection({
           live: 'https://lookingcoolonavespa.github.io/memory-card-game/',
           repo: 'https://github.com/lookingcoolonavespa/memory-card-game'
         }}
-        fireAnime={headerAnimeFinished.every((bool) => bool)}
+        fireAnime={startProjectAnime}
       />
       <Project
         title="Battleship"
@@ -118,7 +115,7 @@ export default function ProjectSection({
           live: 'https://lookingcoolonavespa.github.io/battleship/dist/',
           repo: 'https://github.com/lookingcoolonavespa/battleship'
         }}
-        fireAnime={headerAnimeFinished.every((bool) => bool)}
+        fireAnime={startProjectAnime}
       />
     </section>
   );
