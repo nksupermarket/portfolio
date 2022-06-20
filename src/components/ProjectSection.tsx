@@ -20,7 +20,7 @@ export default function ProjectSection({
 
   const ioData = useIntersectionObserver(triggerRef, {
     freezeOnceVisible: true,
-    threshold: 0.1
+    threshold: 0.07
   });
 
   const visible = ioData?.isIntersecting || false;

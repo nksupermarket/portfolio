@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from '../styles/AboutSection.module.scss';
 import { SectionProps } from '../types/interfaces';
 import SectionHeader from './SectionHeader';
+import useIntersectionObserver from '../utils/useIntersectionObserver';
 
 import Slide from './Animations/Slide';
 import { useChain, useSpringRef } from 'react-spring';
@@ -10,13 +11,22 @@ export default function AboutSection({
   title,
   sectionNumber
 }: SectionProps) {
+  const triggerRef = useRef<HTMLElement>(null);
+
+  const ioData = useIntersectionObserver(triggerRef, {
+    freezeOnceVisible: true,
+    threshold: 0.07
+  });
+
+  const visible = ioData?.isIntersecting || false;
+
   const headerAnimeRef = useSpringRef();
   const textAnimeRef = useSpringRef();
 
-  useChain([headerAnimeRef, textAnimeRef], [0, 0.4]);
+  useChain(visible ? [headerAnimeRef, textAnimeRef] : [], [0, 0.5]);
 
   return (
-    <section className={styles.main}>
+    <section className={styles.main} ref={triggerRef}>
       <SectionHeader
         title={title}
         number={sectionNumber}
@@ -26,6 +36,12 @@ export default function AboutSection({
         dir="down"
         className={styles.text_block}
         animationRef={textAnimeRef}
+        config={{
+          mass: 50,
+          tension: 2000,
+          friction: 300,
+          bounce: 0.5
+        }}
       >
         <p>Coding was never part of the plan.</p>
         <p>

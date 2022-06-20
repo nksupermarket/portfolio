@@ -24,28 +24,30 @@ export default function SkillsSection({
   sectionNumber
 }: SectionProps) {
   // const headerAnimeRef = useSpringRef();
-  const [headerAnimeFinished, setHeaderAnimeFinished] = useState([
-    false,
-    false
-  ]);
+  const [startTrail, setStartTrail] = useState(false);
 
   const triggerRef = useRef<HTMLElement>(null);
 
   const ioData = useIntersectionObserver(triggerRef, {
     freezeOnceVisible: true,
-    threshold: 0.1
+    threshold: 0.07
   });
 
   const visible = ioData?.isIntersecting || false;
 
-  const [trail, api] = useTrail(logos.length, () => ({
-    transform: 'scale(0%)'
-  }));
+  const trail = useTrail(logos.length, {
+    transform: startTrail ? 'scale(100%)' : 'scale(0%)',
+    config: {
+      mass: 50,
+      tension: 3000,
+      friction: 200,
+      bounce: 0.3
+    }
+  });
 
   useEffect(() => {
-    if (headerAnimeFinished.every((bool) => bool))
-      api.start({ transform: 'scale(100%)' });
-  }, [headerAnimeFinished]);
+    if (ioData?.isIntersecting) setTimeout(() => setStartTrail(true), 400);
+  }, [ioData?.isIntersecting]);
 
   return (
     <section className={styles.main} ref={triggerRef}>
@@ -53,8 +55,6 @@ export default function SkillsSection({
         title={title}
         number={sectionNumber}
         visible={visible}
-        setHeaderAnimeFinished={setHeaderAnimeFinished}
-        // animationRef={headerAnimeRef}
       />
       <ul className={styles.list}>
         <div className={styles.top_row}>

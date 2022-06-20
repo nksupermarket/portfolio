@@ -39,7 +39,11 @@ export default function Header() {
               dir="left"
               animationRef={underlineAnimeRef}
               className={styles.underline}
-              config={slideConfig}
+              config={{
+                mass: 50,
+                tension: 2000,
+                friction: 300
+              }}
             ></Slide>
           </div>
         </div>
@@ -53,7 +57,11 @@ export default function Header() {
               dir="right"
               animationRef={underlineAnimeRef}
               className={styles.underline}
-              config={slideConfig}
+              config={{
+                mass: 50,
+                tension: 2000,
+                friction: 300
+              }}
             ></Slide>
           </div>
         </div>

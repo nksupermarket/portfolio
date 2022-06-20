@@ -54,15 +54,10 @@ export default function SectionHeader({
           })
         }
         config={{
-          mass: 60,
-          tension: 350,
-          friction: 63,
-          clamp: false,
-          precision: 0.01,
-          velocity: 0,
-          damping: 0.5,
-          frequency: 0.5,
-          bounce: 0.6
+          mass: 50,
+          tension: 1000,
+          friction: 200,
+          bounce: 0.3
         }}
       >
         <h2>{`0${number}`}</h2>
