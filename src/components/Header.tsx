@@ -59,8 +59,8 @@ export default function Header() {
               className={styles.underline}
               config={{
                 mass: 50,
-                tension: 2000,
-                friction: 300
+                tension: 3000,
+                friction: 400
               }}
             ></Slide>
           </div>

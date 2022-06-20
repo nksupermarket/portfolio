@@ -1,8 +1,10 @@
 import React, { SyntheticEvent, useState, useRef } from 'react';
+import { useSpringRef, useChain } from 'react-spring';
 import styles from '../styles/ContactSection.module.scss';
 import { SectionProps } from '../types/interfaces';
 import SectionHeader from './SectionHeader';
 import emailjs from '@emailjs/browser';
+import useIntersectionObserver from '../utils/useIntersectionObserver';
 
 import checkSvg from '../assets/icons/check-line.svg';
 import closeSvg from '../assets/icons/close-line.svg';
@@ -36,6 +38,20 @@ export default function ContactSection({
   const [loading, setLoading] = useState(false);
 
   const form = useRef<HTMLFormElement>(null);
+
+  const triggerRef = useRef<HTMLElement>(null);
+
+  const ioData = useIntersectionObserver(triggerRef, {
+    freezeOnceVisible: true,
+    threshold: 0.07
+  });
+
+  const visible = ioData?.isIntersecting || false;
+
+  const headerAnimeRef = useSpringRef();
+  const formAnimeRef = useSpringRef();
+
+  useChain(visible ? [headerAnimeRef, formAnimeRef] : [], [0, 0.5]);
 
   function validate(inputId: string, inputVal: string) {
     let valid;
@@ -81,9 +97,13 @@ export default function ContactSection({
   }
 
   return (
-    <section className={styles.main}>
-      <SectionHeader title={title} number={sectionNumber} />
-      <Slide dir="up">
+    <section className={styles.main} ref={triggerRef}>
+      <SectionHeader
+        title={title}
+        number={sectionNumber}
+        animationRef={headerAnimeRef}
+      />
+      <Slide dir="up" animationRef={formAnimeRef}>
         <>
           <form
             ref={form}
