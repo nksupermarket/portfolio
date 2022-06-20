@@ -27,4 +27,5 @@ export interface AnimeComponentProps {
   className?: string;
   condition?: boolean;
   config: AnimeConfig;
+  onRest?: () => void;
 }

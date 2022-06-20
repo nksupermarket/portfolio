@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '../styles/Project.module.scss';
 
 import { useChain, useTrail, animated, useSpringRef } from 'react-spring';
@@ -19,7 +19,20 @@ interface ProjectProps {
     repo: string;
   };
   reverse?: boolean;
+  fireAnime: boolean;
 }
+
+const slideConfig = {
+  mass: 30,
+  tension: 300,
+  friction: 63,
+  clamp: false,
+  precision: 0.01,
+  velocity: 0,
+  damping: 0.5,
+  frequency: 0.7,
+  bounce: 0.5
+};
 
 export default function Project({
   title,
@@ -27,7 +40,8 @@ export default function Project({
   image,
   stack,
   links,
-  reverse
+  reverse,
+  fireAnime
 }: ProjectProps) {
   const rootClasses = [styles.main];
   if (reverse) rootClasses.push(styles.reverse);
@@ -38,14 +52,19 @@ export default function Project({
 
   const stackTrail = useTrail(stack.length, {
     from: {
-      transform: reverse ? 'translateX(-100vw)' : 'translateX(100vw)'
+      transform: reverse ? 'translateX(-50vw)' : 'translateX(50vw)'
     },
     to: {
-      transform: 'translateX(0)'
-    }
+      transform: fireAnime
+        ? 'translateX(0)'
+        : reverse
+        ? 'translateX(-50vw)'
+        : 'translateX(50vw)'
+    },
+    config: slideConfig
   });
 
-  useChain([slideAnimeRef, secondaryAnimeRef], [0, 0.3]);
+  useChain(fireAnime ? [slideAnimeRef, secondaryAnimeRef] : [], [0, 0.3]);
 
   return (
     <div className={rootClasses.join(' ')}>
@@ -57,7 +76,11 @@ export default function Project({
         <h4 className={styles.title}>{title}</h4>
         <p className={styles.desc}>{desc}</p>
 
-        <Scale className={styles.btn_ctn} animationRef={secondaryAnimeRef}>
+        <Scale
+          className={styles.btn_ctn}
+          animationRef={secondaryAnimeRef}
+          config={slideConfig}
+        >
           <a className={styles.live} href={links.live}>
             Live
           </a>
@@ -82,6 +105,7 @@ export default function Project({
         <Scale
           className={styles.img_wrapper}
           animationRef={secondaryAnimeRef}
+          config={slideConfig}
         >
           <img
             src={image.src}

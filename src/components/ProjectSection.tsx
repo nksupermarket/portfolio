@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import { useChain, useSpringRef } from 'react-spring';
+import React, { useState, useRef, useEffect } from 'react';
 import Project from './Project';
 import SectionHeader from './SectionHeader';
 
@@ -20,25 +19,29 @@ export default function ProjectSection({
   const triggerRef = useRef<HTMLSpanElement>(null);
 
   const ioData = useIntersectionObserver(triggerRef, {
-    freezeOnceVisible: true
+    freezeOnceVisible: true,
+    threshold: 0.1
   });
 
   const visible = ioData?.isIntersecting || false;
 
-  // const projectAnimeRef = useSpringRef();
-  // useEffect(() => {
-  //   if (ioData?.isIntersecting)
-  //     useChain([headerAnimeRef, projectAnimeRef]);
-  // }, [ioData?.isIntersecting]);
+  const [headerAnimeFinished, setHeaderAnimeFinished] = useState([
+    false,
+    false
+  ]);
+
+  useEffect(() => {
+    if (ioData?.isIntersecting)
+      setTimeout(() => setHeaderAnimeFinished([true, true]), 200);
+  }, [ioData?.isIntersecting]);
 
   return (
-    <section className={styles.main}>
+    <section className={styles.main} ref={triggerRef}>
       <SectionHeader
         title={title}
         number={sectionNumber}
         visible={visible}
       />
-      <span ref={triggerRef}></span>
 
       <Project
         title="croChess"
@@ -53,6 +56,7 @@ export default function ProjectSection({
           live: 'https://crochess-frontend.herokuapp.com/',
           repo: 'https://github.com/lookingcoolonavespa/crochess'
         }}
+        fireAnime={headerAnimeFinished.every((bool) => bool)}
       />
       <Project
         title="bread"
@@ -68,6 +72,7 @@ export default function ProjectSection({
           live: 'https://lookingcoolonavespa.github.io/discord-clone',
           repo: 'https://github.com/lookingcoolonavespa/discord-clone/tree/master'
         }}
+        fireAnime={headerAnimeFinished.every((bool) => bool)}
       />
       <Project
         title="Where's Waldo"
@@ -82,6 +87,7 @@ export default function ProjectSection({
           live: 'https://lookingcoolonavespa.github.io/wheres-waldo/',
           repo: 'https://github.com/lookingcoolonavespa/wheres-waldo'
         }}
+        fireAnime={headerAnimeFinished.every((bool) => bool)}
       />
       <Project
         title="memory card game"
@@ -97,6 +103,7 @@ export default function ProjectSection({
           live: 'https://lookingcoolonavespa.github.io/memory-card-game/',
           repo: 'https://github.com/lookingcoolonavespa/memory-card-game'
         }}
+        fireAnime={headerAnimeFinished.every((bool) => bool)}
       />
       <Project
         title="Battleship"
@@ -111,6 +118,7 @@ export default function ProjectSection({
           live: 'https://lookingcoolonavespa.github.io/battleship/dist/',
           repo: 'https://github.com/lookingcoolonavespa/battleship'
         }}
+        fireAnime={headerAnimeFinished.every((bool) => bool)}
       />
     </section>
   );

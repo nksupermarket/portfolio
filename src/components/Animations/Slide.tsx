@@ -12,7 +12,8 @@ export default function Slide({
   dir,
   className,
   condition,
-  config = {}
+  config = {},
+  onRest
 }: SlideProps) {
   let start = '';
   switch (dir) {
@@ -38,6 +39,7 @@ export default function Slide({
   }
 
   const animeConfig = {
+    onRest,
     config,
     from: {
       transform: start

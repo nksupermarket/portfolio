@@ -11,23 +11,60 @@ interface SectionHeaderProps {
   number: number;
   animationRef?: SpringRef;
   visible?: boolean;
+  setHeaderAnimeFinished?: React.Dispatch<React.SetStateAction<boolean[]>>;
 }
 
 export default function SectionHeader({
   title,
   number,
   animationRef,
-  visible
+  visible,
+  setHeaderAnimeFinished
 }: SectionHeaderProps) {
   return (
     <header className={styles.main}>
-      <Slide dir="right" animationRef={animationRef} condition={visible}>
+      <Slide
+        dir="right"
+        animationRef={animationRef}
+        condition={visible}
+        onRest={() =>
+          setHeaderAnimeFinished &&
+          setHeaderAnimeFinished((prev) => {
+            const copy = [...prev];
+            copy[0] = true;
+            return copy;
+          })
+        }
+      >
         <div className={styles.title}>
           <h4>{title.firstRow}</h4>
           <h3>{title.secondRow.toUpperCase()}</h3>
         </div>
       </Slide>
-      <Slide dir="left" animationRef={animationRef} condition={visible}>
+      <Slide
+        dir="left"
+        animationRef={animationRef}
+        condition={visible}
+        onRest={() =>
+          setHeaderAnimeFinished &&
+          setHeaderAnimeFinished((prev) => {
+            const copy = [...prev];
+            copy[1] = true;
+            return copy;
+          })
+        }
+        config={{
+          mass: 60,
+          tension: 350,
+          friction: 63,
+          clamp: false,
+          precision: 0.01,
+          velocity: 0,
+          damping: 0.5,
+          frequency: 0.5,
+          bounce: 0.6
+        }}
+      >
         <h2>{`0${number}`}</h2>
       </Slide>
     </header>
