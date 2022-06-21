@@ -2,7 +2,7 @@
 
 .main {
   margin-bottom: 100px;
-  overflow-y: hidden;
+  z-index: 1;
 
   header {
     align-items: flex-end;
@@ -20,6 +20,7 @@
   border-top: none;
   @include mixins.flex(column, true);
   padding: 50px;
+  position: relative;
 
   p {
     width: 80%;

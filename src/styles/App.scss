@@ -5,6 +5,8 @@ section {
   flex-direction: column;
   justify-content: center;
   position: relative;
+  z-index: 2;
+  background: var(--background);
 }
 
 section:last-child {
