@@ -62,10 +62,10 @@
     top: 0;
     bottom: 0;
     margin: auto;
-
     border-radius: 40px;
     outline: none;
     cursor: pointer;
+    transition: transform 0.2s ease-in;
   }
 
   input:checked:before {

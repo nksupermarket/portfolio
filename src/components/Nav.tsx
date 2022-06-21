@@ -12,11 +12,15 @@ const iconList = [
   }
 ];
 
-export default function Nav() {
+interface NavProps {
+  changeTheme: () => void;
+}
+
+export default function Nav({ changeTheme }: NavProps) {
   return (
     <nav className={styles.main}>
       <div className={styles.theme_picker}>
-        <input type="checkbox" />
+        <input type="checkbox" onClick={changeTheme} />
       </div>
       <div className={styles.btn_ctn}>
         {iconList.map((i) => {

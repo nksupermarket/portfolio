@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Header from './components/Header';
@@ -8,10 +8,22 @@ import SkillsSection from './components/SkillsSection';
 import './styles/App.scss';
 
 function App() {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    document.querySelector('html')?.setAttribute('color-mode', theme);
+  }, [theme]);
+
+  function changeTheme() {
+    setTheme((prev) => {
+      return prev === 'light' ? 'dark' : 'light';
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header"></header>
-      <Nav />
+      <Nav changeTheme={changeTheme} />
       <Header />
       <ProjectSection
         title={{ firstRow: 'Latest', secondRow: 'Projects' }}
