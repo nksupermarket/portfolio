@@ -3,12 +3,11 @@
 .main {
   margin-bottom: 100px;
   overflow-y: hidden;
-  overflow-x: hidden;
 
   header {
     align-items: flex-end;
     z-index: 99;
-    background-color: white;
+    background-color: var(--background);
   }
 
   & > * {

@@ -15,10 +15,6 @@
       flex-direction: row-reverse;
     }
   }
-
-  span {
-    position: absolute;
-  }
 }
 
 .text_block {
@@ -54,6 +50,11 @@
       }
     }
   }
+}
+
+.divider {
+  user-select: none;
+  color: var(--main-text);
 }
 
 .img_col {

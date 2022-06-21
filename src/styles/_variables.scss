@@ -1,6 +1,15 @@
 $colors-light: (
-  background: #fff,
-  main-text: #000,
+  background: #fbfbf2,
+  main-text: #32292f,
   accent: #ee4266,
-  circle: #fbff12
+  circle: #f7f6c5,
+  box-shadow: #969696
+);
+
+$colors-dark: (
+  background: #34344a,
+  main-text: #fbfbf2,
+  accent: #ee4266,
+  circle: #585481,
+  box-shadow: #585858
 );

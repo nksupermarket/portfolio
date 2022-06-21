@@ -1,7 +1,7 @@
 @use './mixins';
 
 .main {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   @include mixins.flex(column, true);
   row-gap: 60px;
@@ -44,6 +44,7 @@
     width: $lineWidth;
     height: $lineHeight;
     background: var(--accent);
+    border-radius: 9px;
   }
 
   .top {
@@ -67,8 +68,12 @@
 
 @media screen and (max-width: 992px) {
   .main {
-    height: 80%;
+    height: 80vh;
     row-gap: 40px;
+  }
+
+  .underline {
+    border-radius: 5px;
   }
 
   @include style(200px, 5px, 46px, 350px, 9px, 51px, 122px);
@@ -78,5 +83,10 @@
   .main {
     row-gap: 30px;
   }
+
+  .underline {
+    border-radius: 3px;
+  }
+
   @include style(150px, 3px, 30px, 200px, 5px, 33px, 76px);
 }

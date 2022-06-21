@@ -15,7 +15,7 @@
     background-size: 200% 100%;
     background-image: linear-gradient(
       to right,
-      white 50%,
+      var(--background) 50%,
       var(--accent) 50%
     );
     height: 42px;
@@ -28,10 +28,10 @@
 
     &:hover {
       background-position: -100% 0;
-      color: white;
+      color: var(--background);
 
       :global(.lds-ellipsis) div {
-        background-color: white;
+        background-color: var(--background);
       }
     }
 

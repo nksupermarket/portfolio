@@ -103,7 +103,7 @@ export default function ContactSection({
         number={sectionNumber}
         animationRef={headerAnimeRef}
       />
-      <Slide dir="up" animationRef={formAnimeRef}>
+      <Slide dir="right" animationRef={formAnimeRef}>
         <>
           <form
             ref={form}

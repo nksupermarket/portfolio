@@ -6,4 +6,8 @@
   left: 0;
   right: 0;
   margin-right: 10%;
+
+  img {
+    filter: var(--main-text-filter);
+  }
 }

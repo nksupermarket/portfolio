@@ -84,7 +84,8 @@ export default function Project({
           <a className={styles.live} href={links.live}>
             Live
           </a>
-          |<a href={links.repo}>Repo</a>
+          <span className={styles.divider}>|</span>
+          <a href={links.repo}>Repo</a>
         </Scale>
       </Slide>
 
