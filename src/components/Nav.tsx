@@ -15,18 +15,23 @@ const iconList = [
 export default function Nav() {
   return (
     <nav className={styles.main}>
-      {iconList.map((i) => {
-        return (
-          <div
-            key={i.name}
-            className={`${styles.icon_wrapper} ${styles[i.name]}`}
-          >
-            <a href={i.href} target="_blank" rel="noreferrer">
-              <img src={i.src} alt={i.alt} />
-            </a>
-          </div>
-        );
-      })}
+      <div className={styles.theme_picker}>
+        <input type="checkbox" />
+      </div>
+      <div className={styles.btn_ctn}>
+        {iconList.map((i) => {
+          return (
+            <div
+              key={i.name}
+              className={`${styles.icon_wrapper} ${styles[i.name]}`}
+            >
+              <a href={i.href} target="_blank" rel="noreferrer">
+                <img src={i.src} alt={i.alt} />
+              </a>
+            </div>
+          );
+        })}
+      </div>
     </nav>
   );
 }
