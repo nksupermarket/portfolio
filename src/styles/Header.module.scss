@@ -5,6 +5,7 @@
   width: 100%;
   @include mixins.flex(column, true);
   row-gap: 60px;
+  position: relative;
 }
 
 @mixin style(

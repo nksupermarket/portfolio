@@ -58,8 +58,8 @@ export default function Project({
       transform: fireAnime
         ? 'translateX(0)'
         : reverse
-        ? 'translateX(-50vw)'
-        : 'translateX(50vw)'
+        ? 'translateX(-100vw)'
+        : 'translateX(100vw)'
     },
     config: slideConfig
   });
