@@ -19,9 +19,20 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
+  globals: {
+    JSX: true
+  },
   rules: {
     'no-console': 1,
     'prettier/prettier': 2,
     'no-unused-vars': 1
-  }
+  },
+  overrides: [
+    {
+      files: ['*.ts', '*.mts', '*.cts', '*.tsx'],
+      rules: {
+        'no-undef': 'off'
+      }
+    }
+  ]
 };

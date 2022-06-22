@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { AnimeComponentProps } from '../../types/interfaces';
 
 interface SlideProps extends AnimeComponentProps {
   dir: 'left' | 'right' | 'up' | 'down';
+  elRef?:
+    | RefObject<HTMLDivElement>
+    | null
+    | ((ref: HTMLDivElement) => void);
+  tag: keyof JSX.IntrinsicElements;
 }
 
 export default function Slide({
@@ -13,7 +18,9 @@ export default function Slide({
   className,
   condition,
   config = {},
-  onRest
+  onRest,
+  elRef,
+  tag = 'div'
 }: SlideProps) {
   let start = '';
   switch (dir) {
@@ -50,13 +57,28 @@ export default function Slide({
 
   const anime = useSpring(animeConfig);
 
-  return (
-    <animated.div style={anime} className={className || ''}>
-      {children}
-    </animated.div>
-  );
+  switch (tag) {
+    case 'h2':
+      return (
+        <animated.h2 ref={elRef} style={anime} className={className || ''}>
+          {children}
+        </animated.h2>
+      );
+    case 'div':
+    default:
+      return (
+        <animated.div
+          ref={elRef}
+          style={anime}
+          className={className || ''}
+        >
+          {children}
+        </animated.div>
+      );
+  }
 }
 
 Slide.defaultProps = {
-  config: {}
+  config: {},
+  tag: 'div'
 };
