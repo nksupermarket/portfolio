@@ -6,11 +6,15 @@ import Nav from './components/Nav';
 import ProjectSection from './components/ProjectSection';
 import SkillsSection from './components/SkillsSection';
 import './styles/App.scss';
+import { getCurrentTheme } from './utils/misc';
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
+
+  // useEffect(() => {});
 
   useEffect(() => {
+    localStorage.setItem('theme', theme);
     document.querySelector('html')?.setAttribute('color-mode', theme);
   }, [theme]);
 
@@ -23,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
-      <Nav changeTheme={changeTheme} />
+      <Nav changeTheme={changeTheme} currentTheme={theme} />
       <Header />
       <ProjectSection
         title={{ firstRow: 'Latest', secondRow: 'Projects' }}

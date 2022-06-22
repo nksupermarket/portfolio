@@ -14,9 +14,10 @@ const iconList = [
 
 interface NavProps {
   changeTheme: () => void;
+  currentTheme: 'light' | 'dark';
 }
 
-export default function Nav({ changeTheme }: NavProps) {
+export default function Nav({ changeTheme, currentTheme }: NavProps) {
   const [y, setY] = useState(window.scrollY);
   const [scrollOffset, setScrollOffset] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<
@@ -51,7 +52,11 @@ export default function Nav({ changeTheme }: NavProps) {
   return (
     <nav className={rootClasses.join(' ')}>
       <div className={styles.theme_picker}>
-        <input type="checkbox" onClick={changeTheme} />
+        <input
+          type="checkbox"
+          onClick={changeTheme}
+          checked={currentTheme === 'dark'}
+        />
       </div>
       <div className={styles.btn_ctn}>
         {iconList.map((i) => {
