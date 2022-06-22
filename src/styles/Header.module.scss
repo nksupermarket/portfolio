@@ -62,8 +62,27 @@
   }
 }
 
-@media screen and (min-width: 993px) {
+@media screen and (min-width: 1301px) {
   @include style(300px, 10px, 73px, 500px, 13px, 80px, 190px);
+  /*  $circleSize,
+  $marginTop,
+  $topOffset,
+  $lineWidth,
+  $lineHeight,
+  $rightOffset,
+  $leftOffset
+  */
+}
+
+@media screen and (max-width: 1300px) {
+  .main {
+    row-gap: 50px;
+  }
+
+  .underline {
+    border-radius: 7px;
+  }
+  @include style(275px, 10px, 60px, 425px, 11px, 62px, 157px);
 }
 
 @media screen and (max-width: 992px) {

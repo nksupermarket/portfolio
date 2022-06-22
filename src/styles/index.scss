@@ -206,6 +206,20 @@ textarea {
   }
 }
 
+@media screen and (max-width: 1300px) {
+  h2 {
+    font-size: 70px;
+  }
+
+  h3 {
+    font-size: 55px;
+  }
+
+  h4 {
+    font-size: 30px;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .App {
     padding: 0 15%;
@@ -250,7 +264,13 @@ textarea {
   }
 }
 
-@media screen and (min-width: 993px) {
+@media screen and (min-width: 769px) {
+  .App {
+    padding: 0 18%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
   .App {
     padding: 0 28%;
   }

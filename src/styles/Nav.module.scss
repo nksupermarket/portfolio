@@ -88,10 +88,18 @@
   align-items: center;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1301px) {
   @include elSize(30px);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1300px) {
   @include elSize(25px);
+}
+
+@media screen and (max-width: 992px) {
+  @include elSize(22px);
+}
+
+@media screen and (max-width: 768px) {
+  @include elSize(18px);
 }

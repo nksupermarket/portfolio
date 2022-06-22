@@ -102,6 +102,20 @@
   }
 }
 
+@media screen and (max-width: 1300px) {
+  .text_block {
+    flex: 0 0 295px;
+  }
+
+  .img_col {
+    width: 45%;
+
+    h5 {
+      font-size: 12px;
+    }
+  }
+}
+
 @media screen and (max-width: 992px) {
   .main {
     padding: 0 3px;
