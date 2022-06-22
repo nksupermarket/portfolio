@@ -64,9 +64,12 @@ export default function Header() {
           let transformVal = 1;
 
           const newOffset = scaleX - (window.scrollY - y) / 300;
+          console.log(scrollY);
 
           if (window.scrollY) {
             if (newOffset < 0) transformVal = 0;
+            else if (y > scrollY && scrollY > 342)
+              transformVal = 0; // so the animation plays when you're scrolling up from bottom of the page
             else if (newOffset < 1) transformVal = newOffset;
           }
 
