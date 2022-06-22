@@ -27,32 +27,55 @@ export default function Header() {
 
   useChain([circleAnimeRef, textAnimeRef, underlineAnimeRef], [0, 0.2]);
 
-  const divsToSlideLeft = useRef<HTMLDivElement[]>([]);
-  const divsToSlideRight = useRef<HTMLDivElement[]>([]);
+  const divToSlideLeft = useRef<HTMLDivElement>(null);
+  const divToSlideRight = useRef<HTMLDivElement>(null);
+  const divToScale = useRef<HTMLDivElement>(null);
 
   const handleScroll = useCallback(() => {
-    if (!divsToSlideLeft.current) return;
+    if (
+      !divToSlideLeft.current ||
+      !divToSlideRight.current ||
+      !divToScale.current
+    )
+      return;
 
-    function transformEl(dir: 'left' | 'right') {
+    function transformEl(translateX?: 'left' | 'right', scale?: boolean) {
       return (el: HTMLElement) => {
         const style = window.getComputedStyle(el);
 
-        const matrix = new WebKitCSSMatrix(style.transform);
-        const prevX = matrix.m41;
+        if (translateX) {
+          const matrix = new WebKitCSSMatrix(style.transform);
+          const prevX = matrix.m41;
 
-        el.style.transform =
-          dir === 'left'
-            ? `translateX(${prevX + y - scrollY}px)`
-            : `translateX(${scrollY - y + prevX}px)`;
+          let transformVal = 0;
+          if (window.scrollY) {
+            // want translateX value to be 0 at top of the page
+            if (translateX === 'left') {
+              const newOffset = prevX + y - window.scrollY;
+              if (newOffset < 0) transformVal = newOffset;
+            } else if (translateX === 'right') {
+              const newOffset = window.scrollY - y + prevX;
+              if (newOffset > 0) transformVal = newOffset;
+            }
+          }
+          el.style.transform = `translateX(${transformVal}px)`;
+        } else if (scale) {
+          const scaleX = el.getBoundingClientRect().width / el.offsetWidth;
+
+          let transformVal = 1;
+
+          const newOffset = scaleX - (window.scrollY - y) / 300;
+          if (newOffset < 1) transformVal = newOffset;
+
+          el.style.transform = `scale(${transformVal})`;
+        }
       };
     }
 
-    divsToSlideLeft.current.forEach(transformEl('left'));
-    divsToSlideRight.current.forEach(transformEl('right'));
+    transformEl('left')(divToSlideLeft.current);
+    transformEl('right')(divToSlideRight.current);
+    transformEl(undefined, true)(divToScale.current);
 
-    // setScrollOffset(
-    //   document.documentElement.scrollTop || document.body.scrollTop
-    // );
     setY(window.scrollY);
   }, [y]);
 
@@ -64,32 +87,17 @@ export default function Header() {
     };
   }, [handleScroll]);
 
-  // useEffect(() => {
-  //   if (!finishedAnimation) return;
-
-  //   textAnimeRef.set({
-  //     transform: 'translateX(100%)'
-  //   });
-  //   textAnimeRef.start();
-
-  //   console.log('finished');
-  // }, [finishedAnimation]);
-
   return (
     <div className={styles.main}>
       <Scale
+        elRef={divToScale}
         className={styles.circle}
         animationRef={circleAnimeRef}
-      ></Scale>
+      />
 
       <div className={`${styles.text_block} ${styles.top}`}>
         <div className={styles.ctn}>
           <Slide
-            elRef={(el) => {
-              if (!el || divsToSlideRight.current.includes(el)) return;
-
-              divsToSlideRight.current.push(el);
-            }}
             animationRef={textAnimeRef}
             dir="left"
             config={slideConfig}
@@ -98,11 +106,7 @@ export default function Header() {
             Alex Liang
           </Slide>
           <Slide
-            elRef={(el) => {
-              if (!el || divsToSlideLeft.current.includes(el)) return;
-
-              divsToSlideLeft.current.push(el);
-            }}
+            elRef={divToSlideLeft}
             dir="left"
             animationRef={underlineAnimeRef}
             className={styles.underline}
@@ -118,11 +122,6 @@ export default function Header() {
       <div className={`${styles.text_block} ${styles.bottom}`}>
         <div className={styles.ctn}>
           <Slide
-            elRef={(el) => {
-              if (!el || divsToSlideLeft.current.includes(el)) return;
-
-              divsToSlideLeft.current.push(el);
-            }}
             animationRef={textAnimeRef}
             dir="right"
             config={slideConfig}
@@ -131,11 +130,7 @@ export default function Header() {
             web developer
           </Slide>
           <Slide
-            elRef={(el) => {
-              if (!el || divsToSlideRight.current.includes(el)) return;
-
-              divsToSlideRight.current.push(el);
-            }}
+            elRef={divToSlideRight}
             dir="right"
             animationRef={underlineAnimeRef}
             className={styles.underline}

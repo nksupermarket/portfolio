@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { AnimeComponentProps } from '../../types/interfaces';
 
 export default function Scale({
+  elRef,
   animationRef,
   children,
   className,
@@ -24,7 +25,7 @@ export default function Scale({
   });
 
   return (
-    <animated.div className={className || ''} style={anime}>
+    <animated.div ref={elRef} className={className || ''} style={anime}>
       {children}
     </animated.div>
   );

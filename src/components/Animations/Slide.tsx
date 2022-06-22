@@ -1,13 +1,9 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { AnimeComponentProps } from '../../types/interfaces';
 
 interface SlideProps extends AnimeComponentProps {
   dir: 'left' | 'right' | 'up' | 'down';
-  elRef?:
-    | RefObject<HTMLDivElement>
-    | null
-    | ((ref: HTMLDivElement) => void);
   tag: keyof JSX.IntrinsicElements;
 }
 

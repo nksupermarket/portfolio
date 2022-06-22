@@ -1,5 +1,5 @@
 import { SpringRef } from 'react-spring';
-import React from 'react';
+import React, { RefObject } from 'react';
 
 export interface SectionProps {
   title: {
@@ -22,6 +22,10 @@ interface AnimeConfig {
 }
 
 export interface AnimeComponentProps {
+  elRef?:
+    | RefObject<HTMLDivElement>
+    | null
+    | ((ref: HTMLDivElement) => void);
   animationRef?: SpringRef;
   children?: React.ReactNode;
   className?: string;
