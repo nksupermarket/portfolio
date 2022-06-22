@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from '../styles/Project.module.scss';
 
 import { useChain, useTrail, animated, useSpringRef } from 'react-spring';

@@ -61,11 +61,14 @@ export default function Header() {
           el.style.transform = `translateX(${transformVal}px)`;
         } else if (scale) {
           const scaleX = el.getBoundingClientRect().width / el.offsetWidth;
-
           let transformVal = 1;
 
           const newOffset = scaleX - (window.scrollY - y) / 300;
-          if (newOffset < 1) transformVal = newOffset;
+
+          if (window.scrollY) {
+            if (newOffset < 0) transformVal = 0;
+            else if (newOffset < 1) transformVal = newOffset;
+          }
 
           el.style.transform = `scale(${transformVal})`;
         }
