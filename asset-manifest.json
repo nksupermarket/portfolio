@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.bf982374.css",
+    "main.css": "/static/css/main.ec53ccf5.css",
     "main.js": "/static/js/main.b7927a69.js",
     "static/media/wheres_waldo_screen.png": "/static/media/wheres_waldo_screen.a3995e3324d26b974a72.png",
     "static/media/discord-screen.png": "/static/media/discord-screen.61fb6dbdce24bbd8584b.png",
@@ -16,11 +16,11 @@
     "static/media/iconmonstr-github-1.svg": "/static/media/iconmonstr-github-1.04be58c17b3d5e9744424d414240dd85.svg",
     "static/media/close-line.svg": "/static/media/close-line.058af5b2654112a53b1b0a6d60692ace.svg",
     "static/media/check-line.svg": "/static/media/check-line.3f29db899e39cb68dca831bea022f649.svg",
-    "main.bf982374.css.map": "/static/css/main.bf982374.css.map",
+    "main.ec53ccf5.css.map": "/static/css/main.ec53ccf5.css.map",
     "main.b7927a69.js.map": "/static/js/main.b7927a69.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf982374.css",
+    "static/css/main.ec53ccf5.css",
     "static/js/main.b7927a69.js"
   ]
 }
