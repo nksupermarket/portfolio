@@ -1,11 +1,21 @@
 .main {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
   left: 0;
   right: 0;
-  margin: 0 10%;
+  padding: 10px 10%;
+  background-color: var(--background);
+  z-index: 99;
+  transition: transform 0.2s ease-in;
+
+  &.scroll {
+    box-shadow: 0 5px 10px 5px rgba(var(--RGB_box-shadow), 0.1);
+  }
+
+  &.hide {
+    transform: translateY(-100%);
+  }
 
   img {
     filter: var(--main-text-filter);

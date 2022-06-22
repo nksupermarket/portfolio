@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import styles from '../styles/Nav.module.scss';
 
 import githubSvg from '../assets/icons/iconmonstr-github-1.svg';
@@ -17,8 +17,39 @@ interface NavProps {
 }
 
 export default function Nav({ changeTheme }: NavProps) {
+  const [y, setY] = useState(window.scrollY);
+  const [scrollOffset, setScrollOffset] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState<
+    'up' | 'down' | null
+  >(null);
+
+  const handleScroll = useCallback(() => {
+    if (y > window.scrollY) setScrollDirection('up');
+    else if (y < window.scrollY) setScrollDirection('down');
+
+    setScrollOffset(
+      document.documentElement.scrollTop || document.body.scrollTop
+    );
+    setY(window.scrollY);
+  }, [y]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
+
+  let rootClasses = [styles.main];
+
+  if (scrollDirection === 'down') rootClasses.push(styles.hide);
+  else if (scrollDirection === 'up') {
+    rootClasses = rootClasses.filter((c) => c !== styles.hide);
+    if (scrollOffset) rootClasses.push(styles.scroll);
+  }
   return (
-    <nav className={styles.main}>
+    <nav className={rootClasses.join(' ')}>
       <div className={styles.theme_picker}>
         <input type="checkbox" onClick={changeTheme} />
       </div>
