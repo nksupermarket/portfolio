@@ -15,7 +15,7 @@ export default function AboutSection({
 
   const ioData = useIntersectionObserver(triggerRef, {
     freezeOnceVisible: true,
-    threshold: 0.07
+    threshold: 0.1
   });
 
   const visible = ioData?.isIntersecting || false;
