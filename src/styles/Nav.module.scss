@@ -7,7 +7,7 @@
   padding: 10px 10%;
   background-color: var(--background);
   z-index: 99;
-  transition: transform 0.2s ease-in;
+  transition: transform 0.1s ease-in;
 
   &.scroll {
     box-shadow: 0 5px 10px 5px rgba(var(--RGB_box-shadow), 0.1);
