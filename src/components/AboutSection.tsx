@@ -43,24 +43,24 @@ export default function AboutSection({
           bounce: 0.5
         }}
       >
-        <p>Coding was never part of the plan.</p>
         <p>
-          It started with some simple HTML/CSS so I could design my
-          Wordpress blog. Then I got a little more into it so I could
-          improve the UI/UX of the ecommerce store I was doing digital
-          marketing for. And I thought that was fun — with how the block
-          model works, it was kind of like playing with Legos.
+          I create <strong>responsive web applications</strong> that are
+          fun to use.
         </p>
         <p>
-          But picking up Javascript was the game changer — the little
-          puzzle games you have to solve to write elegant code, the many
-          creative solutions that exist for any given problem. It is all so
-          thrilling.
+          I never thought I would fall in love with programming. But, for
+          me, it exists at the perfect intersection between creativity and
+          pure logic.
         </p>
         <p>
-          Being able to put everything together — the ability to create
-          beautiful displays while also powering the functionality behind
-          the application — that feeling is priceless.
+          I love the puzzle games you have to solve on the way to elegant
+          code, the many creative solutions that exist for any given
+          problem. It is all so thrilling.
+        </p>
+        <p>
+          But being able to put everything together — the ability to create
+          beautiful displays <i>and</i> powering the functionality behind
+          the application — that feeling is <strong>priceless</strong>.
         </p>
       </Slide>
     </section>
