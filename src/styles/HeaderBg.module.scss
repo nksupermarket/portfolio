@@ -1,0 +1,34 @@
+@use './functions';
+
+.main {
+  svg {
+    position: absolute;
+  }
+
+  .off_page {
+    left: -100vw;
+  }
+
+  $initTotal: 12;
+  @for $i from 1 through $initTotal {
+    .init:nth-child(#{$i}) {
+      left: random(100) * 1vw;
+      top: calc(random(80) * 1%);
+    }
+  }
+
+  $total: 24;
+  @for $i from 1 through $total {
+    .off_page:nth-child(#{$i}) {
+      top: calc(random(80) * 1%);
+      animation: float#{$i} 70s linear infinite;
+      animation-delay: #{($i - 1) * 8}s;
+
+      @keyframes float#{$i} {
+        to {
+          left: 100vw;
+        }
+      }
+    }
+  }
+}

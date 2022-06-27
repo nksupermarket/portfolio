@@ -221,7 +221,7 @@ textarea {
 }
 
 @media screen and (max-width: 992px) {
-  .App {
+  section {
     padding: 0 15%;
   }
 
@@ -259,19 +259,19 @@ textarea {
 }
 
 @media screen and (max-width: 768px) {
-  .App {
+  section {
     padding: 0 8%;
   }
 }
 
 @media screen and (min-width: 993px) {
-  .App {
+  section {
     padding: 0 18%;
   }
 }
 
 @media screen and (min-width: 1600px) {
-  .App {
+  section {
     padding: 0 28%;
   }
 }

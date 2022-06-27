@@ -4,6 +4,7 @@ import { useChain, useSpringRef } from 'react-spring';
 
 import Slide from './Animations/Slide';
 import Scale from './Animations/Scale';
+import HeaderBg from './HeaderBg';
 
 const slideConfig = {
   mass: 30,
@@ -18,7 +19,21 @@ const slideConfig = {
 };
 
 export default function Header() {
+  const [size, setSize] = useState({
+    height: 0,
+    width: 0
+  });
   const [y, setY] = useState(window.scrollY);
+
+  const node = useCallback((node: HTMLElement | null) => {
+    if (node) {
+      const boundingRect = node.getBoundingClientRect();
+      setSize({
+        height: boundingRect.height,
+        width: boundingRect.width
+      });
+    }
+  }, []);
 
   const circleAnimeRef = useSpringRef();
 
@@ -64,7 +79,6 @@ export default function Header() {
           let transformVal = 1;
 
           const newOffset = scaleX - (window.scrollY - y) / 300;
-          console.log(scrollY);
 
           if (window.scrollY) {
             if (newOffset < 0) transformVal = 0;
@@ -94,7 +108,8 @@ export default function Header() {
   }, [handleScroll]);
 
   return (
-    <div className={styles.main}>
+    <div ref={node} className={styles.main}>
+      <HeaderBg size={size} />
       <Scale
         elRef={divToScale}
         className={styles.circle}

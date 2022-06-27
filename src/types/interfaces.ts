@@ -33,3 +33,16 @@ export interface AnimeComponentProps {
   config: AnimeConfig;
   onRest?: () => void;
 }
+
+export interface Size {
+  height: number;
+  width: number;
+}
+
+export interface CloudInterface {
+  readonly x: number;
+  readonly y: number;
+  readonly height: number;
+  readonly width: number;
+  updatePosition(): void;
+}
