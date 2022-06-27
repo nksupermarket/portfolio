@@ -42,18 +42,19 @@ export default function HeaderBg({ size }: HeaderBgProps) {
   const rootClasses = ['bg', styles.main];
   return (
     <div ref={node} className={rootClasses.join(' ')}>
-      {springs.map((spring, i) => (
-        <CloudSvg
-          key={i}
-          listRef={(instance: SVGElement | null) => {
-            if (!instance || initialClouds.current.includes(instance))
-              return;
-            initialClouds.current.push(instance);
-          }}
-          className={styles.init}
-          style={spring}
-        />
-      ))}
+      {Array(8)
+        .fill(null)
+        .map((v, i) => (
+          <CloudSvg
+            key={i}
+            listRef={(instance: SVGElement | null) => {
+              if (!instance || initialClouds.current.includes(instance))
+                return;
+              initialClouds.current.push(instance);
+            }}
+            className={styles.init}
+          />
+        ))}
       {Array(16)
         .fill(null)
         .map((v, i) => (

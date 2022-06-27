@@ -1,19 +1,32 @@
 @use './functions';
+@use 'sass:meta';
+@use 'sass:math';
 
 .main {
   svg {
     position: absolute;
+    z-index: 3;
   }
 
   .off_page {
     transform: translateX(-100vw);
   }
 
-  $initTotal: 12;
+  $initTotal: 8;
   @for $i from 1 through $initTotal {
     .init:nth-child(#{$i}) {
-      // transform: translateX(random(100) * 1vw);
+      $rdm: random(100) - ($i * 20);
+      $end: $rdm + 200;
+      transform: translateX(#{$rdm}vw);
       top: calc(random(80) * 1%);
+      animation: float#{$i} 70s linear forwards;
+
+      @debug meta.inspect(#{$rdm + 50}vw);
+      @keyframes float#{$i} {
+        to {
+          transform: translateX(#{$end}vw);
+        }
+      }
     }
   }
 

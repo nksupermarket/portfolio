@@ -7,6 +7,11 @@
   row-gap: 60px;
   position: relative;
 
+  .text_block,
+  .circle {
+    z-index: 4;
+  }
+
   :global .bg {
     position: absolute;
     top: 0;
