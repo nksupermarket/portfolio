@@ -15,16 +15,15 @@
   $initTotal: 8;
   @for $i from 1 through $initTotal {
     .init:nth-child(#{$i}) {
-      $rdm: random(100) - ($i * 20);
+      $rdm: random(100) - ($i * 15);
       $end: $rdm + 200;
       transform: translateX(#{$rdm}vw);
       top: calc(random(80) * 1%);
       animation: float#{$i} 70s linear forwards;
 
-      @debug meta.inspect(#{$rdm + 50}vw);
       @keyframes float#{$i} {
         to {
-          transform: translateX(#{$end}vw);
+          transform: translateX(#{max($end, 100)}vw);
         }
       }
     }
