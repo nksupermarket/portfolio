@@ -6,27 +6,27 @@
   }
 
   .off_page {
-    left: -100vw;
+    transform: translateX(-100vw);
   }
 
   $initTotal: 12;
   @for $i from 1 through $initTotal {
     .init:nth-child(#{$i}) {
-      left: random(100) * 1vw;
+      // transform: translateX(random(100) * 1vw);
       top: calc(random(80) * 1%);
     }
   }
 
-  $total: 24;
-  @for $i from 1 through $total {
-    .off_page:nth-child(#{$i}) {
+  $total: 29;
+  @for $j from 13 through $total {
+    .off_page:nth-of-type(#{$j}) {
       top: calc(random(80) * 1%);
-      animation: float#{$i} 70s linear infinite;
-      animation-delay: #{($i - 1) * 8}s;
+      animation: float#{$j} 70s linear infinite;
+      animation-delay: #{($j - 13) * 8}s;
 
-      @keyframes float#{$i} {
+      @keyframes float#{$j} {
         to {
-          left: 100vw;
+          transform: translateX(100vw);
         }
       }
     }
