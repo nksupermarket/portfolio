@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       <header className="App-header"></header>
       <Nav changeTheme={changeTheme} currentTheme={theme} />
-      <Header />
+      <Header theme={theme} />
       <ProjectSection
         title={{ firstRow: 'Latest', secondRow: 'Projects' }}
         sectionNumber={1}

@@ -1,0 +1,134 @@
+.ctn {
+  transform: translateX(-50vw);
+  animation: flyEastWest 15s infinite linear;
+  z-index: 6;
+  position: absolute;
+  top: 37%;
+}
+
+@keyframes flyEastWest {
+  to {
+    transform: translateX(100vw);
+  }
+}
+
+.rotate_wrapper {
+  transform-origin: right;
+}
+
+@mixin bird($headWidth, $flyHeight) {
+  .main {
+    background-color: #262626;
+    height: calc($headWidth * 0.8);
+    width: $headWidth;
+    border-radius: $headWidth $headWidth 0 0;
+    animation: flyUpDown 2s alternate infinite ease-in-out;
+    transform: translateY(0);
+  }
+
+  @keyframes flyUpDown {
+    to {
+      transform: translateY($flyHeight);
+    }
+  }
+
+  .body {
+    background-color: #ff6347;
+    height: $headWidth;
+    width: calc($headWidth * 2);
+    position: relative;
+    top: calc($headWidth * 0.8);
+    right: $headWidth;
+    border-radius: 0 0 calc($headWidth * 2) calc($headWidth * 2);
+  }
+
+  .tail_feather {
+    width: 0;
+    height: 0;
+    border-left: calc($headWidth * 0.2) solid transparent;
+    border-right: calc($headWidth * 0.2) solid transparent;
+    border-top: calc($headWidth * 0.2 * 3) solid #b3b3ff;
+    position: relative;
+    right: calc($headWidth * 2 - ($headWidth * 0.2 * 3));
+    bottom: calc(($headWidth * 2 - ($headWidth * 0.2 * 3)) / 2);
+    transform: rotate(-45deg);
+  }
+
+  .eye {
+    background-color: white;
+    height: calc($headWidth * 0.2);
+    width: calc($headWidth * 0.2);
+    border-radius: 50%;
+    position: relative;
+    bottom: calc($headWidth * 1.3);
+    left: calc($headWidth/2);
+  }
+
+  .eyeball {
+    background-color: var(--main-text);
+    height: calc($headWidth * 0.1);
+    width: calc($headWidth * 0.1);
+    border-radius: 50%;
+    position: relative;
+    top: calc($headWidth * 0.04);
+    left: calc($headWidth * 0.04);
+  }
+
+  .beak {
+    width: 0;
+    height: 0;
+    border-top: calc($headWidth * 0.15) solid transparent;
+    border-bottom: calc($headWidth * 0.15) solid transparent;
+    border-left: calc($headWidth * 0.3) solid #ffdb4d;
+    position: relative;
+    bottom: calc($headWidth * 2 - ($headWidth * 0.2 * 3));
+    left: $headWidth;
+  }
+
+  .wing {
+    background-color: #262626;
+    height: calc($headWidth * 0.85);
+    width: calc($headWidth * 1.7);
+    border-radius: 0 0 calc($headWidth * 1.7) calc($headWidth * 1.7);
+    position: relative;
+    bottom: calc($headWidth * 1.4);
+    right: calc($headWidth * 1.2);
+    animation: flap 1.75s infinite;
+    transform-origin: right;
+  }
+
+  @keyframes flap {
+    50% {
+      transform: rotate(20deg);
+    }
+  }
+
+  .wing_feathers {
+    background-color: #666666;
+    height: calc($headWidth * 0.6);
+    width: calc($headWidth * 1.4);
+    border-radius: 0 0 calc($headWidth * 1.2) calc($headWidth * 1.2);
+    position: relative;
+    left: calc($headWidth * 0.15);
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  @include bird(25px, 20vh);
+}
+
+@media screen and (max-width: 992px) {
+  @include bird(20px, 15vh);
+}
+
+@media screen and (max-width: 768px) {
+  @include bird(15px, 10vh);
+}
+
+@media screen and (max-width: 576px) {
+  @include bird(12px, 7.5vh);
+}
+
+@media screen and (min-width: 1600px) {
+  @include bird(30px, 20vh);
+}

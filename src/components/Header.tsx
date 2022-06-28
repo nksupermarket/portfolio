@@ -6,6 +6,7 @@ import Slide from './Animations/Slide';
 import Scale from './Animations/Scale';
 import CloudsBg from './CloudsBg';
 import StarsBg from './StarsBg';
+import Bird from './Bird';
 
 const slideConfig = {
   mass: 30,
@@ -19,7 +20,11 @@ const slideConfig = {
   bounce: 0.45
 };
 
-export default function Header() {
+interface HeaderProps {
+  theme: 'light' | 'dark';
+}
+
+export default function Header({ theme }: HeaderProps) {
   const [y, setY] = useState(window.scrollY);
 
   const circleAnimeRef = useSpringRef();
@@ -96,7 +101,7 @@ export default function Header() {
 
   return (
     <div className={styles.main}>
-      <StarsBg />
+      {theme === 'light' ? <Bird /> : <StarsBg />}
       <CloudsBg />
       <Scale
         elRef={divToScale}
