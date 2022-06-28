@@ -5,6 +5,7 @@ import { useChain, useSpringRef } from 'react-spring';
 import Slide from './Animations/Slide';
 import Scale from './Animations/Scale';
 import CloudsBg from './CloudsBg';
+import StarsBg from './StarsBg';
 
 const slideConfig = {
   mass: 30,
@@ -95,6 +96,7 @@ export default function Header() {
 
   return (
     <div className={styles.main}>
+      <StarsBg />
       <CloudsBg />
       <Scale
         elRef={divToScale}
