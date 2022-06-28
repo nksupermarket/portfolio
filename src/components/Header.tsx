@@ -19,21 +19,7 @@ const slideConfig = {
 };
 
 export default function Header() {
-  const [size, setSize] = useState({
-    height: 0,
-    width: 0
-  });
   const [y, setY] = useState(window.scrollY);
-
-  const node = useCallback((node: HTMLElement | null) => {
-    if (node) {
-      const boundingRect = node.getBoundingClientRect();
-      setSize({
-        height: boundingRect.height,
-        width: boundingRect.width
-      });
-    }
-  }, []);
 
   const circleAnimeRef = useSpringRef();
 
@@ -108,8 +94,8 @@ export default function Header() {
   }, [handleScroll]);
 
   return (
-    <div ref={node} className={styles.main}>
-      <HeaderBg size={size} />
+    <div className={styles.main}>
+      <HeaderBg />
       <Scale
         elRef={divToScale}
         className={styles.circle}
