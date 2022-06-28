@@ -14,6 +14,14 @@
 
 .rotate_wrapper {
   transform-origin: right;
+  transform: rotate(-10deg);
+  animation: rotate 2s alternate infinite ease-out;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(10deg);
+  }
 }
 
 @mixin bird($headWidth, $flyHeight) {
