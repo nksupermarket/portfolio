@@ -50,7 +50,7 @@ export default function ProjectSection({
         }}
         stack={['Typescript', 'Express', 'Next.js', 'Sass']}
         links={{
-          live: 'https://crochess-frontend.herokuapp.com/',
+          live: 'https://lookingcoolonavespa.github.io/crochess-frontend/',
           repo: 'https://github.com/lookingcoolonavespa/crochess'
         }}
         fireAnime={startProjectAnime}
