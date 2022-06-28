@@ -122,11 +122,11 @@
 }
 
 @media screen and (max-width: 768px) {
-  @include bird(15px, 10vh);
+  @include bird(15px, 15vh);
 }
 
 @media screen and (max-width: 576px) {
-  @include bird(12px, 7.5vh);
+  @include bird(12px, 15vh);
 }
 
 @media screen and (min-width: 1600px) {
