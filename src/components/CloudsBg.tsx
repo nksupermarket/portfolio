@@ -1,8 +1,8 @@
 import React from 'react';
 import CloudSvg from './CloudSvg';
-import styles from '../styles/HeaderBg.module.scss';
+import styles from '../styles/CloudsBg.module.scss';
 
-export default function HeaderBg() {
+export default function CloudsBg() {
   const rootClasses = ['bg', styles.main];
   return (
     <div className={rootClasses.join(' ')}>
