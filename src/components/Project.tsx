@@ -81,11 +81,18 @@ export default function Project({
           animationRef={secondaryAnimeRef}
           config={slideConfig}
         >
-          <a className={styles.live} href={links.live}>
+          <a
+            className={styles.live}
+            target="_blank"
+            href={links.live}
+            rel="noreferrer"
+          >
             Live
           </a>
           <span className={styles.divider}>|</span>
-          <a href={links.repo}>Repo</a>
+          <a target="_blank" href={links.repo} rel="noreferrer">
+            Repo
+          </a>
         </Scale>
       </Slide>
 
