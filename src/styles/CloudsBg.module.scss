@@ -9,7 +9,6 @@
     max-width: 470px;
     color: var(--clouds);
     height: max-content;
-    width: calc(random(32) * 1%);
   }
 
   .off_page {
@@ -37,6 +36,7 @@
   $total: $initTotal + 1 + 24;
   @for $j from $loopStart through $total {
     .off_page:nth-of-type(#{$j}) {
+      width: calc(random(32) * 1%);
       top: calc(random(70) * 1%);
       animation: float#{$j} 100s linear infinite;
       animation-delay: #{($j - $loopStart) * $initTotal}s;
