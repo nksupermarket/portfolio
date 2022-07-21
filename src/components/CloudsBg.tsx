@@ -6,12 +6,12 @@ export default function CloudsBg() {
   const rootClasses = ['bg', styles.main];
   return (
     <div className={rootClasses.join(' ')}>
-      {Array(8)
+      {Array(12)
         .fill(null)
         .map((v, i) => (
           <CloudSvg key={i} className={styles.init} />
         ))}
-      {Array(12)
+      {Array(24)
         .fill(null)
         .map((v, i) => (
           <CloudSvg key={i} className={styles.off_page} />
