@@ -1,5 +1,5 @@
 import React, { RefObject } from 'react';
-import { animated, SpringValue, SpringRef } from 'react-spring';
+import { animated, SpringValue } from 'react-spring';
 
 interface CloudSvgProps {
   className?: string;
