@@ -6,16 +6,25 @@ import useIntersectionObserver from '../utils/useIntersectionObserver';
 
 import { SectionProps } from '../types/interfaces';
 import styles from '../styles/ProjectSection.module.scss';
-import crochessScreen from '../assets/images/crochess-screen.png';
-import breadScreen from '../assets/images/discord-screen.png';
-import wheresWaldoScreen from '../assets/images/wheres_waldo_screen.png';
-import battleshipScreen3 from '../assets/images/battleship_screen_3.png';
-import memoryCardScreen from '../assets/images/memory_card_game_screen.png';
+import crochessScreen from '../assets/images/optimized/crochess-screen.webp';
+import breadScreen from '../assets/images/optimized/discord-screen.webp';
+import wheresWaldoScreen from '../assets/images/optimized/wheres_waldo_screen.webp';
+import battleshipScreen3 from '../assets/images/optimized/battleship_screen_3(1).webp';
+import memoryCardScreen from '../assets/images/optimized/memory_card_game_screen.webp';
+
+import resizedCrochessScreen from '../assets/images/optimized/resized/crochess-screen.webp';
+import resizedBreadScreen from '../assets/images/optimized/resized/discord-screen.webp';
+import resizedWheresWaldoScreen from '../assets/images/optimized/resized/wheres_waldo_screen.webp';
+import resizedBattleshipScreen3 from '../assets/images/optimized/resized/battleship_screen_3(1).webp';
+import resizedMemoryCardScreen from '../assets/images/optimized/resized/memory_card_game_screen.webp';
+import useWindowWidth from '../utils/useWindowWidth';
 
 export default function ProjectSection({
   title,
   sectionNumber
 }: SectionProps) {
+  const { greaterThan1920px } = useWindowWidth();
+
   const triggerRef = useRef<HTMLElement>(null);
 
   const ioData = useIntersectionObserver(triggerRef, {
@@ -44,7 +53,7 @@ export default function ProjectSection({
         title="croChess"
         desc="Play live online chess with your friends. Choose from standard time controls or create your own. All timers run on the backend so cheating is not possible."
         image={{
-          src: crochessScreen,
+          src: greaterThan1920px ? crochessScreen : resizedCrochessScreen,
           alt: 'screenshot of chess game in action',
           objectPosition: '71% 50%'
         }}
@@ -59,7 +68,7 @@ export default function ProjectSection({
         title="bread"
         desc="A community-based chat application where you can hang out with friends or find communities where people share your interests. Create a channel and start your own community or just sit back and enjoy the conversations."
         image={{
-          src: breadScreen,
+          src: greaterThan1920px ? breadScreen : resizedBreadScreen,
           alt: 'screenshot of chat channel in bread',
           objectPosition: '0% 50%'
         }}
@@ -75,7 +84,9 @@ export default function ProjectSection({
         title="Where's Waldo"
         desc="Compete with players around the world for the best time in a game of Where's Waldo. 7 different levels means 7 chances to get that #1 spot."
         image={{
-          src: wheresWaldoScreen,
+          src: greaterThan1920px
+            ? wheresWaldoScreen
+            : resizedWheresWaldoScreen,
           alt: "screenshot of where's waldo home page",
           objectPosition: '50% 50%'
         }}
@@ -90,7 +101,9 @@ export default function ProjectSection({
         title="memory card game"
         desc="Is your memory as good (or bad) as you think it is? Test your memory out in this game, and try to set some new personal bests."
         image={{
-          src: memoryCardScreen,
+          src: greaterThan1920px
+            ? memoryCardScreen
+            : resizedMemoryCardScreen,
           alt: 'screenshot of chat channel in bread',
           objectPosition: '50% 50%'
         }}
@@ -106,7 +119,9 @@ export default function ProjectSection({
         title="Battleship"
         desc="Play a game of battleship where the computer will stop at nothing to defeat you. It's your fleet admiral. Defend your position!"
         image={{
-          src: battleshipScreen3,
+          src: greaterThan1920px
+            ? battleshipScreen3
+            : resizedBattleshipScreen3,
           alt: 'screenshot of battleship home page',
           objectPosition: '50% 50%'
         }}

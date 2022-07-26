@@ -137,10 +137,13 @@
 @media screen and (max-width: 576px) {
   .main {
     flex-direction: column-reverse !important;
-    margin: 80px 0;
+    margin: 40px 0;
     row-gap: 40px;
   }
 
+  .main:first-of-type {
+    margin-top: 80px;
+  }
   .text_block {
     align-items: flex-start;
     flex: 1 1 auto;
