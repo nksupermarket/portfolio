@@ -114,6 +114,7 @@ export default function ContactSection({
               if (loading) return;
 
               let key: keyof typeof inputValues;
+              // eslint-disable-next-line
               const inputErrors: { [key in keyof Inputs]: string } = {
                 email: '',
                 message: ''
