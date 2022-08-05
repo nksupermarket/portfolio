@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.51ffa8ac.css",
-    "main.js": "/static/js/main.d6d92a57.js",
+    "main.css": "/static/css/main.c22cddde.css",
+    "main.js": "/static/js/main.aba195a0.js",
     "static/media/wheres_waldo_screen.webp": "/static/media/wheres_waldo_screen.c401ec5a4dae117030be.webp",
     "static/media/discord-screen.webp": "/static/media/discord-screen.a81cc338173472e4386f.webp",
     "static/media/crochess-screen.webp": "/static/media/crochess-screen.313a84176434206c3170.webp",
-    "static/media/memory_card_game_screen.webp": "/static/media/memory_card_game_screen.be0cab5466c8c81308b4.webp",
+    "static/media/lego_ecommerce-screen.webp": "/static/media/lego_ecommerce-screen.5a76cf1b36e1252e2e64.webp",
     "static/media/mongodb.svg": "/static/media/mongodb.153b7b440efa05666029a47da0d0baa0.svg",
     "static/media/battleship_screen_3(1).webp": "/static/media/battleship_screen_3(1).0a5e45a37b85d0357d54.webp",
     "static/media/express.svg": "/static/media/express.7e85c5130978e3593e65a44112bc7390.svg",
@@ -16,11 +16,11 @@
     "static/media/iconmonstr-github-1.svg": "/static/media/iconmonstr-github-1.04be58c17b3d5e9744424d414240dd85.svg",
     "static/media/close-line.svg": "/static/media/close-line.058af5b2654112a53b1b0a6d60692ace.svg",
     "static/media/check-line.svg": "/static/media/check-line.3f29db899e39cb68dca831bea022f649.svg",
-    "main.51ffa8ac.css.map": "/static/css/main.51ffa8ac.css.map",
-    "main.d6d92a57.js.map": "/static/js/main.d6d92a57.js.map"
+    "main.c22cddde.css.map": "/static/css/main.c22cddde.css.map",
+    "main.aba195a0.js.map": "/static/js/main.aba195a0.js.map"
   },
   "entrypoints": [
-    "static/css/main.51ffa8ac.css",
-    "static/js/main.d6d92a57.js"
+    "static/css/main.c22cddde.css",
+    "static/js/main.aba195a0.js"
   ]
 }
