@@ -4,6 +4,7 @@ import styles from '../styles/Project.module.scss';
 import { useChain, useTrail, animated, useSpringRef } from 'react-spring';
 import Scale from './Animations/Scale';
 import Slide from './Animations/Slide';
+import wrapWords from 'html-spaceship/src/utils/wrapWords';
 
 interface ProjectProps {
   title: string;

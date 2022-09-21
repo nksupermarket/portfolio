@@ -15,7 +15,7 @@
     "html-spaceship": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-spring": "^9.4.5",
     "sass": "^1.52.3",
     "typescript": "^4.7.3",

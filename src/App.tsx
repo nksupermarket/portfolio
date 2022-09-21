@@ -11,18 +11,27 @@ import { getCurrentTheme } from './utils/misc';
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
 
-  // useEffect(() => {});
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-    document.querySelector('html')?.setAttribute('color-mode', theme);
-  }, [theme]);
+  useEffect(
+    function pullTheme() {
+      localStorage.setItem('theme', theme);
+      document.querySelector('html')?.setAttribute('color-mode', theme);
+    },
+    [theme]
+  );
 
   function changeTheme() {
     setTheme((prev) => {
       return prev === 'light' ? 'dark' : 'light';
     });
   }
+
+  useEffect(function addSpaceshipEvent() {
+    window.addEventListener('keydown', async (e) => {
+      if (e.key !== ' ') return;
+      e.preventDefault();
+      await import('html-spaceship/src/main');
+    });
+  }, []);
 
   return (
     <div className="App">
