@@ -2,9 +2,9 @@
 
 .main {
   @include mixins.flex(row, false);
-  margin-top: 13em;
   justify-content: space-between;
   position: relative;
+  z-index: 3;
 
   h2,
   h3,
@@ -65,5 +65,29 @@
       font-size: 58px;
       margin-top: -8px;
     }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .main {
+    padding: 0 10%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 0 8%;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .main {
+    padding: 0 18%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .main {
+    padding: 0 28%;
   }
 }

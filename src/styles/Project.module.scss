@@ -1,14 +1,25 @@
 .main {
+  align-self: flex-end;
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin: 9em 0;
+  margin: 7em 0;
+  padding-right: 10%;
+  width: 60%;
+
+  &:first-of-type {
+    margin-top: 14em;
+  }
 
   &:last-of-type {
     margin-bottom: 0;
   }
 
   &.reverse {
+    align-self: flex-start;
+    padding-left: 10%;
+    padding-right: 0;
+
     flex-direction: row-reverse;
 
     .text_col header {
@@ -38,7 +49,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  flex: 0 0 403px;
+  flex: 1;
   row-gap: 10px;
 
   header {
@@ -115,14 +126,14 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  width: 40%;
+  width: 35%;
 }
 
 .img_wrapper {
   position: relative;
   height: 0;
-  width: 100%;
-  padding-bottom: 100%;
+  width: 75%;
+  padding-bottom: 75%;
 
   img {
     border-radius: 10px;

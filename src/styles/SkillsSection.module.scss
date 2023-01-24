@@ -1,12 +1,9 @@
 @use './mixins';
 
-.main {
-  margin-top: 8em;
-  margin-bottom: 13em;
-}
-
 .list {
-  margin-top: 80px;
+  width: 50%;
+  margin: auto;
+  margin-top: 7em;
   li {
     position: relative;
     width: 20%;
@@ -23,6 +20,7 @@
 }
 
 .img_wrapper {
+  background-color: var(--empty-icon-bg);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -56,11 +54,6 @@
 
 .react {
   background: #222;
-}
-
-.mongodb,
-.express {
-  background-color: white;
 }
 
 @media screen and (max-width: 576px) {

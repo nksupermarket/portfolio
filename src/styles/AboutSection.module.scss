@@ -1,13 +1,11 @@
 @use './mixins';
 
 .main {
-  margin-bottom: 100px;
   z-index: 1;
 
   header {
     align-items: flex-end;
     z-index: 99;
-    background-color: var(--background);
   }
 
   & > * {
@@ -16,16 +14,26 @@
 }
 
 .text_block {
-  border: 4px solid var(--circle);
   border-top: none;
   @include mixins.flex(column, true);
   padding: 50px;
   position: relative;
-  border-radius: 0 0 10px 10px;
   margin-right: 1px; // need this bc block w/ border somehow overflows container by 1px
 
   p {
     width: 80%;
     margin-bottom: 20px;
+  }
+}
+
+.pattern {
+  height: 100px;
+
+  &:first-of-type {
+    margin-bottom: 3em;
+  }
+
+  &:last-of-type {
+    margin-top: 3em;
   }
 }

@@ -30,7 +30,7 @@ export default function Slide({
       start = 'translateY(100vh)';
       break;
     case 'down':
-      start = 'translateY(-100vh)';
+      start = 'translateY(-15vh)';
       break;
   }
 

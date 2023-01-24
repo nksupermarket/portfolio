@@ -5,12 +5,14 @@
   @include mixins.getThemeColors(variables.$colors-light);
   --main-text-filter: invert(12%) sepia(3%) saturate(3722%)
     hue-rotate(267deg) brightness(95%) contrast(85%);
+  --bg-image: url('../assets/images/wes-hicks-ZW6RUvsaFTc-unsplash.jpg');
 }
 
 :root[color-mode='dark'] {
   @include mixins.getThemeColors(variables.$colors-dark);
   --main-text-filter: invert(94%) sepia(4%) saturate(771%)
     hue-rotate(331deg) brightness(107%) contrast(97%);
+  --bg-image: url('../assets/images/john-fowler-RsRTIofe0HE-unsplash.jpg');
 }
 
 * {
@@ -206,6 +208,30 @@ textarea {
   }
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+section:last-child {
+  padding-bottom: 150px;
+}
+
+@media screen and (min-width: 993px) {
+  section {
+    min-height: 80%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  section {
+    min-height: 60%;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   h2 {
     font-size: 70px;
@@ -221,10 +247,6 @@ textarea {
 }
 
 @media screen and (max-width: 992px) {
-  section {
-    padding: 0 10%;
-  }
-
   p {
     font-size: 14px;
   }
@@ -259,23 +281,5 @@ textarea {
   p,
   a {
     font-size: 14px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  section {
-    padding: 0 8%;
-  }
-}
-
-@media screen and (min-width: 993px) {
-  section {
-    padding: 0 18%;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  section {
-    padding: 0 28%;
   }
 }

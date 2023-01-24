@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import AboutSection from './components/AboutSection';
-import ContactSection from './components/ContactSection';
+import AboutSection from './components/section/AboutSection';
+import ContactSection from './components/section/ContactSection';
 import Header from './components/Header';
 import Nav from './components/Nav';
-import ProjectSection from './components/ProjectSection';
-import SkillsSection from './components/SkillsSection';
-import './styles/App.scss';
+import ProjectSection from './components/section/ProjectSection';
+import SkillsSection from './components/section/SkillsSection';
+import styles from './styles/App.module.scss';
 import { getCurrentTheme } from './utils/misc';
 
 function App() {
@@ -38,22 +38,26 @@ function App() {
       <header className="App-header"></header>
       <Nav changeTheme={changeTheme} currentTheme={theme} />
       <Header theme={theme} />
-      <ProjectSection
-        title={{ firstRow: 'Latest', secondRow: 'Projects' }}
-        sectionNumber={1}
-      />
-      <SkillsSection
-        title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
-        sectionNumber={2}
-      />
-      <AboutSection
-        title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
-        sectionNumber={3}
-      />
-      <ContactSection
-        title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
-        sectionNumber={4}
-      />
+      <main className={styles.main}>
+        <div className={[styles.fade, styles.top].join(' ')}></div>
+        <div className={styles.bg}></div>
+        <ProjectSection
+          title={{ firstRow: 'Latest', secondRow: 'Projects' }}
+          sectionNumber={1}
+        />
+        <SkillsSection
+          title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
+          sectionNumber={2}
+        />
+        <AboutSection
+          title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
+          sectionNumber={3}
+        />
+        <ContactSection
+          title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
+          sectionNumber={4}
+        />
+      </main>
     </div>
   );
 }
