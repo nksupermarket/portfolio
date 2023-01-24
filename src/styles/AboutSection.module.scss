@@ -2,8 +2,10 @@
 
 .main {
   z-index: 1;
+  @include mixins.sectionHeaderPadding();
 
   header {
+    padding: 0;
     align-items: flex-end;
     z-index: 99;
   }
@@ -13,27 +15,32 @@
   }
 }
 
+.content {
+  display: flex;
+  justify-content: space-between;
+  padding: 5em 0 0 0;
+}
+
 .text_block {
   border-top: none;
-  @include mixins.flex(column, true);
-  padding: 50px;
   position: relative;
-  margin-right: 1px; // need this bc block w/ border somehow overflows container by 1px
+  margin: auto;
+  padding-top: 3em;
+  padding-bottom: 3em;
 
   p {
-    width: 80%;
     margin-bottom: 20px;
   }
 }
 
 .pattern {
-  height: 100px;
+  height: 100%;
 
-  &:first-of-type {
-    margin-bottom: 3em;
+  &.top {
+    border-radius: 5px 5px 0 0;
   }
 
-  &:last-of-type {
-    margin-top: 3em;
+  &.bottom {
+    border-radius: 5px 0 5px 5px;
   }
 }

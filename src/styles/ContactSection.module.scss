@@ -9,6 +9,7 @@
     margin: 80px 0;
     row-gap: 40px;
     @include mixins.flex(column, true);
+    @include mixins.sectionHeaderPadding();
   }
 
   button {
@@ -24,7 +25,7 @@
     border: 2px solid var(--accent);
     border-radius: 5px;
     overflow: hidden;
-    transition: all linear 0.3s;
+    transition: all linear 0.1s;
 
     &:hover {
       background-position: -100% 0;

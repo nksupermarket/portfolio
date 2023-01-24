@@ -105,8 +105,15 @@ export default function ContactSection({
         title={title}
         number={sectionNumber}
         animationRef={headerAnimeRef}
+        visible={visible}
       />
-      <Slide dir="right" animationRef={formAnimeRef}>
+      <Slide
+        start={{ transform: 'translateX(-100vw)' }}
+        end={{
+          transform: 'translate(0)'
+        }}
+        animationRef={formAnimeRef}
+      >
         <>
           <form
             ref={form}

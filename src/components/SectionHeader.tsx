@@ -10,8 +10,9 @@ interface SectionHeaderProps {
   };
   number: number;
   animationRef?: SpringRef;
-  visible?: boolean;
-  setHeaderAnimeFinished?: React.Dispatch<React.SetStateAction<boolean[]>>;
+  visible: boolean;
+  headerRef?: React.Ref<HTMLHeadingElement>;
+  numRef?: React.Ref<HTMLHeadingElement>;
 }
 
 export default function SectionHeader({
@@ -19,40 +20,29 @@ export default function SectionHeader({
   number,
   animationRef,
   visible,
-  setHeaderAnimeFinished
+  headerRef,
+  numRef
 }: SectionHeaderProps) {
   return (
     <header className={styles.main}>
       <Slide
-        dir="right"
+        start={{ transform: 'translateX(-100vw)' }}
+        end={{
+          transform: visible ? 'translate(0)' : 'translateX(-100vw)'
+        }}
         animationRef={animationRef}
-        condition={visible}
-        onRest={() =>
-          setHeaderAnimeFinished &&
-          setHeaderAnimeFinished((prev) => {
-            const copy = [...prev];
-            copy[0] = true;
-            return copy;
-          })
-        }
       >
         <div className={styles.title}>
           <h4>{title.firstRow}</h4>
-          <h3>{title.secondRow.toUpperCase()}</h3>
+          <h3 ref={headerRef}>{title.secondRow.toUpperCase()}</h3>
         </div>
       </Slide>
       <Slide
-        dir="left"
+        start={{ transform: 'translateX(100vw)' }}
+        end={{
+          transform: visible ? 'translate(0)' : 'translateX(100vw)'
+        }}
         animationRef={animationRef}
-        condition={visible}
-        onRest={() =>
-          setHeaderAnimeFinished &&
-          setHeaderAnimeFinished((prev) => {
-            const copy = [...prev];
-            copy[1] = true;
-            return copy;
-          })
-        }
         config={{
           mass: 50,
           tension: 1000,
@@ -60,7 +50,7 @@ export default function SectionHeader({
           bounce: 0.3
         }}
       >
-        <h2>{`0${number}`}</h2>
+        <h2 ref={numRef}>{`0${number}`}</h2>
       </Slide>
     </header>
   );

@@ -112,16 +112,22 @@ export default function Header({ theme }: HeaderProps) {
       <div className={`${styles.text_block} ${styles.top}`}>
         <div className={styles.ctn}>
           <Slide
+            start={{ transform: 'translateX(100vw)' }}
+            end={{
+              transform: 'translate(0)'
+            }}
             animationRef={textAnimeRef}
-            dir="left"
             config={slideConfig}
             tag="h2"
           >
             Alex Liang
           </Slide>
           <Slide
+            start={{ transform: 'translateX(100vw)' }}
+            end={{
+              transform: 'translate(0)'
+            }}
             elRef={divToSlideLeft}
-            dir="left"
             animationRef={underlineAnimeRef}
             className={styles.underline}
             config={{
@@ -136,16 +142,22 @@ export default function Header({ theme }: HeaderProps) {
       <div className={`${styles.text_block} ${styles.bottom}`}>
         <div className={styles.ctn}>
           <Slide
+            start={{ transform: 'translateX(-100vw)' }}
+            end={{
+              transform: 'translate(0)'
+            }}
             animationRef={textAnimeRef}
-            dir="right"
             config={slideConfig}
             tag="h2"
           >
             web developer
           </Slide>
           <Slide
+            start={{ transform: 'translateX(-100vw)' }}
+            end={{
+              transform: 'translate(0)'
+            }}
             elRef={divToSlideRight}
-            dir="right"
             animationRef={underlineAnimeRef}
             className={styles.underline}
             config={{

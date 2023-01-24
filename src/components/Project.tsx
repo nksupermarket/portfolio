@@ -71,7 +71,12 @@ export default function Project({
   return (
     <div className={rootClasses.join(' ')}>
       <Slide
-        dir={reverse ? 'left' : 'right'}
+        start={{
+          transform: reverse ? 'translateX(100vw)' : 'translateX(-100vw)'
+        }}
+        end={{
+          transform: 'translate(0)'
+        }}
         className={styles.text_col}
         animationRef={slideAnimeRef}
       >

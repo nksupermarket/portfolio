@@ -20,3 +20,21 @@
     align-items: center;
   }
 }
+
+@mixin sectionHeaderPadding() {
+  @media screen and (max-width: 992px) {
+    padding: 0 10%;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 8%;
+  }
+
+  @media screen and (min-width: 993px) {
+    padding: 0 18%;
+  }
+
+  @media screen and (min-width: 1600px) {
+    padding: 0 28%;
+  }
+}
