@@ -41,7 +41,33 @@
         margin-right: 0;
       }
     }
+
+    .yellow_line {
+      margin-left: 0;
+      margin-right: 10%;
+    }
+    .red_line {
+      margin-left: 0;
+      margin-right: 20%;
+    }
   }
+}
+
+.underline {
+  height: 3px;
+  border-radius: 5px;
+}
+
+.green_line {
+  background-color: var(--decoration);
+}
+.yellow_line {
+  background-color: var(--empty-icon-bg);
+  margin-left: 10%;
+}
+.red_line {
+  background-color: var(--accent);
+  margin-left: 20%;
 }
 
 .text_col {
@@ -87,6 +113,7 @@
   }
 
   .btn_ctn {
+    z-index: 5;
     align-self: flex-end;
     display: flex;
     align-items: center;

@@ -80,7 +80,7 @@ export default function AboutSection({
             <p>
               I love the puzzle games you have to solve on the way to
               elegant code, the many creative solutions that exist for any
-              given problem. It can be thrilling.
+              given problem. The blood rush of
             </p>
             <p>
               But being able to put everything together — the ability to
@@ -91,9 +91,10 @@ export default function AboutSection({
           </div>
         </Slide>
         <Slide
-          start={{ transform: 'translateX(100vw)' }}
+          start={{ transform: 'translateX(15vw)', opacity: '0' }}
           end={{
-            transform: 'translate(0)'
+            transform: 'translate(0)',
+            opacity: '1'
           }}
           animationRef={patternAnimeRef}
         >
@@ -105,10 +106,19 @@ export default function AboutSection({
           />
         </Slide>
       </div>
-      <SeigaihaPattern
-        style={{ height: `${patternWidth}px` }}
-        className={[styles.pattern, styles.bottom].join(' ')}
-      />
+      <Slide
+        start={{ transform: 'translateX(-15vw)', opacity: '0' }}
+        end={{
+          transform: 'translate(0)',
+          opacity: '1'
+        }}
+        animationRef={patternAnimeRef}
+      >
+        <SeigaihaPattern
+          style={{ height: `${patternWidth}px` }}
+          className={[styles.pattern, styles.bottom].join(' ')}
+        />
+      </Slide>
     </section>
   );
 }

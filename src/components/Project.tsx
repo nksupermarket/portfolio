@@ -5,7 +5,6 @@ import { useChain, useTrail, animated, useSpringRef } from 'react-spring';
 import Scale from './Animations/Scale';
 import Slide from './Animations/Slide';
 import wrapWords from 'html-spaceship/src/utils/wrapWords';
-import ZigZag from './ZigZag';
 
 interface ProjectProps {
   title: string;
@@ -85,7 +84,20 @@ export default function Project({
             <h4 className={styles.title}>
               {wrapWords(title, { boundary: true })}
             </h4>
-            <ZigZag />
+            <div>
+              <div
+                className={[styles.underline, styles.green_line].join(' ')}
+              ></div>
+              <div
+                className={[styles.underline, styles.yellow_line].join(
+                  ' '
+                )}
+              ></div>
+              <div
+                className={[styles.underline, styles.red_line].join(' ')}
+              ></div>
+            </div>
+            {/* <ZigZag /> */}
           </div>
         </header>
         <p className={styles.desc}>
