@@ -23,7 +23,6 @@ export default function SkillsSection({
   title,
   sectionNumber
 }: SectionProps) {
-  // const headerAnimeRef = useSpringRef();
   const [startTrail, setStartTrail] = useState(false);
 
   const triggerRef = useRef<HTMLElement>(null);

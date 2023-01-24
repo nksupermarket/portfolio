@@ -5,6 +5,7 @@ import { useChain, useTrail, animated, useSpringRef } from 'react-spring';
 import Scale from './Animations/Scale';
 import Slide from './Animations/Slide';
 import wrapWords from 'html-spaceship/src/utils/wrapWords';
+import ZigZag from './ZigZag';
 
 interface ProjectProps {
   title: string;
@@ -71,30 +72,70 @@ export default function Project({
     <div className={rootClasses.join(' ')}>
       <Slide
         dir={reverse ? 'left' : 'right'}
-        className={styles.text_block}
+        className={styles.text_col}
         animationRef={slideAnimeRef}
       >
-        <h4 className={styles.title}>{title}</h4>
-        <p className={styles.desc}>{desc}</p>
-
-        <Scale
-          className={styles.btn_ctn}
-          animationRef={secondaryAnimeRef}
-          config={slideConfig}
-        >
-          <a
-            className={styles.live}
-            target="_blank"
-            href={links.live}
-            rel="noreferrer"
-          >
-            Live
-          </a>
-          <span className={styles.divider}>|</span>
-          <a target="_blank" href={links.repo} rel="noreferrer">
-            Repo
-          </a>
-        </Scale>
+        <header>
+          <div className="flex-col">
+            <h4 className={styles.title}>
+              {wrapWords(title, { boundary: true })}
+            </h4>
+            <ZigZag />
+          </div>
+        </header>
+        <p className={styles.desc}>
+          {wrapWords(desc, {
+            last: true,
+            boundary: true
+          })}
+        </p>
+        <div className="flex-row">
+          {reverse ? (
+            <>
+              <div className={styles.line}></div>
+              <Scale
+                className={styles.btn_ctn}
+                animationRef={secondaryAnimeRef}
+                config={slideConfig}
+              >
+                <a
+                  className={styles.live}
+                  target="_blank"
+                  href={links.live}
+                  rel="noreferrer"
+                >
+                  Live
+                </a>
+                <span className={styles.divider}>|</span>
+                <a target="_blank" href={links.repo} rel="noreferrer">
+                  Repo
+                </a>
+              </Scale>
+            </>
+          ) : (
+            <>
+              <Scale
+                className={styles.btn_ctn}
+                animationRef={secondaryAnimeRef}
+                config={slideConfig}
+              >
+                <a
+                  className={styles.live}
+                  target="_blank"
+                  href={links.live}
+                  rel="noreferrer"
+                >
+                  Live
+                </a>
+                <span className={styles.divider}>|</span>
+                <a target="_blank" href={links.repo} rel="noreferrer">
+                  Repo
+                </a>
+              </Scale>
+              <div className={styles.line}></div>
+            </>
+          )}
+        </div>
       </Slide>
 
       <div className={styles.img_col}>

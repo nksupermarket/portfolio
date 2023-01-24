@@ -2,6 +2,7 @@
 
 .main {
   @include mixins.flex(row, false);
+  margin-top: 13em;
   justify-content: space-between;
   position: relative;
 

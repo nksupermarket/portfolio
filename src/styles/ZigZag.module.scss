@@ -1,0 +1,76 @@
+@use 'sass:math';
+
+$size: 20px;
+
+.main {
+  width: 96%;
+  height: $size;
+  background: linear-gradient(
+        135deg,
+        var(--decoration) 0 25%,
+        transparent 26% 100%
+      ) -$size math.div($size, 2) * -1,
+    linear-gradient(-135deg, var(--decoration) 0 25%, transparent 26% 100%) -$size
+      math.div($size, 2) * -1,
+    linear-gradient(45deg, var(--decoration) 0 25%, transparent 26% 100%)
+      math.div($size, 2) * -1 math.div($size, 2) * -1,
+    linear-gradient(-45deg, var(--decoration) 0 25%, transparent 26% 100%)
+      math.div($size, 2) * -1 math.div($size, 2) * -1;
+  background-size: $size $size;
+}
+
+@media screen and (max-width: 992px) {
+  $size: 10px;
+
+  .main {
+    width: 96%;
+    height: $size;
+    background: linear-gradient(
+          135deg,
+          var(--decoration) 0 25%,
+          transparent 26% 100%
+        ) -$size math.div($size, 2) * -1,
+      linear-gradient(
+          -135deg,
+          var(--decoration) 0 25%,
+          transparent 26% 100%
+        ) -$size math.div($size, 2) * -1,
+      linear-gradient(45deg, var(--decoration) 0 25%, transparent 26% 100%)
+        math.div($size, 2) * -1 math.div($size, 2) * -1,
+      linear-gradient(
+          -45deg,
+          var(--decoration) 0 25%,
+          transparent 26% 100%
+        )
+        math.div($size, 2) * -1 math.div($size, 2) * -1;
+    background-size: $size $size;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  $size: 8px;
+
+  .main {
+    width: 96%;
+    height: $size;
+    background: linear-gradient(
+          135deg,
+          var(--decoration) 0 25%,
+          transparent 26% 100%
+        ) -$size math.div($size, 2) * -1,
+      linear-gradient(
+          -135deg,
+          var(--decoration) 0 25%,
+          transparent 26% 100%
+        ) -$size math.div($size, 2) * -1,
+      linear-gradient(45deg, var(--decoration) 0 25%, transparent 26% 100%)
+        math.div($size, 2) * -1 math.div($size, 2) * -1,
+      linear-gradient(
+          -45deg,
+          var(--decoration) 0 25%,
+          transparent 26% 100%
+        )
+        math.div($size, 2) * -1 math.div($size, 2) * -1;
+    background-size: $size $size;
+  }
+}

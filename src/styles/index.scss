@@ -222,7 +222,11 @@ textarea {
 
 @media screen and (max-width: 992px) {
   section {
-    padding: 0 15%;
+    padding: 0 10%;
+  }
+
+  p {
+    font-size: 14px;
   }
 
   h2 {
