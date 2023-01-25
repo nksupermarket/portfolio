@@ -1,26 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.c22cddde.css",
-    "main.js": "/static/js/main.aba195a0.js",
+    "main.css": "/static/css/main.52854709.css",
+    "main.js": "/static/js/main.0af6a0ea.js",
+    "static/media/wes-hicks-ZW6RUvsaFTc-unsplash.jpg": "/static/media/wes-hicks-ZW6RUvsaFTc-unsplash.9d81b1e725763e283b9a.jpg",
+    "static/media/john-fowler-RsRTIofe0HE-unsplash.jpg": "/static/media/john-fowler-RsRTIofe0HE-unsplash.5b25dec1abc5712728c3.jpg",
     "static/media/wheres_waldo_screen.webp": "/static/media/wheres_waldo_screen.c401ec5a4dae117030be.webp",
     "static/media/discord-screen.webp": "/static/media/discord-screen.a81cc338173472e4386f.webp",
     "static/media/crochess-screen.webp": "/static/media/crochess-screen.313a84176434206c3170.webp",
     "static/media/lego_ecommerce-screen.webp": "/static/media/lego_ecommerce-screen.5a76cf1b36e1252e2e64.webp",
+    "static/media/todo-list.png": "/static/media/todo-list.316e188506f62d050254.png",
     "static/media/mongodb.svg": "/static/media/mongodb.153b7b440efa05666029a47da0d0baa0.svg",
-    "static/media/battleship_screen_3(1).webp": "/static/media/battleship_screen_3(1).0a5e45a37b85d0357d54.webp",
     "static/media/express.svg": "/static/media/express.7e85c5130978e3593e65a44112bc7390.svg",
     "static/media/react.svg": "/static/media/react.e27571eaed899c642345e71163624ef9.svg",
     "static/media/typescript-icon.svg": "/static/media/typescript-icon.17d5e87eac2c9d1dc722ce1e0b60d5df.svg",
     "static/media/javascript.svg": "/static/media/javascript.fd46ca41839433d73577989d86eb2fe2.svg",
     "index.html": "/index.html",
     "static/media/iconmonstr-github-1.svg": "/static/media/iconmonstr-github-1.04be58c17b3d5e9744424d414240dd85.svg",
+    "static/media/tailwind.svg": "/static/media/tailwind.d64632bd187823b0e15c972adea2f31e.svg",
     "static/media/close-line.svg": "/static/media/close-line.058af5b2654112a53b1b0a6d60692ace.svg",
     "static/media/check-line.svg": "/static/media/check-line.3f29db899e39cb68dca831bea022f649.svg",
-    "main.c22cddde.css.map": "/static/css/main.c22cddde.css.map",
-    "main.aba195a0.js.map": "/static/js/main.aba195a0.js.map"
+    "main.52854709.css.map": "/static/css/main.52854709.css.map",
+    "main.0af6a0ea.js.map": "/static/js/main.0af6a0ea.js.map"
   },
   "entrypoints": [
-    "static/css/main.c22cddde.css",
-    "static/js/main.aba195a0.js"
+    "static/css/main.52854709.css",
+    "static/js/main.0af6a0ea.js"
   ]
 }
