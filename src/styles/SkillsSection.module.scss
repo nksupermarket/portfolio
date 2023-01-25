@@ -1,7 +1,7 @@
 @use './mixins';
 
 .list {
-  width: 50%;
+  width: 40%;
   margin: auto;
   margin-top: 7em;
   li {
@@ -56,14 +56,16 @@
   background: #222;
 }
 
-@media screen and (max-width: 576px) {
-  .main {
-    padding-bottom: 40px;
-  }
-
+@media screen and (max-width: 992px) {
   .list {
-    margin: 50px 0;
+    width: 80%;
+    margin-top: 6em;
+  }
+}
 
+@media screen and (max-width: 576px) {
+  .list {
+    margin-top: 5em;
     li {
       width: 25%;
       padding-bottom: 25%;

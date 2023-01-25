@@ -13,6 +13,7 @@ export default function useWindowWidth() {
   }, []);
 
   return {
-    greaterThan1920px: windowWidth > 1920
+    greaterThan1920px: windowWidth > 1920,
+    lessThan992px: windowWidth < 992
   };
 }

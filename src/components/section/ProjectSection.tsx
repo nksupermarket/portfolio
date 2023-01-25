@@ -1,33 +1,29 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Project from '../Project';
 import SectionHeader from '../SectionHeader';
 
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
-import { SectionProps } from '../../types/interfaces';
-import styles from '../../styles/ProjectSection.module.scss';
 import crochessScreen from '../../assets/images/optimized/crochess-screen.webp';
 import breadScreen from '../../assets/images/optimized/discord-screen.webp';
-import wheresWaldoScreen from '../../assets/images/optimized/wheres_waldo_screen.webp';
-import battleshipScreen3 from '../../assets/images/optimized/battleship_screen_3(1).webp';
 import legoScreen from '../../assets/images/optimized/lego_ecommerce-screen.webp';
+import wheresWaldoScreen from '../../assets/images/optimized/wheres_waldo_screen.webp';
+import styles from '../../styles/ProjectSection.module.scss';
+import { SectionProps } from '../../types/interfaces';
 
 import resizedCrochessScreen from '../../assets/images/optimized/resized/crochess-screen.webp';
 import resizedBreadScreen from '../../assets/images/optimized/resized/discord-screen.webp';
-import resizedWheresWaldoScreen from '../../assets/images/optimized/resized/wheres_waldo_screen.webp';
-import resizedBattleshipScreen3 from '../../assets/images/optimized/resized/battleship_screen_3(1).webp';
 import resizedLegoScreen from '../../assets/images/optimized/resized/lego_ecommerce-screen.webp';
-
-import useWindowWidth from '../../utils/useWindowWidth';
+import resizedWheresWaldoScreen from '../../assets/images/optimized/resized/wheres_waldo_screen.webp';
+import todoListScreen from '../../assets/images/optimized/todo-list.png';
+import WindowSizeContext from '../../utils/WindowSizeContext';
 
 export default function ProjectSection({
   title,
   sectionNumber
 }: SectionProps) {
-  const { greaterThan1920px } = useWindowWidth();
-
   const triggerRef = useRef<HTMLElement>(null);
-
+  const { greaterThan1920px } = useContext(WindowSizeContext);
   const ioData = useIntersectionObserver(triggerRef, {
     freezeOnceVisible: true,
     threshold: 0.07
@@ -44,33 +40,50 @@ export default function ProjectSection({
 
   const projects = [
     {
-      title: 'lego store',
-      desc: 'Peruse through and purchase your favorite lego sets.',
-      image: {
-        src: greaterThan1920px ? legoScreen : resizedLegoScreen,
-        alt: 'screenshot of lego ecommerce store',
-        objectPosition: '50% 50%'
-      },
-      stack: ['Typescript', 'Next.js', 'Sass'],
-      links: {
-        live: 'https://bit.ly/3zX1vXO',
-        repo: 'https://bit.ly/3zWzJLp'
-      }
-    },
-    {
       title: 'croChess',
-      desc: 'Play live online chess with your friends. Choose from standard time controls or create your own. All timers run on the backend.',
+      desc: 'Play live online chess with your friends. Choose from standard time controls or create your own. Features a chess engine that uses alpha-beta pruning, transposition tables, quiescent search, and piece-square tables to find the best move.',
       image: {
         src: greaterThan1920px ? crochessScreen : resizedCrochessScreen,
         alt: 'screenshot of chess game in action',
         objectPosition: '71% 50%'
       },
-      stack: ['Typescript', 'Express', 'Next.js', 'Sass'],
+      stack: [
+        'Typescript',
+        'React',
+        'Sass',
+        'Java',
+        'Spring',
+        'Supabase',
+        'Docker',
+        'Websockets'
+      ],
       links: {
         live: 'https://bit.ly/3a0ttrJ',
         repo: 'https://bit.ly/3Nc9hB3'
       }
     },
+    {
+      title: 'lego store',
+      desc: 'Peruse through and purchase your favorite lego sets. Product details were pulled from the official lego website using Puppeteer.',
+      image: {
+        src: greaterThan1920px ? legoScreen : resizedLegoScreen,
+        alt: 'screenshot of lego ecommerce store',
+        objectPosition: '50% 50%'
+      },
+      stack: [
+        'Typescript',
+        'Next.js',
+        'Sass',
+        'Puppeteer',
+        'Cypress',
+        'RTL'
+      ],
+      links: {
+        live: 'https://bit.ly/3zX1vXO',
+        repo: 'https://bit.ly/3zWzJLp'
+      }
+    },
+
     {
       title: 'bread',
       desc: 'A community-based chat application where you can hang out with friends or find communities where people share your interests. Create a channel and start your own community or just sit back and enjoy the conversations.',
@@ -79,10 +92,24 @@ export default function ProjectSection({
         alt: 'screenshot of chat channel in bread',
         objectPosition: '0% 50%'
       },
-      stack: ['Javascript', 'React', 'Css'],
+      stack: ['Javascript', 'React', 'Css', 'Firebase'],
       links: {
         live: 'https://bit.ly/3qPqh6M',
         repo: 'https://bit.ly/3G1ADH0'
+      }
+    },
+    {
+      title: 'Todo List',
+      desc: 'Planning to take over the  world? Stay on top of your dastardly deeds by keeping track of what you need to do next.',
+      image: {
+        src: todoListScreen,
+        alt: 'screenshot of todo list main page',
+        objectPosition: '65% 50%'
+      },
+      stack: ['Typescript', 'Tailwind', 'Supabase', 'Next.js'],
+      links: {
+        live: 'https://lookingcoolonavespa.github.io/battleship/dist/',
+        repo: 'https://github.com/lookingcoolonavespa/battleship'
       }
     },
     {
@@ -99,22 +126,6 @@ export default function ProjectSection({
       links: {
         live: 'https://bit.ly/3nqFj1F',
         repo: 'https://bit.ly/33AWQgs'
-      }
-    },
-    {
-      title: 'Battleship',
-      desc: "Play a game of battleship where the computer will stop at nothing to defeat you. It's your fleet admiral. Defend your position!",
-      image: {
-        src: greaterThan1920px
-          ? battleshipScreen3
-          : resizedBattleshipScreen3,
-        alt: 'screenshot of battleship home page',
-        objectPosition: '50% 50%'
-      },
-      stack: ['Javascript', 'Html', 'Css'],
-      links: {
-        live: 'https://lookingcoolonavespa.github.io/battleship/dist/',
-        repo: 'https://github.com/lookingcoolonavespa/battleship'
       }
     }
   ];

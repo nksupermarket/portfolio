@@ -1,0 +1,24 @@
+.flex-row {
+  display: flex;
+}
+
+.main_section {
+  padding-top: 13em;
+}
+
+@media screen and (max-width: 992px) {
+  .main_section {
+    &:first-of-type {
+      padding-top: 6em;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main_section {
+    padding-top: 9em;
+    &:first-of-type {
+      padding-top: 6em;
+    }
+  }
+}
