@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.a4d10a31.css",
+    "main.css": "/static/css/main.6cef5386.css",
     "main.js": "/static/js/main.6dd7f533.js",
     "static/css/809.3da6d27d.chunk.css": "/static/css/809.3da6d27d.chunk.css",
     "static/js/809.5b8b69a6.chunk.js": "/static/js/809.5b8b69a6.chunk.js",
@@ -27,7 +27,7 @@
     "static/media/tailwind.svg": "/static/media/tailwind.d64632bd187823b0e15c972adea2f31e.svg",
     "static/media/close-line.svg": "/static/media/close-line.058af5b2654112a53b1b0a6d60692ace.svg",
     "static/media/check-line.svg": "/static/media/check-line.3f29db899e39cb68dca831bea022f649.svg",
-    "main.a4d10a31.css.map": "/static/css/main.a4d10a31.css.map",
+    "main.6cef5386.css.map": "/static/css/main.6cef5386.css.map",
     "main.6dd7f533.js.map": "/static/js/main.6dd7f533.js.map",
     "809.3da6d27d.chunk.css.map": "/static/css/809.3da6d27d.chunk.css.map",
     "809.5b8b69a6.chunk.js.map": "/static/js/809.5b8b69a6.chunk.js.map",
@@ -39,7 +39,7 @@
     "275.a0cda29a.chunk.js.map": "/static/js/275.a0cda29a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a4d10a31.css",
+    "static/css/main.6cef5386.css",
     "static/js/main.6dd7f533.js"
   ]
 }
