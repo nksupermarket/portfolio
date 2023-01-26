@@ -45,3 +45,18 @@ export interface CloudInterface {
   readonly width: number;
   updatePosition(): void;
 }
+
+export interface ProjectDetails {
+  title: string;
+  desc: string;
+  image: {
+    src: typeof import('*.webp') | string;
+    alt: string;
+    objectPosition: string;
+  };
+  stack: string[];
+  links: {
+    live: string;
+    repo: string;
+  };
+}

@@ -6,20 +6,9 @@ import Scale from './Animations/Scale';
 import Slide from './Animations/Slide';
 import wrapWords from 'html-spaceship/src/utils/wrapWords';
 import WindowSizeContext from '../utils/WindowSizeContext';
+import { ProjectDetails } from '../types/interfaces';
 
-interface ProjectProps {
-  title: string;
-  desc: string;
-  image: {
-    src: string;
-    alt: string;
-    objectPosition: string;
-  };
-  stack: string[];
-  links: {
-    live: string;
-    repo: string;
-  };
+interface ProjectProps extends ProjectDetails {
   reverse?: boolean;
   fireAnime: boolean;
 }
@@ -181,7 +170,7 @@ export default function Project({
             config={slideConfig}
           >
             <img
-              src={image.src}
+              src={image.src as string}
               alt={image.alt}
               style={{
                 objectPosition: image.objectPosition
