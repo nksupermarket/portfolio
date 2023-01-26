@@ -2,15 +2,15 @@
 
 .main {
   z-index: 1;
-  @include mixins.sectionHeaderPadding();
 
   header {
-    padding: 0;
     align-items: flex-end;
     z-index: 99;
   }
 
   & > * {
+    @include mixins.sectionHeaderPadding();
+
     flex-grow: 1;
   }
 }

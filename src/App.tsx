@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
-import ProjectSection from './components/section/ProjectSection';
 import styles from './styles/App.module.scss';
 import { getCurrentTheme } from './utils/misc';
 import useWindowWidth from './utils/useWindowWidth';
@@ -42,6 +41,10 @@ function App() {
     }
   }, [theme, lessThan992px]);
 
+  const ProjectSection = React.lazy(
+    () => import('./components/section/ProjectSection')
+  );
+
   const SkillsSection = React.lazy(
     () => import('./components/section/SkillsSection')
   );
@@ -69,11 +72,12 @@ function App() {
             className={styles.bg}
             style={{ backgroundImage: `url(${bgImage})` }}
           ></div>
-          <ProjectSection
-            title={{ firstRow: 'Latest', secondRow: 'Projects' }}
-            sectionNumber={1}
-          />
+
           <Suspense fallback={<div>Loading...</div>}>
+            <ProjectSection
+              title={{ firstRow: 'Latest', secondRow: 'Projects' }}
+              sectionNumber={1}
+            />
             <SkillsSection
               title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
               sectionNumber={2}
