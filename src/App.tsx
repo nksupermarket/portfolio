@@ -12,7 +12,6 @@ import SkillsSection from './components/section/SkillsSection';
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
-  const [bgImage, setBgImage] = useState<string>();
   const { greaterThan1920px, lessThan992px } = useWindowWidth();
 
   useEffect(
@@ -29,21 +28,16 @@ function App() {
     });
   }
 
-  useEffect(() => {
-    if (theme === 'dark') {
-      setBgImage(
-        lessThan992px
-          ? require('./assets/images/optimized/resized/john-fowler-RsRTIofe0HE-unsplash.webp')
-          : require('./assets/images/optimized/john-fowler-RsRTIofe0HE-unsplash.webp')
-      );
-    } else {
-      setBgImage(
-        lessThan992px
-          ? require('./assets/images/optimized/resized/wes-hicks-ZW6RUvsaFTc-unsplash.webp')
-          : require('./assets/images/optimized/wes-hicks-ZW6RUvsaFTc-unsplash.webp')
-      );
-    }
-  }, [theme, lessThan992px]);
+  let bgImage = '';
+  if (theme === 'dark') {
+    bgImage = lessThan992px
+      ? require('./assets/images/optimized/resized/john-fowler-RsRTIofe0HE-unsplash.webp')
+      : require('./assets/images/optimized/john-fowler-RsRTIofe0HE-unsplash.webp');
+  } else {
+    bgImage = lessThan992px
+      ? require('./assets/images/optimized/resized/wes-hicks-ZW6RUvsaFTc-unsplash.webp')
+      : require('./assets/images/optimized/wes-hicks-ZW6RUvsaFTc-unsplash.webp');
+  }
 
   return (
     <div className="App">
