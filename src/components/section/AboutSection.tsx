@@ -79,22 +79,20 @@ export default function AboutSection({
               are fun to use.
             </p>
             <p>
-              I never saw myself programming, but somewhere along the way I
-              tripped, fell in front of a VsCode interface, and just
-              started typing.
+              I never saw myself programming. Somewhere along the way I
+              must&apos;ve gotten lost - dazed and confused, I was led
+              astray of my sensibilities by the witchcraft known as
+              Javascript. It whispered to me, it told me stories of what
+              was possible if I stayed loyal, it showed me visions of what
+              I could build.
             </p>
             <p>
               And I can&apos;t seem to stop - the little puzzle games you
               have to solve as you compose elegant code, the many creative
-              solutions that exist for any given problem. The thrill of
-              finding a solution.
+              solutions that exist for any given problem, and last but not
+              least
             </p>
-            <p>
-              But being able to put everything together — the ability to
-              create beautiful displays <i>and</i> powering the
-              functionality behind the application — that feeling is{' '}
-              <strong>priceless</strong>.
-            </p>
+            <p>Making something out of nothing.</p>
           </div>
         </Slide>
         {!lessThan992px ? (

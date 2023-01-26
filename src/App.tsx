@@ -68,11 +68,12 @@ function App() {
         <Header theme={theme} />
         <main className={styles.main}>
           <div className={[styles.fade, styles.top].join(' ')}></div>
-          <div
-            className={styles.bg}
-            style={{ backgroundImage: `url(${bgImage})` }}
-          ></div>
-
+          {bgImage ? (
+            <div
+              className={styles.bg}
+              style={{ backgroundImage: `url(${bgImage})` }}
+            ></div>
+          ) : undefined}
           <Suspense fallback={<div>Loading...</div>}>
             <ProjectSection
               title={{ firstRow: 'Latest', secondRow: 'Projects' }}
