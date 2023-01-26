@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AboutSection from './components/section/AboutSection';
 import ContactSection from './components/section/ContactSection';
 import Header from './components/Header';
@@ -12,6 +12,7 @@ import WindowSizeContext from './utils/WindowSizeContext';
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
+  const [bgImage, setBgImage] = useState<string>();
   const { greaterThan1920px, lessThan992px } = useWindowWidth();
 
   useEffect(
@@ -28,6 +29,22 @@ function App() {
     });
   }
 
+  useEffect(() => {
+    if (theme === 'dark') {
+      setBgImage(
+        lessThan992px
+          ? require('./assets/images/optimized/resized/john-fowler-RsRTIofe0HE-unsplash.webp')
+          : require('./assets/images/optimized/john-fowler-RsRTIofe0HE-unsplash.webp')
+      );
+    } else {
+      setBgImage(
+        lessThan992px
+          ? require('./assets/images/optimized/resized/wes-hicks-ZW6RUvsaFTc-unsplash.webp')
+          : require('./assets/images/optimized/wes-hicks-ZW6RUvsaFTc-unsplash.webp')
+      );
+    }
+  }, [theme, lessThan992px]);
+
   return (
     <div className="App">
       <WindowSizeContext.Provider
@@ -41,7 +58,10 @@ function App() {
         <Header theme={theme} />
         <main className={styles.main}>
           <div className={[styles.fade, styles.top].join(' ')}></div>
-          <div className={styles.bg}></div>
+          <div
+            className={styles.bg}
+            style={{ backgroundImage: `url(${bgImage})` }}
+          ></div>
           <ProjectSection
             title={{ firstRow: 'Latest', secondRow: 'Projects' }}
             sectionNumber={1}
