@@ -108,9 +108,10 @@ export default function ContactSection({
         visible={visible}
       />
       <Slide
-        start={{ transform: 'translateX(-100vw)' }}
+        start={{ transform: 'translateX(-10vw)', opacity: '0' }}
         end={{
-          transform: 'translate(0)'
+          transform: 'translate(0)',
+          opacity: '1'
         }}
         animationRef={formAnimeRef}
       >

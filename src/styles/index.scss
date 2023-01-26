@@ -5,12 +5,28 @@
   @include mixins.getThemeColors(variables.$colors-light);
   --main-text-filter: invert(12%) sepia(3%) saturate(3722%)
     hue-rotate(267deg) brightness(95%) contrast(85%);
+  --fade-color: var(--background);
+  --circle: linear-gradient(to top, #fb6753 0%, #fc8b53 50%, #fdd55a 100%)
+    50% 25%/200% 200%;
 }
 
 :root[color-mode='dark'] {
   @include mixins.getThemeColors(variables.$colors-dark);
   --main-text-filter: invert(94%) sepia(4%) saturate(771%)
     hue-rotate(331deg) brightness(107%) contrast(97%);
+  --header-gradient: linear-gradient(
+    360deg,
+    #6096ba21 0% 15%,
+    var(--background) 75% 100%
+  );
+  --circle: linear-gradient(
+      330deg,
+      #403d5d 0%,
+      #585481 50%,
+      rgb(179, 182, 223) 100%
+    )
+    50% 50%/200% 200%;
+  --fade-color: #394058;
 }
 
 * {

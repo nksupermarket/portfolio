@@ -26,7 +26,8 @@
 
 @mixin bird($headWidth, $flyHeight) {
   .main {
-    background-color: #262626;
+    background-color: #4da1e6;
+    // background-color: #262626;
     height: calc($headWidth * 0.8);
     width: $headWidth;
     border-radius: $headWidth $headWidth 0 0;
@@ -41,7 +42,8 @@
   }
 
   .body {
-    background-color: #ff6347;
+    background: linear-gradient(90deg, #fffafa, #f39237);
+    // background-color: #ff6347;
     height: $headWidth;
     width: calc($headWidth * 2);
     position: relative;
@@ -55,7 +57,7 @@
     height: 0;
     border-left: calc($headWidth * 0.2) solid transparent;
     border-right: calc($headWidth * 0.2) solid transparent;
-    border-top: calc($headWidth * 0.2 * 3) solid #b3b3ff;
+    border-top: calc($headWidth * 0.2 * 3) solid #52414c;
     position: relative;
     right: calc($headWidth * 2 - ($headWidth * 0.2 * 3));
     bottom: calc(($headWidth * 2 - ($headWidth * 0.2 * 3)) / 2);
@@ -74,8 +76,8 @@
 
   .eyeball {
     background-color: var(--main-text);
-    height: calc($headWidth * 0.1);
-    width: calc($headWidth * 0.1);
+    height: calc($headWidth * 0.15);
+    width: calc($headWidth * 0.15);
     border-radius: 50%;
     position: relative;
     top: calc($headWidth * 0.04);
@@ -87,14 +89,14 @@
     height: 0;
     border-top: calc($headWidth * 0.15) solid transparent;
     border-bottom: calc($headWidth * 0.15) solid transparent;
-    border-left: calc($headWidth * 0.3) solid #ffdb4d;
+    border-left: calc($headWidth * 0.3) solid var(--main-text);
     position: relative;
     bottom: calc($headWidth * 2 - ($headWidth * 0.2 * 3));
     left: $headWidth;
   }
 
   .wing {
-    background-color: #262626;
+    background-color: #4da1e6;
     height: calc($headWidth * 0.85);
     width: calc($headWidth * 1.7);
     border-radius: 0 0 calc($headWidth * 1.7) calc($headWidth * 1.7);
@@ -112,7 +114,7 @@
   }
 
   .wing_feathers {
-    background-color: #666666;
+    background-color: #6fb3eb;
     height: calc($headWidth * 0.6);
     width: calc($headWidth * 1.4);
     border-radius: 0 0 calc($headWidth * 1.2) calc($headWidth * 1.2);

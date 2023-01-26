@@ -1,12 +1,12 @@
 $colors-light: (
   background: #fbfbf2,
-  main-text: #32292f,
+  main-text: #4f3636,
   accent: #ee4266,
-  circle: #f7f6c5,
   box-shadow: #969696,
   clouds: #cacaca,
   decoration: #748b75,
-  empty-icon-bg: #fbfbf2
+  empty-icon-bg: #fbfbf2,
+  pattern-color: #f7f6c5
 );
 
 $colors-dark: (
@@ -17,5 +17,6 @@ $colors-dark: (
   box-shadow: #585858,
   clouds: #5a6278,
   decoration: #acc3a6,
-  empty-icon-bg: #fbfbf2
+  empty-icon-bg: #fbfbf2,
+  pattern-color: #585481
 );

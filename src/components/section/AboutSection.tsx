@@ -59,7 +59,7 @@ export default function AboutSection({
       <div className={styles.content}>
         <Slide
           start={{
-            transform: 'translateY(-15vh)',
+            transform: 'translateY(-5vh)',
             opacity: '0'
           }}
           end={{
@@ -80,16 +80,14 @@ export default function AboutSection({
             </p>
             <p>
               I never saw myself programming. Somewhere along the way I
-              must&apos;ve gotten lost - dazed and confused, I was led
-              astray of my sensibilities by the witchcraft known as
-              Javascript. It whispered to me, it told me stories of what
-              was possible if I stayed loyal, it showed me visions of what
-              I could build.
+              must&apos;ve gotten lost - led wayward by the witchcraft
+              Javascript. It whispered to me, told me stories of what was
+              possible, showed me visions of what I could build.
             </p>
             <p>
-              And I can&apos;t seem to stop - the little puzzle games you
-              have to solve as you compose elegant code, the many creative
-              solutions that exist for any given problem,
+              And now I can&apos;t seem to stop. I love the little puzzle
+              games you have to solve as you compose elegant code, the many
+              creative solutions that exist for any given problem,
             </p>
             <p>
               making <i>something</i> out of nothing.
@@ -98,7 +96,7 @@ export default function AboutSection({
         </Slide>
         {!lessThan992px ? (
           <Slide
-            start={{ transform: 'translateX(15vw)', opacity: '0' }}
+            start={{ transform: 'translateX(5vw)', opacity: '0' }}
             end={{
               transform: 'translate(0)',
               opacity: '1'
@@ -115,7 +113,7 @@ export default function AboutSection({
         ) : undefined}
       </div>
       <Slide
-        start={{ transform: 'translateX(-15vw)', opacity: '0' }}
+        start={{ transform: 'translateX(-5vw)', opacity: '0' }}
         end={{
           transform: 'translate(0)',
           opacity: '1'

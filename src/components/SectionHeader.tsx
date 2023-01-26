@@ -38,13 +38,13 @@ export default function SectionHeader({
         </div>
       </Slide>
       <Slide
-        start={{ transform: 'translateX(100vw)' }}
+        start={{ transform: 'translateX(50vw)' }}
         end={{
-          transform: visible ? 'translate(0)' : 'translateX(100vw)'
+          transform: visible ? 'translate(0)' : 'translateX(50vw)'
         }}
         animationRef={animationRef}
         config={{
-          mass: 50,
+          mass: 60,
           tension: 1000,
           friction: 200,
           bounce: 0.3

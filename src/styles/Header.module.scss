@@ -6,6 +6,7 @@
   @include mixins.flex(column, true);
   row-gap: 60px;
   position: relative;
+  background-image: var(--header-gradient);
 
   .text_block,
   .circle {
