@@ -89,10 +89,11 @@ export default function AboutSection({
             <p>
               And I can&apos;t seem to stop - the little puzzle games you
               have to solve as you compose elegant code, the many creative
-              solutions that exist for any given problem, and last but not
-              least
+              solutions that exist for any given problem,
             </p>
-            <p>Making something out of nothing.</p>
+            <p>
+              making <i>something</i> out of nothing.
+            </p>
           </div>
         </Slide>
         {!lessThan992px ? (

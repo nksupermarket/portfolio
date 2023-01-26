@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense, useMemo } from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import styles from './styles/App.module.scss';
@@ -41,18 +41,22 @@ function App() {
     }
   }, [theme, lessThan992px]);
 
-  const ProjectSection = React.lazy(
-    () => import('./components/section/ProjectSection')
+  const ProjectSection = useMemo(
+    () => React.lazy(() => import('./components/section/ProjectSection')),
+    []
   );
 
-  const SkillsSection = React.lazy(
-    () => import('./components/section/SkillsSection')
+  const SkillsSection = useMemo(
+    () => React.lazy(() => import('./components/section/SkillsSection')),
+    []
   );
-  const AboutSection = React.lazy(
-    () => import('./components/section/AboutSection')
+  const AboutSection = useMemo(
+    () => React.lazy(() => import('./components/section/AboutSection')),
+    []
   );
-  const ContactSection = React.lazy(
-    () => import('./components/section/ContactSection')
+  const ContactSection = useMemo(
+    () => React.lazy(() => import('./components/section/ContactSection')),
+    []
   );
 
   return (
