@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  Suspense
+} from 'react';
 import styles from '../styles/Header.module.scss';
 import { useChain, useSpringRef } from 'react-spring';
 
 import Slide from './Animations/Slide';
 import Scale from './Animations/Scale';
 import CloudsBg from './CloudsBg';
-import StarsBg from './StarsBg';
-import Bird from './Bird';
 
 const slideConfig = {
   mass: 30,
@@ -99,9 +103,12 @@ export default function Header({ theme }: HeaderProps) {
     };
   }, [handleScroll]);
 
+  const Bird = React.lazy(() => import('./Bird'));
+  const StarsBg = React.lazy(() => import('./StarsBg'));
+
   return (
     <div className={styles.main}>
-      {theme === 'light' ? <Bird /> : <StarsBg />}
+      <Suspense>{theme === 'light' ? <Bird /> : <StarsBg />}</Suspense>
       <CloudsBg />
       <Scale
         elRef={divToScale}

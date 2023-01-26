@@ -5,7 +5,7 @@ import SectionHeader from '../SectionHeader';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
 import styles from '../../styles/ProjectSection.module.scss';
-import { ProjectDetails, SectionProps } from '../../types/interfaces';
+import { SectionProps } from '../../types/interfaces';
 
 import todoListScreen from '../../assets/images/optimized/todo-list.png';
 import WindowSizeContext from '../../utils/WindowSizeContext';

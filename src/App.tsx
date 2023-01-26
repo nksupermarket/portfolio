@@ -1,10 +1,14 @@
-import React, { useState, useEffect, Suspense, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import styles from './styles/App.module.scss';
 import { getCurrentTheme } from './utils/misc';
 import useWindowWidth from './utils/useWindowWidth';
 import WindowSizeContext from './utils/WindowSizeContext';
+import ProjectSection from './components/section/ProjectSection';
+import AboutSection from './components/section/AboutSection';
+import ContactSection from './components/section/ContactSection';
+import SkillsSection from './components/section/SkillsSection';
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
@@ -41,24 +45,6 @@ function App() {
     }
   }, [theme, lessThan992px]);
 
-  const ProjectSection = useMemo(
-    () => React.lazy(() => import('./components/section/ProjectSection')),
-    []
-  );
-
-  const SkillsSection = useMemo(
-    () => React.lazy(() => import('./components/section/SkillsSection')),
-    []
-  );
-  const AboutSection = useMemo(
-    () => React.lazy(() => import('./components/section/AboutSection')),
-    []
-  );
-  const ContactSection = useMemo(
-    () => React.lazy(() => import('./components/section/ContactSection')),
-    []
-  );
-
   return (
     <div className="App">
       <WindowSizeContext.Provider
@@ -78,24 +64,22 @@ function App() {
               style={{ backgroundImage: `url(${bgImage})` }}
             ></div>
           ) : undefined}
-          <Suspense fallback={<div>Loading...</div>}>
-            <ProjectSection
-              title={{ firstRow: 'Latest', secondRow: 'Projects' }}
-              sectionNumber={1}
-            />
-            <SkillsSection
-              title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
-              sectionNumber={2}
-            />
-            <AboutSection
-              title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
-              sectionNumber={3}
-            />
-            <ContactSection
-              title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
-              sectionNumber={4}
-            />
-          </Suspense>
+          <ProjectSection
+            title={{ firstRow: 'Latest', secondRow: 'Projects' }}
+            sectionNumber={1}
+          />
+          <SkillsSection
+            title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
+            sectionNumber={2}
+          />
+          <AboutSection
+            title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
+            sectionNumber={3}
+          />
+          <ContactSection
+            title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
+            sectionNumber={4}
+          />
         </main>
       </WindowSizeContext.Provider>
     </div>
