@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import AboutSection from './components/section/AboutSection';
-import ContactSection from './components/section/ContactSection';
+import React, { useState, useEffect, Suspense } from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import ProjectSection from './components/section/ProjectSection';
-import SkillsSection from './components/section/SkillsSection';
 import styles from './styles/App.module.scss';
 import { getCurrentTheme } from './utils/misc';
 import useWindowWidth from './utils/useWindowWidth';
@@ -45,6 +42,16 @@ function App() {
     }
   }, [theme, lessThan992px]);
 
+  const SkillsSection = React.lazy(
+    () => import('./components/section/SkillsSection')
+  );
+  const AboutSection = React.lazy(
+    () => import('./components/section/AboutSection')
+  );
+  const ContactSection = React.lazy(
+    () => import('./components/section/ContactSection')
+  );
+
   return (
     <div className="App">
       <WindowSizeContext.Provider
@@ -66,18 +73,20 @@ function App() {
             title={{ firstRow: 'Latest', secondRow: 'Projects' }}
             sectionNumber={1}
           />
-          <SkillsSection
-            title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
-            sectionNumber={2}
-          />
-          <AboutSection
-            title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
-            sectionNumber={3}
-          />
-          <ContactSection
-            title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
-            sectionNumber={4}
-          />
+          <Suspense fallback={<div>Loading...</div>}>
+            <SkillsSection
+              title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
+              sectionNumber={2}
+            />
+            <AboutSection
+              title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
+              sectionNumber={3}
+            />
+            <ContactSection
+              title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
+              sectionNumber={4}
+            />
+          </Suspense>
         </main>
       </WindowSizeContext.Provider>
     </div>
