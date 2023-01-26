@@ -26,7 +26,7 @@ export default function CloudSvg({
       className={rootClasses.join(' ')}
       style={style}
       width="32%"
-      height="auto"
+      height="100%"
       version="1.1"
       fill="currentColor"
       viewBox="0 0 700 700"

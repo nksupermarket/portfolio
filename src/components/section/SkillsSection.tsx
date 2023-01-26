@@ -60,8 +60,8 @@ export default function SkillsSection({
         number={sectionNumber}
         visible={visible}
       />
-      <ul className={styles.list}>
-        <div className={styles.top_row}>
+      <div className={styles.list}>
+        <ul className={styles.top_row}>
           {trail.slice(0, 3).map((style, i) => {
             const logo = logos[i];
             return (
@@ -74,8 +74,8 @@ export default function SkillsSection({
               </animated.li>
             );
           })}
-        </div>
-        <div className={styles.bottom_row}>
+        </ul>
+        <ul className={styles.bottom_row}>
           {trail.slice(3).map((style, i) => {
             const logo = logos[i + 3];
             return (
@@ -90,8 +90,8 @@ export default function SkillsSection({
               </animated.li>
             );
           })}
-        </div>
-      </ul>
+        </ul>
+      </div>
     </section>
   );
 }

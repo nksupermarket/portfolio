@@ -191,13 +191,13 @@
 
   display: flex;
   flex-direction: row-reverse;
-  row-gap: 0.4em;
+  row-gap: 0.6em;
   column-gap: 1em;
   align-self: flex-end;
   flex-wrap: wrap-reverse;
 
   .tech {
-    color: rgba(var(--RGB_main-text), 0.5);
+    color: rgba(var(--RGB_main-text), 0.8);
   }
 }
 

@@ -50,6 +50,7 @@ export default function Nav({ changeTheme, currentTheme }: NavProps) {
       <div className={styles.theme_picker}>
         <input
           type="checkbox"
+          aria-label="theme selector"
           onChange={changeTheme}
           checked={currentTheme === 'dark'}
         />
@@ -62,7 +63,7 @@ export default function Nav({ changeTheme, currentTheme }: NavProps) {
               className={`${styles.icon_wrapper} ${styles[i.name]}`}
             >
               <a href={i.href} target="_blank" rel="noreferrer">
-                <img src={i.src} alt={i.alt} />
+                <img src={i.src} alt={i.alt} width="100%" height="100%" />
               </a>
             </div>
           );

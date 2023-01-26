@@ -5,14 +5,14 @@
   @include mixins.getThemeColors(variables.$colors-light);
   --main-text-filter: invert(12%) sepia(3%) saturate(3722%)
     hue-rotate(267deg) brightness(95%) contrast(85%);
-  --bg-image: url('../assets/images/wes-hicks-ZW6RUvsaFTc-unsplash.jpg');
+  --bg-image: url('../assets/images/optimized/wes-hicks-ZW6RUvsaFTc-unsplash.webp');
 }
 
 :root[color-mode='dark'] {
   @include mixins.getThemeColors(variables.$colors-dark);
   --main-text-filter: invert(94%) sepia(4%) saturate(771%)
     hue-rotate(331deg) brightness(107%) contrast(97%);
-  --bg-image: url('../assets/images/john-fowler-RsRTIofe0HE-unsplash.jpg');
+  --bg-image: url('../assets/images/optimized/john-fowler-RsRTIofe0HE-unsplash.webp');
 }
 
 * {
