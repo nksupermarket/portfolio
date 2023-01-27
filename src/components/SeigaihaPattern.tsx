@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../styles/SeigaihaPattern.module.scss';
 
 interface Props {

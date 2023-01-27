@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from '../styles/Nav.module.scss';
 
 import githubSvg from '../assets/icons/iconmonstr-github-1.svg';

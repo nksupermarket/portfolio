@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../styles/StarsBg.module.scss';
 
 export default function StarsBg() {

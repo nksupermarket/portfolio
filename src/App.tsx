@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
+import AboutSection from './components/section/AboutSection';
+import ContactSection from './components/section/ContactSection';
+import ProjectSection from './components/section/ProjectSection';
+import SkillsSection from './components/section/SkillsSection';
 import styles from './styles/App.module.scss';
 import { getCurrentTheme } from './utils/misc';
 import useWindowWidth from './utils/useWindowWidth';
 import WindowSizeContext from './utils/WindowSizeContext';
-import ProjectSection from './components/section/ProjectSection';
-import SkillsSection from './components/section/SkillsSection';
-import AboutSection from './components/section/AboutSection';
-import ContactSection from './components/section/ContactSection';
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());

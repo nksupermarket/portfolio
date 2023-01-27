@@ -1,16 +1,16 @@
 import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
   Suspense,
-  useMemo
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
 } from 'react';
-import styles from '../styles/Header.module.scss';
 import { useChain, useSpringRef } from 'react-spring';
+import styles from '../styles/Header.module.scss';
 
-import Slide from './Animations/Slide';
 import Scale from './Animations/Scale';
+import Slide from './Animations/Slide';
 import CloudsBg from './CloudsBg';
 
 const slideConfig = {

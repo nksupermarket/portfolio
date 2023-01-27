@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import styles from '../styles/Project.module.scss';
 
-import { useChain, useTrail, animated, useSpringRef } from 'react-spring';
+import { animated, useChain, useSpringRef, useTrail } from 'react-spring';
+import { ProjectDetails } from '../types/interfaces';
+import WindowSizeContext from '../utils/WindowSizeContext';
 import Scale from './Animations/Scale';
 import Slide from './Animations/Slide';
-import WindowSizeContext from '../utils/WindowSizeContext';
-import { ProjectDetails } from '../types/interfaces';
 
 interface ProjectProps extends ProjectDetails {
   reverse?: boolean;

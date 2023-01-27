@@ -1,7 +1,7 @@
 import React from 'react';
+import { SpringRef } from 'react-spring';
 import styles from '../styles/SectionHeader.module.scss';
 import Slide from './Animations/Slide';
-import { SpringRef } from 'react-spring';
 
 interface SectionHeaderProps {
   title: {

@@ -1,10 +1,10 @@
-import React, { SyntheticEvent, useState, useRef } from 'react';
-import { useSpringRef, useChain } from 'react-spring';
+import emailjs from '@emailjs/browser';
+import { SyntheticEvent, useRef, useState } from 'react';
+import { useChain, useSpringRef } from 'react-spring';
 import styles from '../../styles/ContactSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
-import SectionHeader from '../SectionHeader';
-import emailjs from '@emailjs/browser';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
+import SectionHeader from '../SectionHeader';
 
 import checkSvg from '../../assets/icons/check-line.svg';
 import closeSvg from '../../assets/icons/close-line.svg';

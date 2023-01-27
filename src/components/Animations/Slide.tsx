@@ -1,5 +1,4 @@
-import React from 'react';
-import { useSpring, animated } from 'react-spring';
+import { animated, useSpring } from 'react-spring';
 import { AnimeComponentProps } from '../../types/interfaces';
 
 interface SlideProps extends AnimeComponentProps {

@@ -1,6 +1,5 @@
-import React from 'react';
-import CloudSvg from './CloudSvg';
 import styles from '../styles/CloudsBg.module.scss';
+import CloudSvg from './CloudSvg';
 
 export default function CloudsBg() {
   const rootClasses = ['bg', styles.main];

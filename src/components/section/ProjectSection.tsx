@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Project from '../Project';
 import SectionHeader from '../SectionHeader';
 
@@ -96,6 +96,8 @@ const projects = [
     }
   }
 ];
+
+let timer: NodeJS.Timeout | null = null;
 export default function ProjectSection({
   title,
   sectionNumber
@@ -108,15 +110,11 @@ export default function ProjectSection({
   });
 
   const visible = ioData?.isIntersecting || false;
-  console.log(visible);
   const [startProjectAnime, setStartProjectAnime] = useState(false);
 
   useEffect(() => {
-    console.log('firing useEffect');
-    if (ioData?.isIntersecting) {
-      console.log('adding timer');
-      setTimeout(() => {
-        console.log('setting anime start');
+    if (ioData?.isIntersecting && timer === null) {
+      timer = setTimeout(() => {
         setStartProjectAnime(true);
       }, 200);
     }

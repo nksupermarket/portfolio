@@ -1,13 +1,13 @@
-import React, { useContext, useMemo, useRef } from 'react';
+import { useContext, useMemo, useRef } from 'react';
 import styles from '../../styles/AboutSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
-import SectionHeader from '../SectionHeader';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
+import SectionHeader from '../SectionHeader';
 
-import Slide from '../Animations/Slide';
 import { useChain, useSpringRef } from 'react-spring';
-import SeigaihaPattern from '../SeigaihaPattern';
 import WindowSizeContext from '../../utils/WindowSizeContext';
+import Slide from '../Animations/Slide';
+import SeigaihaPattern from '../SeigaihaPattern';
 
 export default function AboutSection({
   title,

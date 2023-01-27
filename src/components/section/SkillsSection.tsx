@@ -1,16 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { animated, useTrail } from 'react-spring';
 import styles from '../../styles/SkillsSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
-import SectionHeader from '../SectionHeader';
-import { useTrail, animated } from 'react-spring';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
+import SectionHeader from '../SectionHeader';
 
-import reactLogo from '../../assets/skills_icons/react.svg';
 import expressLogo from '../../assets/skills_icons/express.svg';
 import jsLogo from '../../assets/skills_icons/javascript.svg';
-import tsLogo from '../../assets/skills_icons/typescript-icon.svg';
 import mongoLogo from '../../assets/skills_icons/mongodb.svg';
+import reactLogo from '../../assets/skills_icons/react.svg';
 import tailwindLogo from '../../assets/skills_icons/tailwind.svg';
+import tsLogo from '../../assets/skills_icons/typescript-icon.svg';
 
 const logos = [
   { src: jsLogo, type: 'javascript' },
@@ -20,7 +20,7 @@ const logos = [
   { src: mongoLogo, type: 'mongodb' },
   { src: tailwindLogo, type: 'tailwind' }
 ];
-
+let timer: NodeJS.Timeout | null = null;
 export default function SkillsSection({
   title,
   sectionNumber
@@ -47,7 +47,8 @@ export default function SkillsSection({
   });
 
   useEffect(() => {
-    if (ioData?.isIntersecting) setTimeout(() => setStartTrail(true), 400);
+    if (ioData?.isIntersecting && timer === null)
+      timer = setTimeout(() => setStartTrail(true), 400);
   }, [ioData?.isIntersecting]);
 
   return (

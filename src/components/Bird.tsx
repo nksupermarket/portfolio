@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../styles/Bird.module.scss';
 
 export default function Bird() {
