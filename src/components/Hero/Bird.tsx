@@ -1,4 +1,4 @@
-import styles from '../styles/Bird.module.scss';
+import styles from '../../styles/Bird.module.scss';
 
 export default function Bird() {
   return (

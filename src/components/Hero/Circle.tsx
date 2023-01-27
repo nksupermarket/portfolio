@@ -1,17 +1,8 @@
-import React, {
-  Suspense,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useChain, useSpringRef } from 'react-spring';
-import styles from '../styles/Header.module.scss';
-
-import Scale from './Animations/Scale';
-import Slide from './Animations/Slide';
-import CloudsBg from './CloudsBg';
+import Scale from '../Animations/Scale';
+import Slide from '../Animations/Slide';
+import styles from '../../styles/Circle.module.scss';
 
 const slideConfig = {
   mass: 30,
@@ -25,15 +16,10 @@ const slideConfig = {
   bounce: 0.45
 };
 
-interface HeaderProps {
-  theme: 'light' | 'dark';
-}
-
-export default function Header({ theme }: HeaderProps) {
+export default function Circle() {
   const [y, setY] = useState(window.scrollY);
 
   const circleAnimeRef = useSpringRef();
-
   const textAnimeRef = useSpringRef();
   const underlineAnimeRef = useSpringRef();
 
@@ -103,14 +89,8 @@ export default function Header({ theme }: HeaderProps) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);
-
-  const Bird = useMemo(() => React.lazy(() => import('./Bird')), []);
-  const StarsBg = useMemo(() => React.lazy(() => import('./StarsBg')), []);
-
   return (
-    <div className={styles.main}>
-      <Suspense>{theme === 'light' ? <Bird /> : <StarsBg />}</Suspense>
-      <CloudsBg />
+    <>
       <Scale
         elRef={divToScale}
         className={styles.circle}
@@ -176,6 +156,6 @@ export default function Header({ theme }: HeaderProps) {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }

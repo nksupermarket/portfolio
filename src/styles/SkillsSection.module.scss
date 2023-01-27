@@ -27,11 +27,6 @@
   left: 0;
   right: 0;
   @include mixins.flex(column, true);
-
-  img {
-    width: 70%;
-    height: 70%;
-  }
 }
 
 .top_row,

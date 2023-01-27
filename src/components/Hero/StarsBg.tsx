@@ -1,4 +1,4 @@
-import styles from '../styles/StarsBg.module.scss';
+import styles from '../../styles/StarsBg.module.scss';
 
 export default function StarsBg() {
   return (

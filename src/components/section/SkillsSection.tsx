@@ -5,20 +5,20 @@ import { SectionProps } from '../../types/interfaces';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 import SectionHeader from '../SectionHeader';
 
-import expressLogo from '../../assets/skills_icons/express.svg';
-import jsLogo from '../../assets/skills_icons/javascript.svg';
-import mongoLogo from '../../assets/skills_icons/mongodb.svg';
-import reactLogo from '../../assets/skills_icons/react.svg';
-import tailwindLogo from '../../assets/skills_icons/tailwind.svg';
-import tsLogo from '../../assets/skills_icons/typescript-icon.svg';
+import NodeLogo from '../svg/NodeLogo';
+import JsLogo from '../svg/JsLogo';
+import TsLogo from '../svg/TsLogo';
+import ReactLogo from '../svg/ReactLogo';
+import MongoLogo from '../svg/MongoLogo';
+import TailwindLogo from '../svg/TailwindLogo';
 
 const logos = [
-  { src: jsLogo, type: 'javascript' },
-  { src: tsLogo, type: 'typescript' },
-  { src: reactLogo, type: 'react' },
-  { src: expressLogo, type: 'express' },
-  { src: mongoLogo, type: 'mongodb' },
-  { src: tailwindLogo, type: 'tailwind' }
+  { component: JsLogo, type: 'javascript' },
+  { component: TsLogo, type: 'typescript' },
+  { component: ReactLogo, type: 'react' },
+  { component: NodeLogo, type: 'express' },
+  { component: MongoLogo, type: 'mongodb' },
+  { component: TailwindLogo, type: 'tailwind' }
 ];
 let timer: NodeJS.Timeout | null = null;
 export default function SkillsSection({
@@ -70,7 +70,7 @@ export default function SkillsSection({
                 <div
                   className={styles.img_wrapper + ' ' + styles[logo.type]}
                 >
-                  <img src={logo.src} alt={`${logo.type} logo`} />
+                  <logo.component height="70%" width="70%" />
                 </div>
               </animated.li>
             );
@@ -86,7 +86,7 @@ export default function SkillsSection({
                 style={style}
               >
                 <div className={styles.img_wrapper}>
-                  <img src={logo.src} alt={`${logo.type} logo`} />
+                  <logo.component height="70%" width="70%" />
                 </div>
               </animated.li>
             );

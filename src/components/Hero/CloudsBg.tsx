@@ -1,4 +1,4 @@
-import styles from '../styles/CloudsBg.module.scss';
+import styles from '../../styles/CloudsBg.module.scss';
 import CloudSvg from './CloudSvg';
 
 export default function CloudsBg() {

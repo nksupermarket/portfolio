@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import Header from './components/Header';
+import Hero from './components/Hero/Hero';
 import Nav from './components/Nav';
 import AboutSection from './components/section/AboutSection';
 import ContactSection from './components/section/ContactSection';
@@ -50,7 +50,7 @@ function App() {
       >
         <header className="App-header"></header>
         <Nav changeTheme={changeTheme} currentTheme={theme} />
-        <Header theme={theme} />
+        <Hero theme={theme} />
         <main className={styles.main}>
           <div className={[styles.fade, styles.top].join(' ')}></div>
           {bgImage ? (

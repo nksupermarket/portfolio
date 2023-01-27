@@ -1,25 +1,8 @@
-@use './mixins';
-
-.main {
-  height: 100vh;
-  width: 100%;
-  @include mixins.flex(column, true);
-  row-gap: 60px;
-  position: relative;
-  background-image: var(--header-gradient);
-
-  .text_block,
-  .circle {
-    z-index: 4;
-  }
-
-  :global .bg {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
+.text_block {
+  z-index: 5;
+}
+.circle {
+  z-index: 4;
 }
 
 @mixin style(
@@ -42,7 +25,6 @@
 
   .text_block {
     width: max-content;
-    z-index: 2;
     .ctn {
       position: relative;
 
@@ -89,10 +71,6 @@ $leftOffset
 }
 
 @media screen and (max-width: 1300px) {
-  .main {
-    row-gap: 50px;
-  }
-
   .underline {
     border-radius: 7px;
   }
@@ -100,10 +78,6 @@ $leftOffset
 }
 
 @media screen and (max-width: 992px) {
-  .main {
-    row-gap: 40px;
-  }
-
   .underline {
     border-radius: 5px;
   }
@@ -112,10 +86,6 @@ $leftOffset
 }
 
 @media screen and (max-width: 576px) {
-  .main {
-    row-gap: 30px;
-  }
-
   .underline {
     border-radius: 3px;
   }
