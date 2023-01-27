@@ -4,7 +4,6 @@ import styles from '../styles/Project.module.scss';
 import { useChain, useTrail, animated, useSpringRef } from 'react-spring';
 import Scale from './Animations/Scale';
 import Slide from './Animations/Slide';
-import wrapWords from 'html-spaceship/src/utils/wrapWords';
 import WindowSizeContext from '../utils/WindowSizeContext';
 import { ProjectDetails } from '../types/interfaces';
 
@@ -73,9 +72,7 @@ export default function Project({
         >
           <header>
             <div className="flex-col">
-              <h4 className={styles.title}>
-                {wrapWords(title, { boundary: true })}
-              </h4>
+              <h4 className={styles.title}>{title}</h4>
               <div>
                 <div
                   className={[styles.underline, styles.green_line].join(
@@ -108,12 +105,7 @@ export default function Project({
               </div>
             ) : undefined}
           </header>
-          <p className={styles.desc}>
-            {wrapWords(desc, {
-              last: true,
-              boundary: true
-            })}
-          </p>
+          <p className={styles.desc}>{desc}</p>
           <div className="flex-row">
             {reverse ? (
               <>

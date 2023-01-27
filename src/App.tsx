@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import styles from './styles/App.module.scss';
@@ -6,9 +6,9 @@ import { getCurrentTheme } from './utils/misc';
 import useWindowWidth from './utils/useWindowWidth';
 import WindowSizeContext from './utils/WindowSizeContext';
 import ProjectSection from './components/section/ProjectSection';
+import SkillsSection from './components/section/SkillsSection';
 import AboutSection from './components/section/AboutSection';
 import ContactSection from './components/section/ContactSection';
-import SkillsSection from './components/section/SkillsSection';
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
@@ -28,16 +28,17 @@ function App() {
     });
   }
 
-  let bgImage = '';
-  if (theme === 'dark') {
-    bgImage = lessThan992px
-      ? require('./assets/images/optimized/resized/john-fowler-RsRTIofe0HE-unsplash.webp')
-      : require('./assets/images/optimized/john-fowler-RsRTIofe0HE-unsplash.webp');
-  } else {
-    bgImage = lessThan992px
-      ? require('./assets/images/optimized/resized/wes-hicks-ZW6RUvsaFTc-unsplash.webp')
-      : require('./assets/images/optimized/wes-hicks-ZW6RUvsaFTc-unsplash.webp');
-  }
+  const bgImage = useMemo(() => {
+    if (theme === 'dark') {
+      return lessThan992px
+        ? require('./assets/images/optimized/resized/john-fowler-RsRTIofe0HE-unsplash.webp')
+        : require('./assets/images/optimized/john-fowler-RsRTIofe0HE-unsplash.webp');
+    } else {
+      return lessThan992px
+        ? require('./assets/images/optimized/resized/wes-hicks-ZW6RUvsaFTc-unsplash.webp')
+        : require('./assets/images/optimized/wes-hicks-ZW6RUvsaFTc-unsplash.webp');
+    }
+  }, [theme, lessThan992px]);
 
   return (
     <div className="App">

@@ -26,7 +26,7 @@
 
 @mixin bird($headWidth, $flyHeight) {
   .main {
-    background-color: #4da1e6;
+    background-color: var(--decoration);
     // background-color: #262626;
     height: calc($headWidth * 0.8);
     width: $headWidth;
@@ -96,7 +96,7 @@
   }
 
   .wing {
-    background-color: #4da1e6;
+    background-color: var(--decoration);
     height: calc($headWidth * 0.85);
     width: calc($headWidth * 1.7);
     border-radius: 0 0 calc($headWidth * 1.7) calc($headWidth * 1.7);
@@ -114,7 +114,7 @@
   }
 
   .wing_feathers {
-    background-color: #6fb3eb;
+    background-color: #94a695;
     height: calc($headWidth * 0.6);
     width: calc($headWidth * 1.4);
     border-radius: 0 0 calc($headWidth * 1.2) calc($headWidth * 1.2);

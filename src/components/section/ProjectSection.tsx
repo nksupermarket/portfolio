@@ -4,7 +4,6 @@ import SectionHeader from '../SectionHeader';
 
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
-import styles from '../../styles/ProjectSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
 
 import todoListScreen from '../../assets/images/optimized/todo-list.png';
@@ -109,34 +108,43 @@ export default function ProjectSection({
   });
 
   const visible = ioData?.isIntersecting || false;
-
+  console.log(visible);
   const [startProjectAnime, setStartProjectAnime] = useState(false);
 
   useEffect(() => {
-    if (ioData?.isIntersecting)
-      setTimeout(() => setStartProjectAnime(true), 200);
+    console.log('firing useEffect');
+    if (ioData?.isIntersecting) {
+      console.log('adding timer');
+      setTimeout(() => {
+        console.log('setting anime start');
+        setStartProjectAnime(true);
+      }, 200);
+    }
   }, [ioData?.isIntersecting]);
 
-  const crochessScreen = greaterThan1920px
-    ? require('../../assets/images/optimized/crochess-screen.webp')
-    : require('../../assets/images/optimized/resized/crochess-screen.webp');
-  const legoScreen = greaterThan1920px
-    ? require('../../assets/images/optimized/lego_ecommerce-screen.webp')
-    : require('../../assets/images/optimized/resized/lego_ecommerce-screen.webp');
-  const breadScreen = greaterThan1920px
-    ? require('../../assets/images/optimized/discord-screen.webp')
-    : require('../../assets/images/optimized/resized/discord-screen.webp');
-  const wheresWaldoScreen = greaterThan1920px
-    ? require('../../assets/images/optimized/wheres_waldo_screen.webp')
-    : require('../../assets/images/optimized/resized/wheres_waldo_screen.webp');
-  projects[0].image.src = crochessScreen;
-  projects[1].image.src = legoScreen;
-  projects[2].image.src = breadScreen;
-  projects[4].image.src = wheresWaldoScreen;
+  useEffect(() => {
+    const crochessScreen = greaterThan1920px
+      ? require('../../assets/images/optimized/crochess-screen.webp')
+      : require('../../assets/images/optimized/resized/crochess-screen.webp');
+    const legoScreen = greaterThan1920px
+      ? require('../../assets/images/optimized/lego_ecommerce-screen.webp')
+      : require('../../assets/images/optimized/resized/lego_ecommerce-screen.webp');
+    const breadScreen = greaterThan1920px
+      ? require('../../assets/images/optimized/discord-screen.webp')
+      : require('../../assets/images/optimized/resized/discord-screen.webp');
+    const wheresWaldoScreen = greaterThan1920px
+      ? require('../../assets/images/optimized/wheres_waldo_screen.webp')
+      : require('../../assets/images/optimized/resized/wheres_waldo_screen.webp');
+    projects[0].image.src = crochessScreen;
+    projects[1].image.src = legoScreen;
+    projects[2].image.src = breadScreen;
+    projects[4].image.src = wheresWaldoScreen;
+  }, [greaterThan1920px]);
 
   return (
     <section
-      className={styles.main + ' ' + 'main_section'}
+      style={{ position: 'relative' }}
+      className="main_section"
       ref={triggerRef}
     >
       <SectionHeader

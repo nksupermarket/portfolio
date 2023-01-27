@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef } from 'react';
+import React, { useContext, useMemo, useRef } from 'react';
 import styles from '../../styles/AboutSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
 import SectionHeader from '../SectionHeader';

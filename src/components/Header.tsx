@@ -3,7 +3,8 @@ import React, {
   useEffect,
   useCallback,
   useRef,
-  Suspense
+  Suspense,
+  useMemo
 } from 'react';
 import styles from '../styles/Header.module.scss';
 import { useChain, useSpringRef } from 'react-spring';
@@ -103,8 +104,8 @@ export default function Header({ theme }: HeaderProps) {
     };
   }, [handleScroll]);
 
-  const Bird = React.lazy(() => import('./Bird'));
-  const StarsBg = React.lazy(() => import('./StarsBg'));
+  const Bird = useMemo(() => React.lazy(() => import('./Bird')), []);
+  const StarsBg = useMemo(() => React.lazy(() => import('./StarsBg')), []);
 
   return (
     <div className={styles.main}>
