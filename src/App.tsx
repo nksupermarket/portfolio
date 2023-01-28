@@ -13,12 +13,13 @@ import WindowSizeContext from './utils/WindowSizeContext';
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
   const { greaterThan1920px, lessThan992px } = useWindowWidth();
-  const [loadSections, setLoadSections] = useState(false);
 
   useEffect(
     function pullTheme() {
       localStorage.setItem('theme', theme);
-      document.querySelector('html')?.setAttribute('color-mode', theme);
+      const root = document.querySelector('html');
+      if (root?.getAttribute('color-mode') !== theme)
+        root?.setAttribute('color-mode', theme);
     },
     [theme]
   );

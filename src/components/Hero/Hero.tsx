@@ -1,6 +1,5 @@
 import React, { Suspense, useMemo } from 'react';
 import styles from '../../styles/Hero.module.scss';
-import ReactLogo from '../svg/ReactLogo';
 
 import Circle from './Circle';
 import CloudsBg from './CloudsBg';

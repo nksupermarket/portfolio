@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import styles from '../styles/Nav.module.scss';
-
-import githubSvg from '../assets/icons/iconmonstr-github-1.svg';
+import GithubLogo from './svg/GithubLogo';
 
 const iconList = [
   {
     name: 'github',
-    src: githubSvg,
+    svg: GithubLogo,
     href: 'https://github.com/lookingcoolonavespa',
     alt: 'link to my github repo'
   }
@@ -56,14 +55,14 @@ export default function Nav({ changeTheme, currentTheme }: NavProps) {
         />
       </div>
       <div className={styles.btn_ctn}>
-        {iconList.map((i) => {
+        {iconList.map((icon) => {
           return (
             <div
-              key={i.name}
-              className={`${styles.icon_wrapper} ${styles[i.name]}`}
+              key={icon.name}
+              className={`${styles.icon_wrapper} ${styles[icon.name]}`}
             >
-              <a href={i.href} target="_blank" rel="noreferrer">
-                <img src={i.src} alt={i.alt} width="100%" height="100%" />
+              <a href={icon.href} target="_blank" rel="noreferrer">
+                <icon.svg width="100%" height="100%" />
               </a>
             </div>
           );

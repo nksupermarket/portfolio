@@ -37,47 +37,45 @@ export default function Circle() {
     )
       return;
 
-    function transformEl(translateX?: 'left' | 'right', scale?: boolean) {
-      return (el: HTMLElement) => {
-        const style = window.getComputedStyle(el);
+    function slide(translateX: 'left' | 'right', el: HTMLElement) {
+      const style = window.getComputedStyle(el);
 
-        if (translateX) {
-          const matrix = new WebKitCSSMatrix(style.transform);
-          const prevX = matrix.m41;
+      const matrix = new WebKitCSSMatrix(style.transform);
+      const prevX = matrix.m41;
 
-          let transformVal = 0;
-          if (window.scrollY) {
-            // want translateX value to be 0 at top of the page
-            if (translateX === 'left') {
-              const newOffset = prevX + y - window.scrollY;
-              if (newOffset < 0) transformVal = newOffset;
-            } else if (translateX === 'right') {
-              const newOffset = window.scrollY - y + prevX;
-              if (newOffset > 0) transformVal = newOffset;
-            }
-          }
-          el.style.transform = `translateX(${transformVal}px)`;
-        } else if (scale) {
-          const scaleX = el.getBoundingClientRect().width / el.offsetWidth;
-          let transformVal = 1;
-
-          const newOffset = scaleX - (window.scrollY - y) / 300;
-
-          if (window.scrollY) {
-            if (newOffset < 0) transformVal = 0;
-            else if (y > scrollY && scrollY > 342)
-              transformVal = 0; // so the animation plays when you're scrolling up from bottom of the page
-            else if (newOffset < 1) transformVal = newOffset;
-          }
-
-          el.style.transform = `scale(${transformVal})`;
+      let transformVal = 0;
+      if (window.scrollY) {
+        // want translateX value to be 0 at top of the page
+        if (translateX === 'left') {
+          const newOffset = prevX + y - window.scrollY;
+          if (newOffset < 0) transformVal = newOffset;
+        } else if (translateX === 'right') {
+          const newOffset = window.scrollY - y + prevX;
+          if (newOffset > 0) transformVal = newOffset;
         }
-      };
+      }
+      el.style.transform = `translateX(${transformVal}px)`;
     }
 
-    transformEl('left')(divToSlideLeft.current);
-    transformEl('right')(divToSlideRight.current);
-    transformEl(undefined, true)(divToScale.current);
+    function scale(el: HTMLElement) {
+      const scaleX = el.getBoundingClientRect().width / el.offsetWidth;
+      let transformVal = 1;
+
+      const newOffset = scaleX - (window.scrollY - y) / 300;
+
+      if (window.scrollY) {
+        if (newOffset < 0) transformVal = 0;
+        else if (y > scrollY && scrollY > 342)
+          transformVal = 0; // so the animation plays when you're scrolling up from bottom of the page
+        else if (newOffset < 1) transformVal = newOffset;
+      }
+
+      el.style.transform = `scale(${transformVal})`;
+    }
+
+    slide('left', divToSlideLeft.current);
+    slide('right', divToSlideRight.current);
+    scale(divToScale.current);
 
     setY(window.scrollY);
   }, [y]);

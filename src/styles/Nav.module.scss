@@ -17,7 +17,7 @@
     transform: translateY(-100%);
   }
 
-  img {
+  svg {
     filter: var(--main-text-filter);
   }
 }
@@ -40,7 +40,7 @@
   }
 
   .icon_wrapper {
-    img {
+    svg {
       height: $icon_size;
     }
   }
@@ -55,7 +55,7 @@
     border: none;
     border-radius: 50px;
     background-color: #f1f3ee;
-    -webkit-appearance: none;
+    appearance: none;
     display: block;
     cursor: pointer;
     z-index: 99;
