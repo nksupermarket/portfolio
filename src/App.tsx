@@ -13,6 +13,7 @@ import WindowSizeContext from './utils/WindowSizeContext';
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
   const { greaterThan1920px, lessThan992px } = useWindowWidth();
+  const [loadSections, setLoadSections] = useState(false);
 
   useEffect(
     function pullTheme() {
@@ -30,13 +31,19 @@ function App() {
 
   const bgImage = useMemo(() => {
     if (theme === 'dark') {
-      return lessThan992px
-        ? require('./assets/images/optimized/resized/john-fowler-RsRTIofe0HE-unsplash.webp')
-        : require('./assets/images/optimized/john-fowler-RsRTIofe0HE-unsplash.webp');
+      if (greaterThan1920px)
+        return require('./assets/images/optimized/john-fowler-RsRTIofe0HE-unsplash.webp');
+      else if (lessThan992px)
+        return require('./assets/images/optimized/resized/john-fowler-RsRTIofe0HE-unsplash.webp');
+      else
+        return require('./assets/images/optimized/resized/1920x1080/john-fowler-RsRTIofe0HE-unsplash.webp');
     } else {
-      return lessThan992px
-        ? require('./assets/images/optimized/resized/wes-hicks-ZW6RUvsaFTc-unsplash.webp')
-        : require('./assets/images/optimized/wes-hicks-ZW6RUvsaFTc-unsplash.webp');
+      if (greaterThan1920px)
+        return require('./assets/images/optimized/wes-hicks-ZW6RUvsaFTc-unsplash.webp');
+      else if (lessThan992px)
+        return require('./assets/images/optimized/resized/wes-hicks-ZW6RUvsaFTc-unsplash.webp');
+      else
+        return require('./assets/images/optimized/resized/1920x1080/wes-hicks-ZW6RUvsaFTc-unsplash.webp');
     }
   }, [theme, lessThan992px]);
 

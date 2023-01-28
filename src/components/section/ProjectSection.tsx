@@ -102,7 +102,7 @@ export default function ProjectSection({
   sectionNumber
 }: SectionProps) {
   const triggerRef = useRef<HTMLElement>(null);
-  const { lessThan992px } = useContext(WindowSizeContext);
+  const { greaterThan1920px } = useContext(WindowSizeContext);
   const ioData = useIntersectionObserver(triggerRef, {
     freezeOnceVisible: true,
     threshold: 0.07
@@ -120,27 +120,27 @@ export default function ProjectSection({
   }, [ioData?.isIntersecting]);
 
   useEffect(() => {
-    const crochessScreen = lessThan992px
-      ? require('../../assets/images/optimized/resized/crochess-screen.webp')
-      : require('../../assets/images/optimized/crochess-screen.webp');
-    const legoScreen = lessThan992px
-      ? require('../../assets/images/optimized/resized/lego_ecommerce-screen.webp')
-      : require('../../assets/images/optimized/lego_ecommerce-screen.webp');
-    const breadScreen = lessThan992px
-      ? require('../../assets/images/optimized/resized/discord-screen.webp')
-      : require('../../assets/images/optimized/discord-screen.webp');
-    const todoScreen = lessThan992px
-      ? require('../../assets/images/optimized/resized/todo_list.webp')
-      : require('../../assets/images/optimized/todo_list.webp');
-    const wheresWaldoScreen = lessThan992px
-      ? require('../../assets/images/optimized/resized/wheres_waldo_screen.webp')
-      : require('../../assets/images/optimized/wheres_waldo_screen.webp');
+    const crochessScreen = greaterThan1920px
+      ? require('../../assets/images/optimized/crochess-screen.webp')
+      : require('../../assets/images/optimized/resized/crochess-screen.webp');
+    const legoScreen = greaterThan1920px
+      ? require('../../assets/images/optimized/lego_ecommerce-screen.webp')
+      : require('../../assets/images/optimized/resized/lego_ecommerce-screen.webp');
+    const breadScreen = greaterThan1920px
+      ? require('../../assets/images/optimized/discord-screen.webp')
+      : require('../../assets/images/optimized/resized/discord-screen.webp');
+    const todoScreen = greaterThan1920px
+      ? require('../../assets/images/optimized/todo_list.webp')
+      : require('../../assets/images/optimized/resized/todo_list.webp');
+    const wheresWaldoScreen = greaterThan1920px
+      ? require('../../assets/images/optimized/wheres_waldo_screen.webp')
+      : require('../../assets/images/optimized/resized/wheres_waldo_screen.webp');
     projects[0].image.src = crochessScreen;
     projects[1].image.src = legoScreen;
     projects[2].image.src = breadScreen;
     projects[3].image.src = todoScreen;
     projects[4].image.src = wheresWaldoScreen;
-  }, [lessThan992px]);
+  }, [greaterThan1920px]);
 
   return (
     <section

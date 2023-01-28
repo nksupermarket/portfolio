@@ -9,7 +9,7 @@ const NodeLogo = (props: SVGProps<SVGSVGElement>) => {
       height={height}
       version="1.2"
       viewBox="0 0 442.37 270.929"
-      preserveAspectRatio="XMidYMid"
+      preserveAspectRatio="xMidYMid"
     >
       <defs>
         <clipPath id="a">
