@@ -27,8 +27,8 @@ const projects = [
       'Websockets'
     ],
     links: {
-      live: 'https://bit.ly/3a0ttrJ',
-      repo: 'https://bit.ly/3Nc9hB3'
+      live: 'http://bit.ly/3l475me',
+      repo: 'http://bit.ly/3Nc9hB3'
     }
   },
   {
