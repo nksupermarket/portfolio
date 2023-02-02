@@ -183,13 +183,7 @@ export default function ContactSection({
                 <p className={styles.error_msg}>{inputErrors.message}</p>
               </div>
             </div>
-            <button
-              className={
-                loading
-                  ? 'loading flat-btn'
-                  : ' flat-btn shootable_el boundary'
-              }
-            >
+            <button className={loading ? 'loading flat-btn' : ' flat-btn'}>
               {loading ? (
                 <div className="lds-ellipsis">
                   <div></div>
