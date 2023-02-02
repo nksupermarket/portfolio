@@ -49,3 +49,15 @@
     }
   }
 }
+
+.dark {
+  filter: brightness(0.8);
+}
+
+.light {
+  filter: brightness(1.15);
+}
+
+.mid_light {
+  filter: brightness(1.07);
+}

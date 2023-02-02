@@ -157,7 +157,7 @@ export default function Project({
 
         <div className={styles.img_col}>
           <Scale
-            className={styles.img_wrapper}
+            className={styles.img_wrapper + ' shootable_el boundary'}
             animationRef={secondaryAnimeRef}
             config={slideConfig}
           >

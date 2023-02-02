@@ -91,7 +91,7 @@ export default function Circle() {
     <>
       <Scale
         elRef={divToScale}
-        className={styles.circle}
+        className={styles.circle + ' shootable_el boundary'}
         animationRef={circleAnimeRef}
       />
 

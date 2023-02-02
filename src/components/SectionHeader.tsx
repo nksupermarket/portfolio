@@ -33,8 +33,10 @@ export default function SectionHeader({
         animationRef={animationRef}
       >
         <div className={styles.title}>
-          <h4>{title.firstRow}</h4>
-          <h3 ref={headerRef}>{title.secondRow.toUpperCase()}</h3>
+          <h4 className="shootable_el boundary">{title.firstRow}</h4>
+          <h3 ref={headerRef} className="shootable_el boundary">
+            {title.secondRow.toUpperCase()}
+          </h3>
         </div>
       </Slide>
       <Slide
@@ -50,7 +52,10 @@ export default function SectionHeader({
           bounce: 0.3
         }}
       >
-        <h2 ref={numRef}>{`0${number}`}</h2>
+        <h2
+          ref={numRef}
+          className="shootable_el boundary"
+        >{`0${number}`}</h2>
       </Slide>
     </header>
   );

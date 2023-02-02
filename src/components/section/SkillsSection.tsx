@@ -66,7 +66,11 @@ export default function SkillsSection({
           {trail.slice(0, 3).map((style, i) => {
             const logo = logos[i];
             return (
-              <animated.li key={logo.type} style={style}>
+              <animated.li
+                className="shootable_el boundary"
+                key={logo.type}
+                style={style}
+              >
                 <div
                   className={styles.img_wrapper + ' ' + styles[logo.type]}
                 >
@@ -82,7 +86,7 @@ export default function SkillsSection({
             return (
               <animated.li
                 key={logo.type}
-                className={styles[logo.type]}
+                className={styles[logo.type] + ' shootable_el boundary'}
                 style={style}
               >
                 <div className={styles.img_wrapper}>

@@ -107,7 +107,12 @@ export default function AboutSection({
               style={{
                 width: `${patternWidth}px`
               }}
-              className={[styles.pattern, styles.top].join(' ')}
+              className={
+                styles.pattern +
+                ' ' +
+                styles.top +
+                ' shootable_el boundary'
+              }
             />
           </Slide>
         ) : undefined}
@@ -122,7 +127,9 @@ export default function AboutSection({
       >
         <SeigaihaPattern
           style={{ height: `${patternWidth}px` }}
-          className={[styles.pattern, styles.bottom].join(' ')}
+          className={
+            styles.pattern + ' ' + styles.bottom + ' shootable_el boundary'
+          }
         />
       </Slide>
     </section>

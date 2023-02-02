@@ -1,6 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import styles from '../styles/Nav.module.scss';
+import WindowSizeContext from '../utils/WindowSizeContext';
 import GithubLogo from './svg/GithubLogo';
+import Rocket from './svg/Rocket';
+import Tooltip from './Tooltip';
 
 const iconList = [
   {
@@ -14,13 +23,27 @@ const iconList = [
 interface NavProps {
   changeTheme: () => void;
   currentTheme: 'light' | 'dark';
+  activateSpaceship: () => void;
 }
 
-export default function Nav({ changeTheme, currentTheme }: NavProps) {
+export default function Nav({
+  changeTheme,
+  currentTheme,
+  activateSpaceship
+}: NavProps) {
+  const { lessThan992px } = useContext(WindowSizeContext);
   const [y, setY] = useState(window.scrollY);
   const [scrollDirection, setScrollDirection] = useState<
     'up' | 'down' | null
   >(null);
+  type ToolTipInfo = {
+    text: string;
+    el: HTMLElement;
+  };
+  const [toolTipInfo, setToolTipInfo] = useState<ToolTipInfo | null>(null);
+
+  const rocketRef = useRef<HTMLButtonElement>(null);
+  const themeRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = useCallback(() => {
     if (y > window.scrollY) setScrollDirection('up');
@@ -44,30 +67,78 @@ export default function Nav({ changeTheme, currentTheme }: NavProps) {
     rootClasses = rootClasses.filter((c) => c !== styles.hide);
     if (y) rootClasses.push(styles.scroll);
   }
+
   return (
-    <nav className={rootClasses.join(' ')}>
-      <div className={styles.theme_picker}>
-        <input
-          type="checkbox"
-          aria-label="theme selector"
-          onChange={changeTheme}
-          checked={currentTheme === 'dark'}
-        />
-      </div>
-      <div className={styles.btn_ctn}>
-        {iconList.map((icon) => {
-          return (
-            <div
-              key={icon.name}
-              className={`${styles.icon_wrapper} ${styles[icon.name]}`}
+    <>
+      <nav className={rootClasses.join(' ')}>
+        <div className={styles.left}>
+          {!lessThan992px && (
+            <button
+              className={styles.takeoff_btn}
+              ref={rocketRef}
+              onMouseEnter={() =>
+                setToolTipInfo({
+                  text: 'activate spaceship',
+                  el: rocketRef.current as HTMLElement
+                })
+              }
+              onMouseLeave={() => setToolTipInfo(null)}
+              onClick={activateSpaceship}
             >
-              <a href={icon.href} target="_blank" rel="noreferrer">
-                <icon.svg width="100%" height="100%" />
-              </a>
-            </div>
-          );
-        })}
-      </div>
-    </nav>
+              <div className={styles.filter_applier}>
+                <Rocket
+                  width="2em"
+                  height="2em"
+                  className={styles.rocket_main}
+                />
+              </div>
+            </button>
+          )}
+          <div
+            className={styles.theme_picker + ' shootable_el boundary'}
+            ref={themeRef}
+            onMouseEnter={() =>
+              setToolTipInfo({
+                text: 'change theme',
+                el: themeRef.current as HTMLElement
+              })
+            }
+            onMouseLeave={() => setToolTipInfo(null)}
+          >
+            <input
+              type="checkbox"
+              aria-label="theme selector"
+              onChange={changeTheme}
+              checked={currentTheme === 'dark'}
+            />
+          </div>
+        </div>
+        <div className={styles.right}>
+          <div className={styles.btn_ctn}>
+            {iconList.map((icon) => {
+              return (
+                <div
+                  key={icon.name}
+                  className={`${styles.icon_wrapper} ${
+                    styles[icon.name]
+                  } boundary shootable_el`}
+                >
+                  <a href={icon.href} target="_blank" rel="noreferrer">
+                    <icon.svg width="100%" height="100%" />
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
+      {toolTipInfo !== null ? (
+        <Tooltip
+          text={toolTipInfo.text}
+          posInfo={toolTipInfo.el.getBoundingClientRect()}
+          direction="bottom"
+        />
+      ) : undefined}
+    </>
   );
 }

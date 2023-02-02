@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { Suspense, useEffect, useMemo, useState } from 'react';
 import Hero from './components/Hero/Hero';
 import Nav from './components/Nav';
 import AboutSection from './components/section/AboutSection';
@@ -13,6 +13,7 @@ import WindowSizeContext from './utils/WindowSizeContext';
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
   const { greaterThan1920px, lessThan992px } = useWindowWidth();
+  const [spaceshipActive, setSpaceshipActive] = useState(false);
 
   useEffect(
     function pullTheme() {
@@ -23,6 +24,35 @@ function App() {
     },
     [theme]
   );
+
+  useEffect(
+    function runSpaceship() {
+      if (lessThan992px) return;
+      async function activateSpaceship(e: KeyboardEvent) {
+        if (e.key !== ' ') return;
+        e.preventDefault();
+        setSpaceshipActive(true);
+      }
+      window.addEventListener('keydown', activateSpaceship);
+      return () =>
+        window.removeEventListener('keydown', activateSpaceship);
+    },
+    [lessThan992px, theme]
+  );
+
+  useEffect(() => {
+    if (!spaceshipActive) return;
+    (async () => {
+      (await import('html-spaceship')).default({
+        theme,
+        wrapWordsClass: 'wrap',
+        removedClass: 'remove',
+        onRemove: () => setSpaceshipActive(false),
+        speed: 8,
+        rootEl: document.querySelector('#root') as HTMLElement
+      });
+    })();
+  }, [spaceshipActive]);
 
   function changeTheme() {
     setTheme((prev) => {
@@ -48,16 +78,29 @@ function App() {
     }
   }, [theme, lessThan992px]);
 
+  const SpaceshipControls = useMemo(
+    () => React.lazy(() => import('./components/SpaceshipControls')),
+    []
+  );
+
   return (
     <div className="App">
+      {spaceshipActive && (
+        <Suspense>
+          <SpaceshipControls />
+        </Suspense>
+      )}
       <WindowSizeContext.Provider
         value={{
           greaterThan1920px,
           lessThan992px
         }}
       >
-        <header className="App-header"></header>
-        <Nav changeTheme={changeTheme} currentTheme={theme} />
+        <Nav
+          changeTheme={changeTheme}
+          currentTheme={theme}
+          activateSpaceship={() => setSpaceshipActive(true)}
+        />
         <Hero theme={theme} />
         <main className={styles.main}>
           <div className={[styles.fade, styles.top].join(' ')}></div>

@@ -8,6 +8,9 @@
   --fade-color: var(--background);
   --circle: linear-gradient(to top, #fb6753 0%, #fc8b53 50%, #fdd55a 100%)
     50% 25%/200% 200%;
+  --accent-filter: brightness(0) saturate(100%) invert(60%) sepia(69%)
+    saturate(7080%) hue-rotate(325deg) brightness(98%) contrast(91%);
+  --tooltip-bg: #f2f2d4;
 }
 
 :root[color-mode='dark'] {
@@ -27,6 +30,9 @@
     )
     50% 50%/200% 200%;
   --fade-color: #394058;
+  --accent-filter: brightness(0) saturate(100%) invert(60%) sepia(69%)
+    saturate(7080%) hue-rotate(325deg) brightness(98%) contrast(91%);
+  --tooltip-bg: #4c4c6d;
 }
 
 * {

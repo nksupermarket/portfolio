@@ -11,41 +11,6 @@
     @include mixins.flex(column, true);
     @include mixins.sectionHeaderPadding();
   }
-
-  button {
-    background-size: 200% 100%;
-    background-image: linear-gradient(
-      to right,
-      var(--background) 50%,
-      var(--accent) 50%
-    );
-    height: 42px;
-    width: 120px;
-    color: var(--accent);
-    border: 2px solid var(--accent);
-    border-radius: 5px;
-    overflow: hidden;
-    transition: all linear 0.1s;
-
-    &:hover {
-      background-position: -100% 0;
-      color: var(--background);
-
-      :global(.lds-ellipsis) div {
-        background-color: var(--background);
-      }
-    }
-
-    &:global(.loading) {
-      user-select: none;
-      cursor: default;
-    }
-
-    :global(.lds-ellipsis) {
-      bottom: 21px;
-      transform: scale(0.7);
-    }
-  }
 }
 
 .grid {

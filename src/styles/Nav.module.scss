@@ -6,7 +6,7 @@
   right: 0;
   padding: 10px 10%;
   background-color: var(--background);
-  z-index: 99;
+  z-index: 98;
   transition: transform 0.1s ease-in;
 
   &.scroll {
@@ -16,9 +16,40 @@
   &.hide {
     transform: translateY(-100%);
   }
+}
 
-  svg {
-    filter: var(--main-text-filter);
+.right,
+.left {
+  display: flex;
+  align-items: center;
+  color: var(--main-text);
+  column-gap: 2em;
+}
+
+.takeoff_btn {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5em;
+}
+
+.filter_applier {
+  filter: var(--accent-filter);
+}
+.rocket_main {
+  position: relative;
+  z-index: 10;
+  mask: linear-gradient(
+      -60deg,
+      rgb(150, 150, 150) 30%,
+      rgba(150, 150, 150, 0.3),
+      rgb(150, 150, 150) 70%
+    )
+    right/400% 100%;
+  animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+  100% {
+    mask-position: left;
   }
 }
 
@@ -91,6 +122,10 @@
 .btn_ctn {
   display: flex;
   align-items: center;
+
+  svg {
+    filter: var(--main-text-filter);
+  }
 }
 
 .icon_wrapper {
