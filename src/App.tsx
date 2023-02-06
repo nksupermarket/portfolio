@@ -45,10 +45,9 @@ function App() {
     (async () => {
       (await import('html-spaceship')).default({
         theme,
-        wrapWordsClass: 'wrap',
         removedClass: 'remove',
         onRemove: () => setSpaceshipActive(false),
-        speed: 8,
+        speed: 10,
         rootEl: document.querySelector('#root') as HTMLElement
       });
     })();

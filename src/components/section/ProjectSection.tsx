@@ -76,8 +76,8 @@ const projects = [
     },
     stack: ['Typescript', 'Tailwind', 'Supabase', 'Next.js'],
     links: {
-      live: 'https://lookingcoolonavespa.github.io/battleship/dist/',
-      repo: 'https://github.com/lookingcoolonavespa/battleship'
+      live: 'https://bit.ly/3IANLqN',
+      repo: 'https://bit.ly/3ijxZWm'
     }
   },
   {

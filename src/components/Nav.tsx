@@ -74,7 +74,7 @@ export default function Nav({
         <div className={styles.left}>
           {!lessThan992px && (
             <button
-              className={styles.takeoff_btn}
+              className={styles.takeoff_btn + ' boundary shootable_el'}
               ref={rocketRef}
               aria-label="activate rocket"
               onMouseEnter={() =>
@@ -96,7 +96,7 @@ export default function Nav({
             </button>
           )}
           <div
-            className={styles.theme_picker + ' shootable_el'}
+            className={styles.theme_picker + ' boundary shootable_el'}
             ref={themeRef}
             onMouseEnter={() =>
               setToolTipInfo({
@@ -122,7 +122,7 @@ export default function Nav({
                   key={icon.name}
                   className={`${styles.icon_wrapper} ${
                     styles[icon.name]
-                  } shootable_el`}
+                  } shootable_el boundary`}
                 >
                   <a
                     href={icon.href}

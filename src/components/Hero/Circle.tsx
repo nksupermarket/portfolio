@@ -98,6 +98,7 @@ export default function Circle() {
       <div className={`${styles.text_block} ${styles.top}`}>
         <div className={styles.ctn}>
           <Slide
+            className="shootable_el boundary"
             start={{ transform: 'translateX(100vw)' }}
             end={{
               transform: 'translate(0)'
@@ -115,7 +116,7 @@ export default function Circle() {
             }}
             elRef={divToSlideLeft}
             animationRef={underlineAnimeRef}
-            className={styles.underline}
+            className={styles.underline + ' shootable_el boundary'}
             config={{
               mass: 50,
               tension: 2000,
@@ -128,6 +129,7 @@ export default function Circle() {
       <div className={`${styles.text_block} ${styles.bottom}`}>
         <div className={styles.ctn}>
           <Slide
+            className="shootable_el boundary"
             start={{ transform: 'translateX(-100vw)' }}
             end={{
               transform: 'translate(0)'
@@ -145,7 +147,7 @@ export default function Circle() {
             }}
             elRef={divToSlideRight}
             animationRef={underlineAnimeRef}
-            className={styles.underline}
+            className={styles.underline + ' shootable_el boundary'}
             config={{
               mass: 50,
               tension: 3000,

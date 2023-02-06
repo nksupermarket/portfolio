@@ -169,6 +169,7 @@ export default function ContactSection({
                   value={inputValues.email}
                   onChange={handleInputChange}
                   onBlur={handleInputBlur}
+                  className="shootable_el boundary"
                 />
                 <p className={styles.error_msg}>{inputErrors.email}</p>
               </div>
@@ -179,11 +180,16 @@ export default function ContactSection({
                   value={inputValues.message}
                   onChange={handleInputChange}
                   onBlur={handleInputBlur}
+                  className="shootable_el boundary"
                 />
                 <p className={styles.error_msg}>{inputErrors.message}</p>
               </div>
             </div>
-            <button className={loading ? 'loading flat-btn' : ' flat-btn'}>
+            <button
+              className={`shootable_el boundary flat-btn ${
+                loading ? ' loading' : ''
+              }`}
+            >
               {loading ? (
                 <div className="lds-ellipsis">
                   <div></div>

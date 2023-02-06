@@ -72,8 +72,10 @@ export default function Project({
         >
           <header>
             <div className="flex-col">
-              <h4 className={styles.title}>{title}</h4>
-              <div>
+              <h4 className={styles.title + ' boundary shootable_el'}>
+                {title}
+              </h4>
+              <div className="boundary shootable_el">
                 <div
                   className={[styles.underline, styles.green_line].join(
                     ' '
@@ -106,52 +108,26 @@ export default function Project({
             ) : undefined}
           </header>
           <p className={styles.desc}>{desc}</p>
-          <div className="flex-row">
-            {reverse ? (
-              <>
-                <div className={styles.line}></div>
-                <Scale
-                  className={styles.btn_ctn}
-                  animationRef={secondaryAnimeRef}
-                  config={slideConfig}
-                >
-                  <a
-                    className={styles.live}
-                    target="_blank"
-                    href={links.live}
-                    rel="noreferrer"
-                  >
-                    Live
-                  </a>
-                  <span className={styles.divider}>|</span>
-                  <a target="_blank" href={links.repo} rel="noreferrer">
-                    Repo
-                  </a>
-                </Scale>
-              </>
-            ) : (
-              <>
-                <Scale
-                  className={styles.btn_ctn}
-                  animationRef={secondaryAnimeRef}
-                  config={slideConfig}
-                >
-                  <a
-                    className={styles.live}
-                    target="_blank"
-                    href={links.live}
-                    rel="noreferrer"
-                  >
-                    Live
-                  </a>
-                  <span className={styles.divider}>|</span>
-                  <a target="_blank" href={links.repo} rel="noreferrer">
-                    Repo
-                  </a>
-                </Scale>
-                <div className={styles.line}></div>
-              </>
-            )}
+          <div className={styles.links + ' flex-row'}>
+            <Scale
+              className={styles.btn_ctn + ' shootable_el boundary'}
+              animationRef={secondaryAnimeRef}
+              config={slideConfig}
+            >
+              <a
+                className={styles.live}
+                target="_blank"
+                href={links.live}
+                rel="noreferrer"
+              >
+                Live
+              </a>
+              <span className={styles.divider}>|</span>
+              <a target="_blank" href={links.repo} rel="noreferrer">
+                Repo
+              </a>
+            </Scale>
+            <div className={styles.line}></div>
           </div>
         </Slide>
 
