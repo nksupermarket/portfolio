@@ -234,21 +234,17 @@ section {
   justify-content: center;
   position: relative;
   z-index: 2;
+  max-width: 2100px;
+  margin: 0 auto;
 }
 
 section:last-child {
   padding-bottom: 150px;
 }
 
-@media screen and (min-width: 993px) {
+@include mixins.media('desktop') {
   section {
     min-height: 80%;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  section {
-    min-height: 60%;
   }
 }
 
@@ -266,7 +262,10 @@ section:last-child {
   }
 }
 
-@media screen and (max-width: 992px) {
+@include mixins.media('smallerThanDesktop') {
+  section {
+    min-height: 60%;
+  }
   p {
     font-size: 14px;
   }
@@ -284,7 +283,7 @@ section:last-child {
   }
 }
 
-@media screen and (max-width: 576px) {
+@include mixins.media('phone') {
   h2 {
     font-size: 35px;
   }

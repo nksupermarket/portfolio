@@ -21,20 +21,46 @@
   }
 }
 
-@mixin sectionHeaderPadding() {
-  @media screen and (max-width: 992px) {
-    padding: 0 10%;
-  }
+@function translate-media-condition($c) {
+  $condMap: (
+    'smallerThanDesktop': '(max-width: 992px)',
+    'desktop': '(min-width: 993px)',
+    'fullSizeDesktop': '(min-width: 1600px)',
+    'smallerThanTablet': '(max-width: 768px)',
+    'phone': '(max-width: 576px)'
+  );
+  @return map-get($condMap, $c);
+}
 
-  @media screen and (max-width: 768px) {
+// The mdia mixin
+@mixin media($args...) {
+  $query: '';
+  @each $arg in $args {
+    $op: '';
+    @if ($query != '') {
+      $op: ' and ';
+    }
+    $query: $query + $op + translate-media-condition($arg);
+  }
+  @media #{$query} {
+    @content;
+  }
+}
+
+@mixin sectionHeaderPadding() {
+  @include media('smallerThanTablet') {
     padding: 0 8%;
   }
 
-  @media screen and (min-width: 993px) {
+  @include media('smallerThanDesktop') {
+    padding: 0 10%;
+  }
+
+  @include media('desktop') {
     padding: 0 18%;
   }
 
-  @media screen and (min-width: 1600px) {
+  @include media('fullSizeDesktop') {
     padding: 0 28%;
   }
 }

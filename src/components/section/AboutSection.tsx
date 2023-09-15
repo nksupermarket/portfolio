@@ -1,19 +1,16 @@
-import { useContext, useMemo, useRef } from 'react';
+import { useRef } from 'react';
 import styles from '../../styles/AboutSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 import SectionHeader from '../SectionHeader';
 
 import { useChain, useSpringRef } from 'react-spring';
-import WindowSizeContext from '../../utils/WindowSizeContext';
 import Slide from '../Animations/Slide';
-import SeigaihaPattern from '../SeigaihaPattern';
 
 export default function AboutSection({
   title,
   sectionNumber
 }: SectionProps) {
-  const { lessThan992px } = useContext(WindowSizeContext);
   const triggerRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLHeadingElement>(null);
   const numRef = useRef<HTMLHeadingElement>(null);
@@ -27,21 +24,8 @@ export default function AboutSection({
 
   const headerAnimeRef = useSpringRef();
   const textAnimeRef = useSpringRef();
-  const patternAnimeRef = useSpringRef();
 
-  useChain(
-    visible ? [headerAnimeRef, textAnimeRef, patternAnimeRef] : [],
-    [0, 0.5, 0.5]
-  );
-
-  const textBlockWidth = useMemo(() => {
-    if (!headerRef.current) return 0;
-    else return headerRef.current.offsetWidth;
-  }, [headerRef.current]);
-  const patternWidth = useMemo(() => {
-    if (!numRef.current) return 0;
-    else return numRef.current.offsetWidth;
-  }, [numRef.current]);
+  useChain(visible ? [headerAnimeRef, textAnimeRef] : [], [0, 0.5]);
 
   return (
     <section
@@ -66,13 +50,15 @@ export default function AboutSection({
             transform: 'translate(0)',
             opacity: '1'
           }}
-          className={styles.text_block}
+          className={styles.text_wrapper}
           animationRef={textAnimeRef}
         >
           <div
-            style={{
-              width: !lessThan992px ? `${textBlockWidth}px` : '100%'
-            }}
+            className={[
+              'boundary',
+              'shootable_el',
+              styles.text_block
+            ].join(' ')}
           >
             <p>
               I create <strong>responsive web applications</strong> that
@@ -93,45 +79,9 @@ export default function AboutSection({
               making <i>something</i> out of nothing.
             </p>
           </div>
+          <div className={styles.backdrop} />
         </Slide>
-        {!lessThan992px ? (
-          <Slide
-            start={{ transform: 'translateX(5vw)', opacity: '0' }}
-            end={{
-              transform: 'translate(0)',
-              opacity: '1'
-            }}
-            animationRef={patternAnimeRef}
-          >
-            <SeigaihaPattern
-              style={{
-                width: `${patternWidth}px`
-              }}
-              className={
-                styles.pattern +
-                ' ' +
-                styles.top +
-                ' shootable_el boundary'
-              }
-            />
-          </Slide>
-        ) : undefined}
       </div>
-      <Slide
-        start={{ transform: 'translateX(-5vw)', opacity: '0' }}
-        end={{
-          transform: 'translate(0)',
-          opacity: '1'
-        }}
-        animationRef={patternAnimeRef}
-      >
-        <SeigaihaPattern
-          style={{ height: `${patternWidth}px` }}
-          className={
-            styles.pattern + ' ' + styles.bottom + ' shootable_el boundary'
-          }
-        />
-      </Slide>
     </section>
   );
 }

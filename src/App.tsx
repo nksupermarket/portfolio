@@ -48,7 +48,8 @@ function App() {
         removedClass: 'remove',
         onRemove: () => setSpaceshipActive(false),
         speed: 10,
-        rootEl: document.querySelector('#root') as HTMLElement
+        rootEl: document.querySelector('#root') as HTMLElement,
+        workerPath: process.env.PUBLIC_URL + '/workers/webWorker.js'
       });
     })();
   }, [spaceshipActive]);
