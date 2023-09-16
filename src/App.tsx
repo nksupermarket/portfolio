@@ -1,4 +1,10 @@
-import React, { Suspense, useEffect, useMemo, useState } from 'react';
+import React, {
+  Suspense,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import Hero from './components/Hero/Hero';
 import Nav from './components/Nav';
 import AboutSection from './components/section/AboutSection';
@@ -8,6 +14,7 @@ import SkillsSection from './components/section/SkillsSection';
 import styles from './styles/App.module.scss';
 import { Theme } from './types/types';
 import { getCurrentTheme } from './utils/misc';
+import useIntersectionObserver from './utils/useIntersectionObserver';
 import { useSpaceship } from './utils/useSpaceship';
 import useWindowWidth from './utils/useWindowWidth';
 import WindowSizeContext from './utils/WindowSizeContext';
@@ -17,6 +24,16 @@ function App() {
   const { greaterThan1920px, lessThan992px } = useWindowWidth();
   const [shouldFireAnime, setShouldFireAnime] = useState(false);
   const { runSpaceship, spaceshipActive } = useSpaceship();
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const ioData = useIntersectionObserver(triggerRef, {
+    freezeOnceVisible: true,
+    threshold: 0.07
+  });
+
+  const contentVisible = ioData?.isIntersecting || false;
+  useEffect(() => {
+    if (contentVisible) fireAnime();
+  }, [contentVisible]);
 
   useEffect(
     function pullTheme() {
@@ -109,30 +126,28 @@ function App() {
               style={{ backgroundImage: `url(${bgImage})` }}
             ></div>
           ) : undefined}
-          <ProjectSection
-            title={{ firstRow: 'Latest', secondRow: 'Projects' }}
-            sectionNumber={1}
-            fireAnime={fireAnime}
-            shouldFireAnime={shouldFireAnime}
-          />
-          <SkillsSection
-            title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
-            sectionNumber={2}
-            fireAnime={fireAnime}
-            shouldFireAnime={shouldFireAnime}
-          />
-          <AboutSection
-            title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
-            sectionNumber={3}
-            fireAnime={fireAnime}
-            shouldFireAnime={shouldFireAnime}
-          />
-          <ContactSection
-            title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
-            sectionNumber={4}
-            fireAnime={fireAnime}
-            shouldFireAnime={shouldFireAnime}
-          />
+          <div ref={triggerRef}>
+            <ProjectSection
+              title={{ firstRow: 'Latest', secondRow: 'Projects' }}
+              sectionNumber={1}
+              shouldFireAnime={shouldFireAnime}
+            />
+            <SkillsSection
+              title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
+              sectionNumber={2}
+              shouldFireAnime={shouldFireAnime}
+            />
+            <AboutSection
+              title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
+              sectionNumber={3}
+              shouldFireAnime={shouldFireAnime}
+            />
+            <ContactSection
+              title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
+              sectionNumber={4}
+              shouldFireAnime={shouldFireAnime}
+            />
+          </div>
         </main>
       </WindowSizeContext.Provider>
     </div>

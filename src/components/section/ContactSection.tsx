@@ -1,5 +1,5 @@
 import emailjs from '@emailjs/browser';
-import { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { SyntheticEvent, useRef, useState } from 'react';
 import { useChain, useSpringRef } from 'react-spring';
 import styles from '../../styles/ContactSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
@@ -8,7 +8,6 @@ import SectionHeader from '../SectionHeader';
 import checkSvg from '../../assets/icons/check-line.svg';
 import closeSvg from '../../assets/icons/close-line.svg';
 import Slide from '../Animations/Slide';
-import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
 interface Inputs {
   email: string;
@@ -23,7 +22,6 @@ const defaultInputVals = {
 export default function ContactSection({
   title,
   sectionNumber,
-  fireAnime,
   shouldFireAnime
 }: SectionProps) {
   const [inputValues, setInputValues] = useState(defaultInputVals);
@@ -37,17 +35,6 @@ export default function ContactSection({
   const [loading, setLoading] = useState(false);
 
   const form = useRef<HTMLFormElement>(null);
-
-  const triggerRef = useRef<HTMLElement>(null);
-  const ioData = useIntersectionObserver(triggerRef, {
-    freezeOnceVisible: true,
-    threshold: 0.07
-  });
-
-  const visible = ioData?.isIntersecting || false;
-  useEffect(() => {
-    if (visible) fireAnime();
-  }, [visible]);
 
   const headerAnimeRef = useSpringRef();
   const formAnimeRef = useSpringRef();
@@ -101,10 +88,7 @@ export default function ContactSection({
   }
 
   return (
-    <section
-      className={styles.main + ' ' + 'main_section'}
-      ref={triggerRef}
-    >
+    <section className={styles.main + ' ' + 'main_section'}>
       <SectionHeader
         title={title}
         number={sectionNumber}

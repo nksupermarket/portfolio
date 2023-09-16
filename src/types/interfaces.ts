@@ -7,7 +7,6 @@ export interface SectionProps {
     secondRow: string;
   };
   sectionNumber: number;
-  fireAnime: () => void;
   shouldFireAnime: boolean;
 }
 

@@ -1,29 +1,15 @@
-import { useEffect, useRef } from 'react';
 import styles from '../../styles/AboutSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
 import SectionHeader from '../SectionHeader';
 
 import { useChain, useSpringRef } from 'react-spring';
 import Slide from '../Animations/Slide';
-import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
 export default function AboutSection({
   title,
   sectionNumber,
-  fireAnime,
   shouldFireAnime
 }: SectionProps) {
-  const triggerRef = useRef<HTMLElement>(null);
-  const ioData = useIntersectionObserver(triggerRef, {
-    freezeOnceVisible: true,
-    threshold: 0.07
-  });
-
-  const visible = ioData?.isIntersecting || false;
-  useEffect(() => {
-    if (visible) fireAnime();
-  }, [visible]);
-
   const headerAnimeRef = useSpringRef();
   const textAnimeRef = useSpringRef();
 
@@ -33,10 +19,7 @@ export default function AboutSection({
   );
 
   return (
-    <section
-      className={styles.main + ' ' + 'main_section'}
-      ref={triggerRef}
-    >
+    <section className={styles.main + ' ' + 'main_section'}>
       <SectionHeader
         title={title}
         number={sectionNumber}

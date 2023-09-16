@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { animated, useTrail } from 'react-spring';
 import styles from '../../styles/SkillsSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
@@ -10,7 +10,6 @@ import TsLogo from '../svg/TsLogo';
 import ReactLogo from '../svg/ReactLogo';
 import MongoLogo from '../svg/MongoLogo';
 import TailwindLogo from '../svg/TailwindLogo';
-import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
 const logos = [
   { component: JsLogo, type: 'javascript' },
@@ -24,7 +23,6 @@ let timer: NodeJS.Timeout | null = null;
 export default function SkillsSection({
   title,
   sectionNumber,
-  fireAnime,
   shouldFireAnime
 }: SectionProps) {
   const [startTrail, setStartTrail] = useState(false);
@@ -39,27 +37,13 @@ export default function SkillsSection({
     }
   });
 
-  const triggerRef = useRef<HTMLElement>(null);
-  const ioData = useIntersectionObserver(triggerRef, {
-    freezeOnceVisible: true,
-    threshold: 0.07
-  });
-
-  const visible = ioData?.isIntersecting || false;
-  useEffect(() => {
-    if (visible) fireAnime();
-  }, [visible]);
-
   useEffect(() => {
     if (shouldFireAnime && timer === null)
       timer = setTimeout(() => setStartTrail(true), 400);
   }, [shouldFireAnime]);
 
   return (
-    <section
-      className={styles.main + ' ' + 'main_section'}
-      ref={triggerRef}
-    >
+    <section className={styles.main + ' ' + 'main_section'}>
       <SectionHeader
         title={title}
         number={sectionNumber}

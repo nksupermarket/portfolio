@@ -1,11 +1,10 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Project from '../Project';
 import SectionHeader from '../SectionHeader';
 
 import { SectionProps } from '../../types/interfaces';
 
 import WindowSizeContext from '../../utils/WindowSizeContext';
-import useIntersectionObserver from '../../utils/useIntersectionObserver';
 const projects = {
   // project src is defined in useEffect in component
   Ether: {
@@ -92,22 +91,10 @@ let timer: NodeJS.Timeout | null = null;
 export default function ProjectSection({
   title,
   sectionNumber,
-  fireAnime,
   shouldFireAnime
 }: SectionProps) {
   const { greaterThan1920px } = useContext(WindowSizeContext);
   const [startProjectAnime, setStartProjectAnime] = useState(false);
-
-  const triggerRef = useRef<HTMLElement>(null);
-  const ioData = useIntersectionObserver(triggerRef, {
-    freezeOnceVisible: true,
-    threshold: 0.07
-  });
-
-  const visible = ioData?.isIntersecting || false;
-  useEffect(() => {
-    if (visible) fireAnime();
-  }, [visible]);
 
   useEffect(() => {
     if (shouldFireAnime && timer === null) {
@@ -115,7 +102,7 @@ export default function ProjectSection({
         setStartProjectAnime(true);
       }, 200);
     }
-  }, [fireAnime]);
+  }, [shouldFireAnime]);
 
   useEffect(() => {
     const crochessScreen = greaterThan1920px
@@ -142,11 +129,7 @@ export default function ProjectSection({
   }, [greaterThan1920px]);
 
   return (
-    <section
-      style={{ position: 'relative' }}
-      className="main_section"
-      ref={triggerRef}
-    >
+    <section style={{ position: 'relative' }} className="main_section">
       <SectionHeader
         title={title}
         number={sectionNumber}
