@@ -6,14 +6,17 @@ import ContactSection from './components/section/ContactSection';
 import ProjectSection from './components/section/ProjectSection';
 import SkillsSection from './components/section/SkillsSection';
 import styles from './styles/App.module.scss';
+import { Theme } from './types/types';
 import { getCurrentTheme } from './utils/misc';
+import { useSpaceship } from './utils/useSpaceship';
 import useWindowWidth from './utils/useWindowWidth';
 import WindowSizeContext from './utils/WindowSizeContext';
 
 function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(getCurrentTheme());
+  const [theme, setTheme] = useState<Theme>(getCurrentTheme());
   const { greaterThan1920px, lessThan992px } = useWindowWidth();
-  const [spaceshipActive, setSpaceshipActive] = useState(false);
+  const [shouldFireAnime, setShouldFireAnime] = useState(false);
+  const { runSpaceship, spaceshipActive } = useSpaceship();
 
   useEffect(
     function pullTheme() {
@@ -25,13 +28,19 @@ function App() {
     [theme]
   );
 
+  useEffect(() => {
+    (async () => {
+      if (window.location.pathname === '/spaceship')
+        await runSpaceship(lessThan992px, theme);
+    })();
+  }, []);
+
   useEffect(
-    function runSpaceship() {
-      if (lessThan992px) return;
-      async function activateSpaceship(e: KeyboardEvent) {
+    function () {
+      function activateSpaceship(e: KeyboardEvent) {
         if (e.key !== ' ') return;
         e.preventDefault();
-        setSpaceshipActive(true);
+        runSpaceship(lessThan992px, theme);
       }
       window.addEventListener('keydown', activateSpaceship);
       return () =>
@@ -40,24 +49,14 @@ function App() {
     [lessThan992px, theme]
   );
 
-  useEffect(() => {
-    if (!spaceshipActive) return;
-    (async () => {
-      (await import('html-spaceship')).default({
-        theme,
-        removedClass: 'remove',
-        onRemove: () => setSpaceshipActive(false),
-        speed: 10,
-        rootEl: document.querySelector('#root') as HTMLElement,
-        workerPath: process.env.PUBLIC_URL + '/workers/webWorker.js'
-      });
-    })();
-  }, [spaceshipActive]);
-
   function changeTheme() {
     setTheme((prev) => {
       return prev === 'light' ? 'dark' : 'light';
     });
+  }
+
+  function fireAnime() {
+    if (!shouldFireAnime) setShouldFireAnime(true);
   }
 
   const bgImage = useMemo(() => {
@@ -99,7 +98,7 @@ function App() {
         <Nav
           changeTheme={changeTheme}
           currentTheme={theme}
-          activateSpaceship={() => setSpaceshipActive(true)}
+          activateSpaceship={() => runSpaceship(lessThan992px, theme)}
         />
         <Hero theme={theme} />
         <main className={styles.main}>
@@ -113,18 +112,26 @@ function App() {
           <ProjectSection
             title={{ firstRow: 'Latest', secondRow: 'Projects' }}
             sectionNumber={1}
+            fireAnime={fireAnime}
+            shouldFireAnime={shouldFireAnime}
           />
           <SkillsSection
             title={{ firstRow: 'Skills', secondRow: 'Toolkit' }}
             sectionNumber={2}
+            fireAnime={fireAnime}
+            shouldFireAnime={shouldFireAnime}
           />
           <AboutSection
             title={{ firstRow: 'Who am I?', secondRow: 'About me' }}
             sectionNumber={3}
+            fireAnime={fireAnime}
+            shouldFireAnime={shouldFireAnime}
           />
           <ContactSection
             title={{ firstRow: 'Talk to me', secondRow: 'Contact' }}
             sectionNumber={4}
+            fireAnime={fireAnime}
+            shouldFireAnime={shouldFireAnime}
           />
         </main>
       </WindowSizeContext.Provider>

@@ -1,6 +1,14 @@
+@use './mixins';
+
 .main {
   margin: 7em 0;
   width: 60%;
+  @include mixins.media('fullSizeDesktop') {
+    width: 60%;
+  }
+  @include mixins.media('desktop') {
+    width: 70%;
+  }
 
   &:first-of-type {
     margin-top: 14em;
@@ -92,8 +100,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  row-gap: 10px;
-  max-width: 65%;
+  row-gap: 1.5em;
+  @include mixins.media('desktop') {
+    width: 65%;
+  }
 
   header {
     width: 100%;

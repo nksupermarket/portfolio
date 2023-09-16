@@ -10,7 +10,7 @@ interface SectionHeaderProps {
   };
   number: number;
   animationRef?: SpringRef;
-  visible: boolean;
+  shouldFireAnime: boolean;
   headerRef?: React.Ref<HTMLHeadingElement>;
   numRef?: React.Ref<HTMLHeadingElement>;
 }
@@ -19,7 +19,7 @@ export default function SectionHeader({
   title,
   number,
   animationRef,
-  visible,
+  shouldFireAnime,
   headerRef,
   numRef
 }: SectionHeaderProps) {
@@ -28,7 +28,9 @@ export default function SectionHeader({
       <Slide
         start={{ transform: 'translateX(-100vw)' }}
         end={{
-          transform: visible ? 'translate(0)' : 'translateX(-100vw)'
+          transform: shouldFireAnime
+            ? 'translate(0)'
+            : 'translateX(-100vw)'
         }}
         animationRef={animationRef}
       >
@@ -42,7 +44,7 @@ export default function SectionHeader({
       <Slide
         start={{ transform: 'translateX(50vw)' }}
         end={{
-          transform: visible ? 'translate(0)' : 'translateX(50vw)'
+          transform: shouldFireAnime ? 'translate(0)' : 'translateX(50vw)'
         }}
         animationRef={animationRef}
         config={{

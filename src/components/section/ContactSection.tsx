@@ -1,14 +1,14 @@
 import emailjs from '@emailjs/browser';
-import { SyntheticEvent, useRef, useState } from 'react';
+import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useChain, useSpringRef } from 'react-spring';
 import styles from '../../styles/ContactSection.module.scss';
 import { SectionProps } from '../../types/interfaces';
-import useIntersectionObserver from '../../utils/useIntersectionObserver';
 import SectionHeader from '../SectionHeader';
 
 import checkSvg from '../../assets/icons/check-line.svg';
 import closeSvg from '../../assets/icons/close-line.svg';
 import Slide from '../Animations/Slide';
+import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
 interface Inputs {
   email: string;
@@ -22,36 +22,40 @@ const defaultInputVals = {
 
 export default function ContactSection({
   title,
-  sectionNumber
+  sectionNumber,
+  fireAnime,
+  shouldFireAnime
 }: SectionProps) {
   const [inputValues, setInputValues] = useState(defaultInputVals);
-
   const [inputErrors, setInputErrors] = useState({
     email: '',
     message: ''
   });
-
   const [sendStatus, setSendStatus] = useState<'error' | 'success' | ''>(
     ''
   );
-
   const [loading, setLoading] = useState(false);
 
   const form = useRef<HTMLFormElement>(null);
 
   const triggerRef = useRef<HTMLElement>(null);
-
   const ioData = useIntersectionObserver(triggerRef, {
     freezeOnceVisible: true,
-    threshold: 0.1
+    threshold: 0.07
   });
 
   const visible = ioData?.isIntersecting || false;
+  useEffect(() => {
+    if (visible) fireAnime();
+  }, [visible]);
 
   const headerAnimeRef = useSpringRef();
   const formAnimeRef = useSpringRef();
 
-  useChain(visible ? [headerAnimeRef, formAnimeRef] : [], [0, 0.5]);
+  useChain(
+    shouldFireAnime ? [headerAnimeRef, formAnimeRef] : [],
+    [0, 0.5]
+  );
 
   function validate(inputId: string, inputVal: string) {
     let valid;
@@ -105,7 +109,7 @@ export default function ContactSection({
         title={title}
         number={sectionNumber}
         animationRef={headerAnimeRef}
-        visible={visible}
+        shouldFireAnime={shouldFireAnime}
       />
       <Slide
         start={{ transform: 'translateX(-10vw)', opacity: '0' }}

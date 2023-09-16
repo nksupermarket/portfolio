@@ -143,6 +143,7 @@ export default function Project({
               style={{
                 objectPosition: image.objectPosition
               }}
+              loading="lazy"
             />
           </Scale>
         </div>
