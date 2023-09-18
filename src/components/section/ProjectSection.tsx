@@ -29,7 +29,7 @@ const projects = {
     },
     stack: ['Typescript', 'HTML'],
     links: {
-      live: '/spaceship',
+      live: '/#spaceship',
       repo: 'https://github.com/lookingcoolonavespa/html-spaceship'
     }
   },

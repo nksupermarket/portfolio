@@ -47,7 +47,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      if (window.location.pathname === '/spaceship')
+      if (window.location.hash === '#spaceship')
         await runSpaceship(lessThan992px, theme);
     })();
   }, []);
