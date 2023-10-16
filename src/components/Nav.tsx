@@ -15,7 +15,7 @@ const iconList = [
   {
     name: 'github',
     svg: GithubLogo,
-    href: 'https://github.com/lookingcoolonavespa',
+    href: 'https://github.com/nksupermarket',
     alt: 'link to my github repo'
   }
 ];

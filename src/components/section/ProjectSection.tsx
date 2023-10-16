@@ -16,8 +16,8 @@ const projects = {
     },
     stack: ['Typescript', 'HTML'],
     links: {
-      live: 'https://lookingcoolonavespa.github.io/Ether/',
-      repo: 'https://github.com/lookingcoolonavespa/Ether'
+      live: 'https://nksupermarket.github.io/Ether/',
+      repo: 'https://github.com/nksupermarket/Ether'
     }
   },
   'html-spaceship': {
@@ -30,7 +30,7 @@ const projects = {
     stack: ['Typescript', 'HTML'],
     links: {
       live: '/#spaceship',
-      repo: 'https://github.com/lookingcoolonavespa/html-spaceship'
+      repo: 'https://github.com/nksupermarket/html-spaceship'
     }
   },
   croChess: {
