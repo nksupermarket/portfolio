@@ -56,7 +56,7 @@ const projects = {
     stack: ['Typescript', 'Next.js', 'Sass'],
     links: {
       live: 'https://bit.ly/3zX1vXO',
-      repo: 'https://bit.ly/3zWzJLp'
+      repo: 'https://github.com/nksupermarket/lego_ecommerce'
     }
   },
   bread: {
@@ -68,8 +68,8 @@ const projects = {
     },
     stack: ['Javascript', 'React', 'Css', 'Firebase'],
     links: {
-      live: 'https://bit.ly/3qPqh6M',
-      repo: 'https://bit.ly/3G1ADH0'
+      live: 'https://nksupermarket.github.io/discord-clone',
+      repo: 'https://github.com/nksupermarket/discord-clone'
     }
   },
   "Where's Waldo": {
@@ -81,8 +81,8 @@ const projects = {
     },
     stack: ['Javascript', 'React', 'Css'],
     links: {
-      live: 'https://bit.ly/3nqFj1F',
-      repo: 'https://bit.ly/33AWQgs'
+      live: 'https://nksupermarket.github.io/wheres-waldo/',
+      repo: 'https://github.com/nksupermarket/wheres-waldo'
     }
   }
 };
