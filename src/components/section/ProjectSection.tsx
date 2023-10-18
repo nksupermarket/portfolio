@@ -6,7 +6,20 @@ import { SectionProps } from '../../types/interfaces';
 
 import WindowSizeContext from '../../utils/WindowSizeContext';
 const projects = {
-  // project src is defined in useEffect in component
+  // project image src is defined in useEffect in component
+  croChess: {
+    desc: 'Play live online chess with your friends. Choose from standard time controls or create your own. If your friends are busy, try your hand at beating the computer.',
+    image: {
+      src: '',
+      alt: 'screenshot of chess game in action',
+      objectPosition: '50% 50%'
+    },
+    stack: ['Rust', 'Typescript', 'Solid', 'Sass', 'Golang', 'Postgres'],
+    links: {
+      live: 'https://nksupermarket.github.io/crochess-solid/#/',
+      repo: 'https://github.com/nksupermarket/crochess'
+    }
+  },
   Ether: {
     desc: 'An aesthetic functional startpage for your browser. Navigate to your favorite sites with keybinds. (Not mobile friendly as it is designed for use on a desktop environment)',
     image: {
@@ -31,19 +44,6 @@ const projects = {
     links: {
       live: '/#spaceship',
       repo: 'https://github.com/nksupermarket/html-spaceship'
-    }
-  },
-  croChess: {
-    desc: 'Play live online chess with your friends. Choose from standard time controls or create your own. If your friends are busy, try your hand at beating the computer.',
-    image: {
-      src: '',
-      alt: 'screenshot of chess game in action',
-      objectPosition: '71% 50%'
-    },
-    stack: ['Rust', 'Typescript', 'Solid', 'Sass', 'Java', 'Postgres'],
-    links: {
-      live: 'http://bit.ly/3l475me',
-      repo: 'http://bit.ly/3Nc9hB3'
     }
   },
   'lego store': {
@@ -106,8 +106,8 @@ export default function ProjectSection({
 
   useEffect(() => {
     const crochessScreen = greaterThan1920px
-      ? require('../../assets/images/optimized/crochess-screen.webp')
-      : require('../../assets/images/optimized/resized/crochess-screen.webp');
+      ? require('../../assets/images/optimized/crochess.webp')
+      : require('../../assets/images/optimized/crochess.webp');
     const legoScreen = greaterThan1920px
       ? require('../../assets/images/optimized/lego_ecommerce-screen.webp')
       : require('../../assets/images/optimized/resized/lego_ecommerce-screen.webp');
